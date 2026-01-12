@@ -1,0 +1,8 @@
+Appartient, 11 Avis, 0N Livre
+Avis:Référence, note, commentaire
+Ecrire, 0N Utilisateur, 11 Avis
+
+Livre:Référence,tite, auteur, résumé, genre, date de publication
+Possède, 0N Livre, 0N Utilisateur
+Utilisateur: Référence, email, nom d'utilisateur, mot de passe, nom, prénom
+
