@@ -1,42 +1,30 @@
-
-CREATE TABLE Avis (
-  PRIMARY KEY (Reference),
-  Reference   VARCHAR(42) NOT NULL,
-  note        VARCHAR(42),
-  commentaire VARCHAR(42),
-  Reference_2 VARCHAR(42) NOT NULL,
-  Reference_3 VARCHAR(42) NOT NULL
+CREATE TABLE "library" (
+  "id" integer PRIMARY KEY,
+  "user_id" integer NOT NULL,
+  "book_id" integer NOT NULL,
+  "status" varchar(42) NOT NULL,
+  "created_at" timestamp
 );
 
-CREATE TABLE Livre (
-  PRIMARY KEY (Reference),
-  Reference           VARCHAR(42) NOT NULL,
-  title               VARCHAR(42),
-  auteur              VARCHAR(42),
-  resume              VARCHAR(42),
-  genre               VARCHAR(42),
-  date_de_publication VARCHAR(42)
+CREATE TABLE "user" (
+  "id" integer PRIMARY KEY,
+  "email" varchar(50) NOT NULL,
+  "username" varchar(50) NOT NULL,
+  "password" varchar(50) NOT NULL,
+  "created_at" timestamp
 );
 
-CREATE TABLE Possede (
-  PRIMARY KEY (Reference_1, Reference_2),
-  Reference_1 VARCHAR(42) NOT NULL,
-  Reference_2 VARCHAR(42) NOT NULL
+CREATE TABLE "book" (
+  "id" integer PRIMARY KEY,
+  "isbn" integer NOT NULL,
+  "title" varchar(50) NOT NULL,
+  "author" varchar(50) NOT NULL,
+  "category" varchar(50),
+  "summary" text,
+  "coverUrl" varchar(50),
+  "publication_date" date
 );
 
-CREATE TABLE Utilisateur (
-  PRIMARY KEY (Reference),
-  Reference         VARCHAR(42) NOT NULL,
-  email             VARCHAR(42),
-  nom_d_utilisateur VARCHAR(42),
-  mot_de_passe      VARCHAR(42),
-  nom               VARCHAR(42),
-  prenom            VARCHAR(42)
-);
+ALTER TABLE "library" ADD FOREIGN KEY ("user_id") REFERENCES "user" ("id");
 
-ALTER TABLE Avis ADD FOREIGN KEY (Reference_3) REFERENCES Utilisateur (Reference);
-ALTER TABLE Avis ADD FOREIGN KEY (Reference_2) REFERENCES Livre (Reference);
-
-ALTER TABLE Possede ADD FOREIGN KEY (Reference_2) REFERENCES Utilisateur (Reference);
-ALTER TABLE Possede ADD FOREIGN KEY (Reference_1) REFERENCES Livre (Reference);
-
+ALTER TABLE "library" ADD FOREIGN KEY ("book_id") REFERENCES "book" ("id");
