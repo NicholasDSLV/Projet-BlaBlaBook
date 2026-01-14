@@ -50,12 +50,11 @@ MVP :
 
 * Moteur de recherche
 
-
 * Page détail d’un livre
 
  Évolutions possibles :
 
-* Notation et avis
+* Notation et/ou avis
 
 * Filtrage avancé (genre, note, date)
 
@@ -67,7 +66,7 @@ MVP :
 
 Back-end : NodeJS + Express
 
-Base de données : Postgres (justification : schéma flexible pour livres et utilisateurs)
+Base de données : PostgreSQL avec Sequelize ORM (justification : base relationnelle assurant l’intégrité des données et la gestion des relations entre utilisateurs et livres).
 
 Front-end : Svelte 
 
@@ -105,7 +104,6 @@ Chrome, Firefox, Edge, Safari (dernières versions)
 * " /register "         => Inscription
 * " /library  "         => Ma bibliothèque
 * " /book/:id  "        => Détail d’un livre
-* " /search  "          => Recherche
 * " /profile "          => Profil utilisateur
 
 
@@ -126,7 +124,7 @@ Chrome, Firefox, Edge, Safari (dernières versions)
 Rôles
 ---
 
-Front-end dev : composants React, appels API, maquettes
+Front-end dev : conception et développement des composants Svelte, appels API, maquettes
 
 Back-end dev : API Express, base de données, authentification
 
@@ -152,35 +150,50 @@ Reviews (évolution) : id, userId, bookId, rating, comment, createdAt
 Dictionnaire des données
 |Table|	Champ|	Type|	Description|
 |:----|------|------|:-----------|
-|Users|	id|	ObjectId|Identifiant unique|
-|Users| email|String|Adresse email|
-|Users|	password|String|Mot de passe hashé|
-|Books|	title|	String	|Titre du livre|
-|Books|	author	|String|	Auteur du livre|
-|Books|	summary	|String	|Résumé du livre|
-|Books|	coverUrl	|String	|URL de l’image de couverture|
-|Library	|status	|Enum|	“to-read”, “reading”, “read”|
-|Reviews	|rating|	Number|	Note sur 5|
-|Reviews	|comment|	String	|Commentaire utilisateur|
-
+|user| id|	integer|Identifiant unique|
+|user| email|varchar|Adresse email|
+|user| username|varchar|Pseudonyme de l'utilisateur
+|user| password|varchar|Mot de passe hashé|
+|user| first_name|varchar|Prénom de l'utilisateur|
+|user| last_name|varchar|Nom de l'utilisateur|
+|user| created_at| timestamp|Date de creation du compte|
+|book| id| integer|Identifiant unique|
+|book| title|varchar|Titre du livre|
+|book| author|varchar|Auteur du livre|
+|book| category|varchar|Genre litéraire|
+|book| summary|text|Résumé du livre|
+|book| coverUrl|varchar|URL de l’image de couverture|
+|book| publication_date|date|Date de publication|
+|library| id|integer|identifiant unique|
+|library| user_id|integer|Utilisateur propriétaire|
+|library| book_id|integer|Livre associé
+|library |status|Enum|	“to-read”, “reading”, “read”|
+|library |created_at|timestamp |date de publication|
+|notice|id|integer|Identifiant de l’avis
+|notice	|rating|	integer|	Note sur 5|
+|notice	|comment|	text	|Commentaire utilisateur|
+|notice |user_id | integer | Auteur de l’avis
+|notice | book_id | integer|Livre concerné
+|notice |created_at|TIMESTAMP|Date de publication de l’avis
 
 ## 8️⃣ Wireframes (simplifiés)
-Page d’accueil
+Page d’accueil :
 [Header: Logo + Menu]
-[Hero: Présentation BlaBlaBook]
-[Section livres random: 6 livres avec couverture + titre]
+[head: Présentation BlaBlaBook]
+[Section livres random: 3 livres avec couverture + titre + résumé]
 [Footer: Mentions légales / Contact]
 
-Page bibliothèque
+Page bibliothèque :
+[Header: Logo + Menu]
 [Listes livres ajoutés par user]
-- Titre | Auteur | Status | Boutons (modifier, retirer)
+- couverture |Titre | Auteur | Status | Boutons (modifier, retirer)
 [Ajouter un livre: barre de recherche + bouton]
 
-Page détail livre
-[Couverture] [Titre] [Auteur] [Résumé]
+Page détail livre :
+[Couverture] [Titre] [Auteur] [Année] [Résumé] [note]
 [Ajouter à ma bibliothèque / Modifier status]
 
-Page login / register
+Page login / register :
 [Formulaire email / password]
 [Bouton submit]
 [Link vers inscription / connexion]
@@ -201,5 +214,5 @@ Typographie : Montserrat pour titres, Open Sans pour textes
 
 Boutons : coins arrondis, hover avec légère ombre
 
-Cards livres : image + titre + auteur + statut
+Cards livres : image + titre + résumé + statut
 

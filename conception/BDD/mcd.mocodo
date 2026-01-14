@@ -6,3 +6,27 @@ Livre:Référence,tite, auteur, résumé, genre, date de publication
 Possède, 0N Livre, 0N Utilisateur
 Utilisateur: Référence, email, nom d'utilisateur, mot de passe, nom, prénom
 
+
+Dictionnaire des données :
+
+| Entité ou association | Libellé de l'attribut | Type |
+|:----------------------|:----------------------|:-----|
+| Avis                  | Référence             |      |
+| "                     | commentaire           |      |
+| "                     | note                  |      |
+| Livre                 | Référence             |      |
+| "                     | auteur                |      |
+| "                     | date_de_publication   |      |
+| "                     | genre                 |      |
+| "                     | résumé                |      |
+| "                     | tite                  |      |
+| Utilisateur           | Référence             |      |
+| "                     | email                 |      |
+| "                     | mot_de_passe          |      |
+| "                     | nom                   |      |
+| "                     | nom_d_utilisateur     |      |
+| "                     | prénom                |      |
+
+
+
+
