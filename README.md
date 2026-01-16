@@ -284,9 +284,9 @@ Le logo Blablabook utilise une écriture élégante, avec
 
 | Nom | Code HEX | Utilisation |
 |:---|:---------|:------------|
-| Fond principal | #E38F1 | Couleur de fond de l’écran |
+| Fond principal | #E3E9F2 | Couleur de fond de l’écran |
 | Blanc pur | #FFFFFF | Header, footer et containers |
-| Bleu clair | #DCE3EC | Bloc de présentation de la page d’accueil |
+| gris clair | #DCE3EC | Bloc de présentation de la page d’accueil |
 | Violet navigation | #6D67C9 | Boutons de navigation de la page d’accueil |
 | Gris bleuté | #919FB3 | Bouton « Enregistrer » |
 | Blanc | #FFFFFF | Texte du bouton « Enregistrer » |

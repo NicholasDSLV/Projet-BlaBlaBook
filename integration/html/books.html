@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Blablabook</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/booksStyle.css">
+</head>
+
+<body>
+    
+    <main class="container">
+
+        <!-- Recherche -->
+        <section class="search-box">
+            <h2>Rechercher un livre</h2>
+
+            <input type="text" placeholder="Titre, auteur, ISBN...">
+
+            <div class="filters">
+                <select>
+                    <option value="">Genre</option>
+                    <option>Roman</option>
+                    <option>Science</option>
+                    <option>Histoire</option>
+                </select>
+
+                <select id="yearSelect">
+                    <option value="">Année</option>
+                </select>
+            </div>
+
+            <button>Rechercher</button>
+        </section>
+
+        <!-- Résultats -->
+        <section class="books">
+            <div class="book-card">
+                <div class="title">Titre du livre</div>
+                <div class="cover">Couverture du livre</div>
+                <div class="description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. A nostrum, itaque expedita sit alias reprehenderit, rerum fugiat voluptatum quidem hic repudiandae eligendi optio sint. Corrupti reiciendis porro fugit id tempore!</div>
+            </div>
+
+            <div class="book-card">
+                <div class="title">Titre du livre</div>
+                <div class="cover">Couverture du livre</div>
+                <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, omnis eaque voluptas fugiat minima, cupiditate corrupti consequuntur cumque velit iusto error. Recusandae provident ullam harum inventore consectetur illo dolorem nesciunt.</div>
+            </div>
+
+            <div class="book-card">
+                <div class="title">Titre du livre</div>
+                <div class="cover">Couverture du livre</div>
+                <div class="description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus, est. Autem ab consectetur, tempore ullam perferendis architecto placeat. Provident nostrum dolorem eos? Dolore quasi accusamus perspiciatis laboriosam, consectetur eaque perferendis?</div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="/integration/js/scriptBooks.js"></script>
+</body>
+</html>
