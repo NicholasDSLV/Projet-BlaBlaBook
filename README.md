@@ -136,7 +136,7 @@ Intéressés par la gestion de leur bibliothèque et la découverte de livres
 * " /register "         => Inscription
 * " /library  "         => Ma bibliothèque
 * " /books "            => Recherche/Liste des livres
-* " /book/:id  "        => Détail d’un livre
+* " /books/:id  "        => Détail d’un livre
 * " /profile "          => Profil utilisateur
 
 Schema arborescence des routes :

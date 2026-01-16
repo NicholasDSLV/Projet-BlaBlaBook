@@ -1,0 +1,137 @@
+/* Container principal pour centrer la fiche */
+.book {
+background: linear-gradient(135deg, #EDEFF2, #C5D0E3);    display: flex;
+    justify-content: center;
+}
+
+/* La carte devient horizontale */
+.book-card {
+    background-color: #ffffff;
+    border-radius: 25px;
+    padding: 40px;
+    margin: 160px auto;
+    width: 100%;
+    max-width: 800px; /* Largeur max selon l'image */
+    display: flex;
+    flex-direction: row; /* Alignement horizontal */
+    gap: 40px;
+    box-shadow: 0 6px 15px rgba(106, 90, 205, 0.35);
+    align-items: flex-start;
+}
+
+/* Style de la couverture (gauche) */
+.cover {
+    background-color: #D1D9E6;
+    min-width: 250px;
+    height: 350px;
+    border-radius: 15px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Conteneur de droite */
+.book-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+}
+
+.title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+/* Infos Auteur/Année */
+.data p {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #666;
+}
+.data strong {
+    display: inline-block;
+    width: 80px;
+    color: #333;
+}
+
+/* Badges/Tags */
+.tags {
+    display: flex;
+    gap: 10px;
+}
+.tag {
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+}
+.tag-blue { background-color: #33CCFF; }
+.tag-pink { background-color: #FF85BC; }
+
+/* Résumé */
+.description {
+    border: none; /* On enlève les pointillés de ton ancien style */
+    padding: 0;
+    text-align: left;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #444;
+}
+
+/* Boutons en bas */
+.actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.add-btn {
+    background: linear-gradient(135deg, #6a5acd, #9b8cff); 
+    padding: 0.8rem 1.2rem;
+    cursor: pointer;
+    align-self: center;
+    position: relative;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 500;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wish-btn {
+    background: linear-gradient(135deg, #b4ade2, #b4ade2); 
+    padding: 0.8rem 1.2rem;
+    cursor: pointer;
+    align-self: center;
+    position: relative;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 500;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #5a4bcc, #8577ff); 
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(106, 90, 205, 0.35);
+}
+
+.actions select {
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #cdcdbc;
+    color: #000000;
+    font-weight: 500;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}

@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(#EDEFF2, #C5D0E3);
+    background: linear-gradient(135deg, #EDEFF2, #C5D0E3);
 }
 /* recherche */
 .search-box {
@@ -11,6 +11,24 @@ body {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    box-shadow: 0 6px 15px rgba(106, 90, 205, 0.35);
+}
+button {
+    background: linear-gradient(135deg, #6a5acd, #9b8cff); 
+    padding: 0.8rem 1.2rem;
+    cursor: pointer;
+    align-self: center;
+    position: relative;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 500;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #5a4bcc, #8577ff); 
+    transform: translateY(-2px);
     box-shadow: 0 6px 15px rgba(106, 90, 205, 0.35);
 }
 
@@ -45,22 +63,7 @@ h2 {
     cursor: pointer;
 }
 
-.search-box button {
-    width: fit-content;
-    padding: 10px 20px;
-    background-color: #000;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    font-size: 14px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background-color 0.8s
-}
 
-.search-box button:hover {
-    background-color: #6F63C3;
-}
 
 /* resultat */
 
@@ -74,7 +77,7 @@ h2 {
     display: flex;
     gap: 25px;
     justify-content: space-between;
-    box-shadow: 0 6px 15px rgba(106, 90, 205, 0.35);
+    
 }
 
 .book-card {
@@ -117,21 +120,3 @@ h2 {
     text-align: center;
 }
 
-.book-card button {
-    background: linear-gradient(135deg, #6a5acd, #9b8cff); 
-    padding: 0.8rem 1.2rem;
-    cursor: pointer;
-    align-self: center;
-    position: relative;
-    border: none;
-    border-radius: 8px;
-    color: #fff;
-    font-weight: 500;
-    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.book-card button:hover {
-    background: linear-gradient(135deg, #5a4bcc, #8577ff); 
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(106, 90, 205, 0.35);
-}
