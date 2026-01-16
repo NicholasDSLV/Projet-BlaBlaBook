@@ -11,6 +11,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    box-shadow: 0 6px 15px rgba(106, 90, 205, 0.35);
 }
 
 h2 {
@@ -73,6 +74,7 @@ h2 {
     display: flex;
     gap: 25px;
     justify-content: space-between;
+    box-shadow: 0 6px 15px rgba(106, 90, 205, 0.35);
 }
 
 .book-card {
@@ -113,4 +115,23 @@ h2 {
     font-size: 12px;
     color: #5f6b7a;
     text-align: center;
+}
+
+.book-card button {
+    background: linear-gradient(135deg, #6a5acd, #9b8cff); 
+    padding: 0.8rem 1.2rem;
+    cursor: pointer;
+    align-self: center;
+    position: relative;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 500;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.book-card button:hover {
+    background: linear-gradient(135deg, #5a4bcc, #8577ff); 
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(106, 90, 205, 0.35);
 }
