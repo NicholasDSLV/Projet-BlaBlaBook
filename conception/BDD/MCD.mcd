@@ -1,0 +1,3 @@
+Utilisateur: email, nom d'utilisateur, mot de passe
+Possède, 0N Livre, 0N Utilisateur: status
+Livre:isbn,tite, auteur, résumé, genre, image de couverture, date de publication
