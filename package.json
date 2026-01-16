@@ -1,0 +1,23 @@
+{
+  "name": "projet-blablabook",
+  "version": "1.0.0",
+   "type": "module",
+  "description": "**_Sprint 0 – BlaBlaBook_**\r ==================================\r ## 1️⃣ Cahier des charges\r Présentation du projet\r ----\r Le projet BlaBlaBook est une application web dédiée à la gestion d’une bibliothèque personnelle. Il s’inscrit dans un cadre pédagogique et a pour objectif de valider le TP du titre Développeur Web et Web Mobile (DWWM).\r Ce projet est porté par une association fictive de passionnés de lecture, souhaitant mettre à disposition un outil simple et efficace pour organiser, suivre et enrichir une collection de livres. L’application s’adresse à tous les profils de lecteurs, qu’ils soient occasionnels ou lecteurs confirmés, désireux de gérer leur bibliothèque de manière centralisée.\r L’objectif principal de BlaBlaBook est de permettre aux utilisateurs de référencer leurs livres, de suivre leurs lectures et de mieux organiser leur collection personnelle, tout en proposant une expérience utilisateur accessible et intuitive.\r Le développement de l’application est réalisé en équipe, en suivant une méthodologie agile basée sur des sprints. Le suivi de l’avancement, la répartition des tâches et la collaboration sont assurés à l’aide des outils proposés par GitHub, notamment via les GitHub Projects.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "ejs": "^4.0.1",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
