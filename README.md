@@ -161,6 +161,7 @@ Schema arborescence des routes :
 |------------|------------------|----------------|-----------------------------|----------------------------|
 | POST       | /auth/register   | auth.router    | authController.register     | Inscription utilisateur    |
 | POST       | /auth/login      | auth.router    | authController.login        | Connexion utilisateur      |
+| POST       | /auth/logout    | auth.router    | authController.logout       | Déconnexion utilisateur    |
 | GET        | /auth/profile    | auth.router    | authController.profile      | Profil utilisateur connecté|
 |DELETE      | /auth/profile    | auth.router    | authController.remove       | Supprimer utilisateur      |
 
