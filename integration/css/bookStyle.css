@@ -1,70 +1,135 @@
-/* Container principal pour centrer la fiche */
-.book {
-background: linear-gradient(135deg, #EDEFF2, #C5D0E3);    display: flex;
-    justify-content: center;
-}
+/* ================= BASE ================= */
 
-/* La carte devient horizontale */
-.book-card {
-    background-color: #ffffff;
-    border-radius: 25px;
-    padding: 40px;
-    margin: 160px auto;
-    width: 100%;
-    max-width: 800px; /* Largeur max selon l'image */
-    display: flex;
-    flex-direction: row; /* Alignement horizontal */
-    gap: 40px;
-    box-shadow: 0 6px 15px rgba(106, 90, 205, 0.35);
-    align-items: flex-start;
-}
-
-/* Style de la couverture (gauche) */
-.cover {
-    background-color: #D1D9E6;
-    min-width: 250px;
-    height: 350px;
-    border-radius: 15px;
-    flex-shrink: 0;
+body {
+    margin: 0;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background: linear-gradient(135deg, #EDEFF2, #C5D0E3);
+}
+
+/* ================= HEADER ================= */
+
+header {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+    height: 40px; /* Ajustez selon la taille de votre image */
+}
+
+/* On cache le label du menu burger pour le desktop */
+label[for="toggle"] {
+    display: none;
+}
+
+.main_pages {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: #4A5568;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-item:hover {
+    color: #667EEA;
+}
+
+/* Style spécifique pour le bouton "Rechercher" dans la nav */
+.nav-item[href="/rechercher"] {
+    background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+    color: white;
+    padding: 10px 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(106, 90, 205, 0.3);
+}
+
+/* ================= CONTAINER ================= */
+
+.book {
+    flex: 1; /* prend toute la hauteur restante */
+    display: flex;
+    justify-content: center;
+    padding: 30px 0;
+}
+
+/* ================= CARTE LIVRE ================= */
+
+.book-card {
+    background-color: #ffffff;
+    border-radius: 20px;
+    width: 85%;
+    padding: 30px;
+    margin: 40px auto;
+    height: 1000px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    box-shadow: 0 6px 15px rgba(106, 90, 205, 0.35);
+}
+
+/* ================= COUVERTURE ================= */
+
+.cover {
+    background-color: #D1D9E6;
+    width: 100%;
+    height: 500px;
+    border-radius: 15px;
+
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Conteneur de droite */
+/* ================= CONTENU ================= */
+
 .book-details {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    text-align: left;
+    text-align: center;
 }
 
 .title {
-    font-size: 2.2rem;
+    font-size: 1.6rem;
     font-weight: 800;
     color: #1a1a1a;
-    text-align: left;
-    margin-bottom: 10px;
 }
 
-/* Infos Auteur/Année */
+/* ================= INFOS ================= */
+
 .data p {
     font-size: 14px;
-    margin: 5px 0;
+    margin: 4px 0;
     color: #666;
 }
+
 .data strong {
-    display: inline-block;
-    width: 80px;
     color: #333;
 }
 
-/* Badges/Tags */
+/* ================= TAGS ================= */
+
 .tags {
     display: flex;
     gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
+
 .tag {
     padding: 5px 15px;
     border-radius: 20px;
@@ -72,66 +137,148 @@ background: linear-gradient(135deg, #EDEFF2, #C5D0E3);    display: flex;
     font-weight: bold;
     color: white;
 }
+
 .tag-blue { background-color: #33CCFF; }
 .tag-pink { background-color: #FF85BC; }
 
-/* Résumé */
+/* ================= DESCRIPTION ================= */
+
 .description {
-    border: none; /* On enlève les pointillés de ton ancien style */
-    padding: 0;
-    text-align: left;
     font-size: 14px;
     line-height: 1.6;
     color: #444;
+    text-align: center;
 }
 
-/* Boutons en bas */
+/* ================= ACTIONS ================= */
+
 .actions {
     display: flex;
-    gap: 15px;
-    margin-top: 20px;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
 }
+
+.actions button,
+.actions select {
+    width: 100%;
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* ================= BOUTONS ================= */
 
 .add-btn {
-    background: linear-gradient(135deg, #6a5acd, #9b8cff); 
-    padding: 0.8rem 1.2rem;
-    cursor: pointer;
-    align-self: center;
-    position: relative;
+    background: linear-gradient(135deg, #6a5acd, #9b8cff);
     border: none;
-    border-radius: 8px;
     color: #fff;
     font-weight: 500;
-    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.wish-btn {
-    background: linear-gradient(135deg, #b4ade2, #b4ade2); 
-    padding: 0.8rem 1.2rem;
-    cursor: pointer;
-    align-self: center;
-    position: relative;
-    border: none;
-    border-radius: 8px;
-    color: #fff;
-    font-weight: 500;
-    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+.actions select {
+    border: 1px solid #ccc;
+    background-color: #cdcdbc;
+    color: #000;
 }
 
 button:hover {
-    background: linear-gradient(135deg, #5a4bcc, #8577ff); 
     transform: translateY(-2px);
     box-shadow: 0 6px 15px rgba(106, 90, 205, 0.35);
 }
 
-.actions select {
-    padding: 0.8rem 1.2rem;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-    cursor: pointer;
-    background-color: #cdcdbc;
-    color: #000000;
-    font-weight: 500;
-    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+/* Footer */
+        .footer {
+            background: white;
+            padding: 15px 40px;
+            text-align: center;
+            color: #718096;
+            font-size: 14px;
+            box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.05);
+            margin-top: auto;
+            position: sticky;
+            z-index: 1;
+        }
+
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: #764ba2;
+        }
+/* End Footer */
+
+/* ================= TABLETTE ================= */
+
+@media (min-width: 769px) and (max-width: 1279px) {
+    .book-card {
+        width: 85%;
+        padding: 30px;
+    }
+
+    .cover {
+        height: 340px;
+    }
+
+    .book-details {
+        text-align: left;
+    }
+
+    .tags {
+        justify-content: flex-start;
+    }
+
+    .description {
+        text-align: left;
+    }
+
+    .actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .actions button,
+    .actions select {
+        width: auto;
+    }
+}
+
+/* ================= DESKTOP ================= */
+
+@media (min-width: 1280px) {
+    .book-card {
+        width: 75%;
+        max-width: 1100px;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 60px;
+        padding: 40px;
+        margin-bottom: 0;
+        height: auto;
+    }
+
+    .cover {
+        width: 250px;
+        min-width: 250px;
+        height: 350px;
+        flex-shrink: 0;
+    }
+
+    .book-details {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .title {
+        font-size: 2.2rem;
+    }
+    
+    
 }

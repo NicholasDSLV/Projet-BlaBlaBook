@@ -2,13 +2,35 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
     <title>Blablabook</title>
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/booksStyle.css">
+    <script defer src="/integration/js/script.js"></script>
+    <link rel="icon" type="image/png" href="../img/Favicon.png" />
+
 </head>
 
 <body>
-    
+    <header>
+          <img
+          class="logo"
+          src="../img/Logo 2.png"
+          alt="logo de blablabook"/>
+        <nav>
+        <label for="toggle">☰</label>
+        <input type="checkbox" id="toggle">
+        <div class="main_pages">
+        <a href="/" class="nav-item <%= currentPage === 'accueil' ? 'active' : '' %>">Accueil</a>
+        <a href="/bibliotheque" class="nav-item <%= currentPage === 'bibliotheque' ? 'active' : '' %>">Bibliothèque</a>
+        <a href="/rechercher" class="nav-item <%= currentPage === 'rechercher' ? 'active' : '' %>">Rechercher</a>
+        <a href="/connexion" class="nav-item <%= currentPage === 'connexion' ? 'active' : '' %>">Connexion</a>
+        <a href="/profil" class="nav-item <%= currentPage === 'profil' ? 'active' : '' %>">Profil</a>
+        </div>
+        </nav>
+        </header>
     <main class="container">
 
         <!-- Recherche -->
@@ -35,28 +57,41 @@
         <section class="books">
             <div class="book-card">
                 <div class="title">Titre du livre</div>
-                <div class="cover"> Couverture du livre</div>
+                <div class="cover">
+                    <img src="path_to_icon.png" alt="" style="width:40px; opacity:0.3;">
+                    Couverture du livre
+                </div>
                 <div class="description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. A nostrum, itaque expedita sit alias reprehenderit, rerum fugiat voluptatum quidem hic repudiandae eligendi optio sint. Corrupti reiciendis porro fugit id tempore!</div>
                 <button class="add-btn" aria-label="Ajouter à ma bibliothèque">Ajouter à ma bibliothèque</button>
             </div>
 
             <div class="book-card">
                 <div class="title">Titre du livre</div>
-                <div class="cover">Couverture du livre</div>
+                <div class="cover">
+                    <img src="path_to_icon.png" alt="" style="width:40px; opacity:0.3;">
+                    Couverture du livre
+                </div>
                 <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, omnis eaque voluptas fugiat minima, cupiditate corrupti consequuntur cumque velit iusto error. Recusandae provident ullam harum inventore consectetur illo dolorem nesciunt.</div>
                 <button class="add-btn" aria-label="Ajouter à ma bibliothèque">Ajouter à ma bibliothèque</button>
             </div>
 
             <div class="book-card">
                 <div class="title">Titre du livre</div>
-                <div class="cover">Couverture du livre</div>
+                <div class="cover">
+                    <img src="path_to_icon.png" alt="" style="width:40px; opacity:0.3;">
+                    Couverture du livre
+                </div>
                 <div class="description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus, est. Autem ab consectetur, tempore ullam perferendis architecto placeat. Provident nostrum dolorem eos? Dolore quasi accusamus perspiciatis laboriosam, consectetur eaque perferendis?</div>
                 <button class="add-btn" aria-label="Ajouter à ma bibliothèque">Ajouter à ma bibliothèque</button>
             </div>
         </section>
 
     </main>
-
-    <script src="/integration/js/script.js"></script>
+ 
+    <footer class="footer">
+        <a href="#">Mentions légales</a> | 
+        <a href="#">Contact</a> | 
+        © 2026 BlaBlaBook <br><em>Développé par la team Nicolas, Yoann et Manu</br></em>
+    </footer>
 </body>
 </html>

@@ -2,13 +2,35 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
     <title>Blablabook</title>
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/bookStyle.css">
+    <script defer src="/integration/js/script.js"></script>
+    <link rel="icon" type="image/png" href="../img/Favicon.png" />
+
 </head>
 
 <body>
-    
+    <header>
+          <img
+          class="logo"
+          src="../img/Logo 2.png"
+          alt="logo de blablabook"/>
+        <nav>
+        <label for="toggle">☰</label>
+        <input type="checkbox" id="toggle">
+        <div class="main_pages">
+        <a href="/" class="nav-item <%= currentPage === 'accueil' ? 'active' : '' %>">Accueil</a>
+        <a href="/bibliotheque" class="nav-item <%= currentPage === 'bibliotheque' ? 'active' : '' %>">Bibliothèque</a>
+        <a href="/rechercher" class="nav-item <%= currentPage === 'rechercher' ? 'active' : '' %>">Rechercher</a>
+        <a href="/connexion" class="nav-item <%= currentPage === 'connexion' ? 'active' : '' %>">Connexion</a>
+        <a href="/profil" class="nav-item <%= currentPage === 'profil' ? 'active' : '' %>">Profil</a>
+        </div>
+        </nav>
+        </header>
     <main class="container">
 
 <section class="book">
@@ -49,3 +71,11 @@
         </div>
     </div>
 </section>
+    </main>
+    <footer class="footer">
+        <a href="#">Mentions légales</a> | 
+        <a href="#">Contact</a> | 
+        © 2026 BlaBlaBook <br><em>Développé par la team Nicolas, Yoann et Manu</br></em>
+    </footer>
+</body>
+</html>
