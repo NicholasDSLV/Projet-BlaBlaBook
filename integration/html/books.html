@@ -1,97 +1,120 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Livres – BlaBlaBook</title>
 
+  <link rel="icon" type="image/png" href="../img/Favicon.png" />
 
-    <title>Blablabook</title>
-    <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/booksStyle.css">
-    <script defer src="/integration/js/script.js"></script>
-    <link rel="icon" type="image/png" href="../img/Favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Unicase:wght@400;700&display=swap" rel="stylesheet">
 
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/books.css" />
 </head>
 
-<body>
+
+  <body>
     <header>
-          <img
-          class="logo"
-          src="../img/Logo 2.png"
-          alt="logo de blablabook"/>
-        <nav>
+      <img class="logo" src="../img/Logo 2.png" alt="logo de blablabook" />
+
+      <nav>
         <label for="toggle">☰</label>
-        <input type="checkbox" id="toggle">
+        <input type="checkbox" id="toggle" />
+
         <div class="main_pages">
-        <a href="/" class="nav-item <%= currentPage === 'accueil' ? 'active' : '' %>">Accueil</a>
-        <a href="/bibliotheque" class="nav-item <%= currentPage === 'bibliotheque' ? 'active' : '' %>">Bibliothèque</a>
-        <a href="/rechercher" class="nav-item <%= currentPage === 'rechercher' ? 'active' : '' %>">Rechercher</a>
-        <a href="/connexion" class="nav-item <%= currentPage === 'connexion' ? 'active' : '' %>">Connexion</a>
-        <a href="/profil" class="nav-item <%= currentPage === 'profil' ? 'active' : '' %>">Profil</a>
+          <a href="home.html" class="nav-item">Accueil</a>
+          <a href="library.html" class="nav-item">Bibliothèque</a>
+          <a href="books.html" class="nav-item active">Rechercher</a>
+          <a href="login.html" class="nav-item">Connexion</a>
+          <a href="profil.html" class="nav-item">Profil</a>
         </div>
-        </nav>
-        </header>
+      </nav>
+    </header>
+
     <main class="container">
+      <section class="search-box">
+        <h2>Rechercher un livre</h2>
 
-        <!-- Recherche -->
-        <section class="search-box">
-            <h2>Rechercher un livre</h2>
+        <input type="text" placeholder="Titre, auteur, ISBN..." />
 
-            <input type="text" placeholder="Titre, auteur, ISBN...">
+        <div class="filters">
+          <select id="genreSelect">
+            <option value="">Genre</option>
+          </select>
 
-            <div class="filters">
-                <select id="genreSelect">
-                    <option value="">Genre</option>
-                </select>
+          <select id="yearSelect">
+            <option value="">Année</option>
+          </select>
+        </div>
 
+        <button>Rechercher</button>
+      </section>
 
-                <select id="yearSelect">
-                    <option value="">Année</option>
-                </select>
-            </div>
+      <section class="books">
+        <div class="book-card">
+          <div class="title">Titre du livre</div>
+          <div class="cover">
+            <img
+              src="path_to_icon.png"
+              alt=""
+              style="width: 40px; opacity: 0.3"
+            />
+            Couverture du livre
+          </div>
+          <div class="description">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit...
+          </div>
+          <button class="add-btn" aria-label="Ajouter à ma bibliothèque">
+            Ajouter à ma bibliothèque
+          </button>
+        </div>
 
-            <button>Rechercher</button>
-        </section>
+        <div class="book-card">
+          <div class="title">Titre du livre</div>
+          <div class="cover">
+            <img
+              src="path_to_icon.png"
+              alt=""
+              style="width: 40px; opacity: 0.3"
+            />
+            Couverture du livre
+          </div>
+          <div class="description">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit...
+          </div>
+          <button class="add-btn" aria-label="Ajouter à ma bibliothèque">
+            Ajouter à ma bibliothèque
+          </button>
+        </div>
 
-        <!-- Résultats -->
-        <section class="books">
-            <div class="book-card">
-                <div class="title">Titre du livre</div>
-                <div class="cover">
-                    <img src="path_to_icon.png" alt="" style="width:40px; opacity:0.3;">
-                    Couverture du livre
-                </div>
-                <div class="description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. A nostrum, itaque expedita sit alias reprehenderit, rerum fugiat voluptatum quidem hic repudiandae eligendi optio sint. Corrupti reiciendis porro fugit id tempore!</div>
-                <button class="add-btn" aria-label="Ajouter à ma bibliothèque">Ajouter à ma bibliothèque</button>
-            </div>
-
-            <div class="book-card">
-                <div class="title">Titre du livre</div>
-                <div class="cover">
-                    <img src="path_to_icon.png" alt="" style="width:40px; opacity:0.3;">
-                    Couverture du livre
-                </div>
-                <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, omnis eaque voluptas fugiat minima, cupiditate corrupti consequuntur cumque velit iusto error. Recusandae provident ullam harum inventore consectetur illo dolorem nesciunt.</div>
-                <button class="add-btn" aria-label="Ajouter à ma bibliothèque">Ajouter à ma bibliothèque</button>
-            </div>
-
-            <div class="book-card">
-                <div class="title">Titre du livre</div>
-                <div class="cover">
-                    <img src="path_to_icon.png" alt="" style="width:40px; opacity:0.3;">
-                    Couverture du livre
-                </div>
-                <div class="description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus, est. Autem ab consectetur, tempore ullam perferendis architecto placeat. Provident nostrum dolorem eos? Dolore quasi accusamus perspiciatis laboriosam, consectetur eaque perferendis?</div>
-                <button class="add-btn" aria-label="Ajouter à ma bibliothèque">Ajouter à ma bibliothèque</button>
-            </div>
-        </section>
-
+        <div class="book-card">
+          <div class="title">Titre du livre</div>
+          <div class="cover">
+            <img
+              src="path_to_icon.png"
+              alt=""
+              style="width: 40px; opacity: 0.3"
+            />
+            Couverture du livre
+          </div>
+          <div class="description">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit...
+          </div>
+          <button class="add-btn" aria-label="Ajouter à ma bibliothèque">
+            Ajouter à ma bibliothèque
+          </button>
+        </div>
+      </section>
     </main>
- 
+
     <footer class="footer">
-        <a href="#">Mentions légales</a> | 
-        <a href="#">Contact</a> | 
-        © 2026 BlaBlaBook <br><em>Développé par la team Nicolas, Yoann et Manu</br></em>
+      <a href="#">Mentions légales</a> | <a href="#">Contact</a> | © 2026
+      BlaBlaBook <br /><em>Développé par la team Nicolas, Yoann et Manu</em>
     </footer>
-</body>
+  </body>
 </html>

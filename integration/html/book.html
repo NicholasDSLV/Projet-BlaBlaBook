@@ -1,81 +1,87 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Livre – BlaBlaBook</title>
 
+  <link rel="icon" type="image/png" href="../img/Favicon.png" />
 
-    <title>Blablabook</title>
-    <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/bookStyle.css">
-    <script defer src="/integration/js/script.js"></script>
-    <link rel="icon" type="image/png" href="../img/Favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Unicase:wght@400;700&display=swap" rel="stylesheet">
 
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/book.css" />
 </head>
 
-<body>
-    <header>
-          <img
-          class="logo"
-          src="../img/Logo 2.png"
-          alt="logo de blablabook"/>
-        <nav>
-        <label for="toggle">☰</label>
-        <input type="checkbox" id="toggle">
-        <div class="main_pages">
-        <a href="/" class="nav-item <%= currentPage === 'accueil' ? 'active' : '' %>">Accueil</a>
-        <a href="/bibliotheque" class="nav-item <%= currentPage === 'bibliotheque' ? 'active' : '' %>">Bibliothèque</a>
-        <a href="/rechercher" class="nav-item <%= currentPage === 'rechercher' ? 'active' : '' %>">Rechercher</a>
-        <a href="/connexion" class="nav-item <%= currentPage === 'connexion' ? 'active' : '' %>">Connexion</a>
-        <a href="/profil" class="nav-item <%= currentPage === 'profil' ? 'active' : '' %>">Profil</a>
-        </div>
-        </nav>
-        </header>
-    <main class="container">
 
-<section class="book">
-    <div class="book-card">
+<body>
+  <header>
+    <img class="logo" src="../img/Logo 2.png" alt="logo de blablabook">
+
+    <nav>
+      <label for="toggle">☰</label>
+      <input type="checkbox" id="toggle">
+
+      <div class="main_pages">
+        <a href="home.html" class="nav-item">Accueil</a>
+        <a href="library.html" class="nav-item active">Bibliothèque</a>
+        <a href="books.html" class="nav-item">Rechercher</a>
+        <a href="login.html" class="nav-item">Connexion</a>
+        <a href="profil.html" class="nav-item">Profil</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="book">
+      <div class="book-card">
         <div class="cover">
-            <img src="path_to_icon.png" alt="" style="width:40px; opacity:0.3;">
-            Couverture du livre
+          <img src="path_to_icon.png" alt="" style="width:40px; opacity:0.3;">
+          Couverture du livre
         </div>
 
         <div class="book-details">
-            <div class="title">Le petit prince</div>
-            
-            <div class="data">
-                <p><strong>Auteur:</strong> Antoine de Saint-Exupéry</p>
-                <p><strong>Année:</strong> 1943</p>
-                <p><strong>Genre:</strong> Conte philosophique</p>
-            </div>
+          <div class="title">Le petit prince</div>
 
-            <div class="tags">
-                <span class="tag tag-blue">Conte</span>
-                <span class="tag tag-pink">Classique</span>
-            </div>
+          <div class="data">
+            <p><strong>Auteur:</strong> Antoine de Saint-Exupéry</p>
+            <p><strong>Année:</strong> 1943</p>
+            <p><strong>Genre:</strong> Conte philosophique</p>
+          </div>
 
-            <div class="description">
-                <strong>Résumé:</strong><br>
-                L'histoire d'un garçon venu d'une autre planète qui interroge la nature humaine à travers ses rencontres...
-            </div>
+          <div class="tags">
+            <span class="tag tag-blue">Conte</span>
+            <span class="tag tag-pink">Classique</span>
+          </div>
 
-            <div class="actions">
-                <button class="add-btn"> + Ajouter à ma bibliothèque</button>
-                <select>
-                    <option value="">status</option>
-                    <option>Déja lu</option>
-                    <option>En cours</option>
-                    <option>A lire</option>
-                </select>
-            </div>
+          <div class="description">
+            <strong>Résumé:</strong><br>
+            L'histoire d'un garçon venu d'une autre planète qui interroge la nature humaine à travers ses rencontres...
+          </div>
+
+          <div class="actions">
+            <button class="add-btn">+ Ajouter à ma bibliothèque</button>
+            <select>
+              <option value="">status</option>
+              <option>Déjà lu</option>
+              <option>En cours</option>
+              <option>À lire</option>
+            </select>
+          </div>
         </div>
-    </div>
-</section>
-    </main>
-    <footer class="footer">
-        <a href="#">Mentions légales</a> | 
-        <a href="#">Contact</a> | 
-        © 2026 BlaBlaBook <br><em>Développé par la team Nicolas, Yoann et Manu</br></em>
-    </footer>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a href="#">Mentions légales</a> |
+    <a href="#">Contact</a> |
+    © 2026 BlaBlaBook
+    <br><em>Développé par la team Nicolas, Yoann et Manu</em>
+  </footer>
 </body>
 </html>

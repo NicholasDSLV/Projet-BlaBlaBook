@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ma bibliothèque – BlaBlaBook</title>
+
+  <link rel="icon" type="image/png" href="../img/Favicon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Unicase:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/library.css" />
+</head>
+
+
+<body>
+  <header>
+    <img class="logo" src="../img/Logo 2.png" alt="logo de blablabook"/>
+
+    <nav>
+      <label for="toggle">☰</label>
+      <input type="checkbox" id="toggle">
+
+      <div class="main_pages">
+        <a href="home.html" class="nav-item">Accueil</a>
+        <a href="library.html" class="nav-item active">Bibliothèque</a>
+        <a href="books.html" class="nav-item">Rechercher</a>
+        <a href="login.html" class="nav-item">Connexion</a>
+        <a href="profil.html" class="nav-item">Profil</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="search">
+      <form class="search__form" method="GET" action="books">
+        <label class="search__label" for="search"></label>
+        <input
+          class="search__input"
+          id="search"
+          type="search"
+          name="search"
+          placeholder="Rechercher un livre..."
+          value=""
+        >
+        <button class="search__button" type="submit">Rechercher</button>
+      </form>
+    </section>
+
+    <section class="article-list">
+      <header class="article-list__header">
+        <span class="article-list__col">Couverture</span>
+        <span class="article-list__col">Titre</span>
+        <span class="article-list__col">Auteur</span>
+        <span class="article-list__col">Status</span>
+        <span class="article-list__col">Action</span>
+      </header>
+
+      <article class="article">
+        <img class="article__cover" src="" alt="">
+        <h1 class="article__title">Le petit Prince</h1>
+        <p class="article__author">Antoine de Saint-Exupéry</p>
+        <select class="article__status">
+          <option value="">status</option>
+          <option>Déjà lu</option>
+          <option>En cours</option>
+          <option>A lire</option>
+        </select>
+        <div class="article__actions">
+          <button class="article__button--remove">Retirer</button>
+        </div>
+      </article>
+
+      <article class="article">
+        <img class="article__cover" src="" alt="">
+        <h1 class="article__title">1984</h1>
+        <p class="article__author">Georges Orwell</p>
+        <select class="article__status">
+          <option value="">status</option>
+          <option>Déjà lu</option>
+          <option>En cours</option>
+          <option>A lire</option>
+        </select>
+        <div class="article__actions">
+          <button class="article__button--remove">Retirer</button>
+        </div>
+      </article>
+
+      <article class="article">
+        <img class="article__cover" src="" alt="image-harrypotter">
+        <h1 class="article__title">Harry Potter</h1>
+        <p class="article__author">J.K Rowling</p>
+        <select class="article__status">
+          <option value="">status</option>
+          <option>Déjà lu</option>
+          <option>En cours</option>
+          <option>A lire</option>
+        </select>
+        <div class="article__actions">
+          <button class="article__button--remove">Retirer</button>
+        </div>
+      </article>
+
+      <article class="article">
+        <img class="article__cover" src="" alt="">
+        <h1 class="article__title">Hunger Games</h1>
+        <p class="article__author">Suzanne Collins</p>
+        <select class="article__status">
+          <option value="">status</option>
+          <option>Déjà lu</option>
+          <option>En cours</option>
+          <option>A lire</option>
+        </select>
+        <div class="article__actions">
+          <button class="article__button--remove">Retirer</button>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a href="#">Mentions légales</a> |
+    <a href="#">Contact</a> |
+    © 2026 BlaBlaBook <br><em>Développé par la team Nicolas, Yoann et Manu</em>
+  </footer>
+</body>
+</html>
+

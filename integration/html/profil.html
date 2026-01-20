@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profil – BlaBlaBook</title>
+
+  <link rel="icon" type="image/png" href="../img/Favicon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Unicase:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/profil.css" />
+</head>
+
+
+<body>
+  <header>
+    <img class="logo" src="../img/Logo 2.png" alt="logo de blablabook">
+
+    <nav>
+      <label for="toggle">☰</label>
+      <input type="checkbox" id="toggle">
+
+      <div class="main_pages">
+        <a href="home.html" class="nav-item">Accueil</a>
+        <a href="library.html" class="nav-item ">Bibliothèque</a>
+        <a href="books.html" class="nav-item">Rechercher</a>
+        <a href="login.html" class="nav-item">Connexion</a>
+        <a href="profil.html" class="nav-item active">Profil</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="profil-container">
+    <section class="profil-box">
+      <h2>Modifier les informations personnelles</h2>
+
+      <form class="profil-form">
+        <div class="grid">
+          <div class="col">
+            <label for="pseudo">Pseudo</label>
+            <input type="text" id="pseudo" placeholder="Pseudo">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Email">
+          </div>
+
+          <div class="col">
+            <label for="current">Mot de passe actuel</label>
+            <input type="password" id="current" placeholder="Mot de passe actuel">
+
+            <label for="new">Nouveau mot de passe</label>
+            <input type="password" id="new" placeholder="Nouveau mot de passe">
+
+            <label for="confirm">Confirmer le mot de passe</label>
+            <input type="password" id="confirm" placeholder="Confirmer le mot de passe">
+          </div>
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="btn-save">Enregistrer</button>
+          <button type="button" class="btn-cancel">Annuler</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="danger-zone">
+      <h3>Attention</h3>
+      <p>Cette action est irréversible. Toutes vos données seront définitivement supprimées.</p>
+      <button class="btn-danger" type="button">Supprimer le compte</button>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a href="#">Mentions légales</a> |
+    <a href="#">Contact</a> |
+    © 2026 BlaBlaBook
+    <br>
+    <em>Développé par la team Nicolas, Yoann et Manu</em>
+  </footer>
+</body>
+</html>
