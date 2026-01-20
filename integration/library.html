@@ -19,14 +19,15 @@
            <label for="toggle">☰</label>
            <input type="checkbox" id="toggle">
         <div class="main_pages">
-          <a href="/" class="nav-item <%= currentPage === 'accueil' ? 'active' : '' %>">Accueil</a>
-          <a href="/bibliotheque" class="nav-item <%= currentPage === 'bibliotheque' ? 'active' : '' %>">Bibliothèque</a>
-          <a href="/rechercher" class="nav-item <%= currentPage === 'rechercher' ? 'active' : '' %>">Rechercher</a>
-          <a href="/connexion" class="nav-item <%= currentPage === 'connexion' ? 'active' : '' %>">Connexion</a>
-          <a href="/profil" class="nav-item <%= currentPage === 'profil' ? 'active' : '' %>">Profil</a>
+          <a href="/" class="nav-item">Accueil</a>
+          <a href="/bibliotheque" class="nav-item">Bibliothèque</a>
+          <a href="/rechercher" class="nav-item">Rechercher</a>
+          <a href="/connexion" class="nav-item">Connexion</a>
+          <a href="/profil" class="nav-item">Profil</a>
         </div>
         </nav>
         </header>
+        <!--Barre de recherche-->
         <section class="search">
             <form class="search__form" method="GET" action="/books">
                 <label class="search__label" for="search"></label>
@@ -43,6 +44,7 @@
         </section>
 
         <section class="article-list">
+            <!--En-tête de tableau-->
             <header class="article-list__header">
                 <span class="article-list__col">Couverture</span>
                 <span class="article-list__col">Titre</span>
@@ -82,7 +84,7 @@
             </article>
 
             <article class="article">
-                <img src="" alt="image-harrypotter">
+                <img src="" alt="">
                 <h1 class="article__title">Harry Potter</h1>
                 <p class="article__author">J.K Rowling</p>
                 <select class="article__status">

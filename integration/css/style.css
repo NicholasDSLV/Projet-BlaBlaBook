@@ -142,9 +142,8 @@ article:hover {
 /* End Footer */
 
 .logo {
-    position: absolute;
     width: 110px;
-    height: 25px;  
+    height: auto;  
     top: 30px;         
     left: 10px;    
 }
@@ -155,8 +154,6 @@ header nav {
 }
 
 nav {
-    margin: 20px auto;
-    width: 50%;
     height: 90px; 
 }
 
@@ -171,7 +168,8 @@ nav .main_pages a {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 90px;
+    height: auto;
+    padding: 0.5rem 1rem;
     text-decoration: none;
     font-family: Arial, sans-serif;
     color: rgb(255, 255, 255);

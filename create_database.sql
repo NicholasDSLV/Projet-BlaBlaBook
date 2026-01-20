@@ -9,15 +9,15 @@ CREATE TABLE "library" (
 CREATE TABLE "user" (
   "id" integer PRIMARY KEY,
   "email" varchar(50) NOT NULL,
-  "username" varchar(50) NOT NULL,
+  "username" varchar(15) NOT NULL,
   "password" varchar(50) NOT NULL,
   "created_at" timestamp
 );
 
 CREATE TABLE "book" (
   "id" integer PRIMARY KEY,
-  "isbn" integer NOT NULL,
-  "title" varchar(50) NOT NULL,
+  "isbn" varchar(20) NOT NULL,
+  "title" varchar NOT NULL,
   "author" varchar(50) NOT NULL,
   "category" varchar(50),
   "summary" text,
