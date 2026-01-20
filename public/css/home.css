@@ -8,32 +8,30 @@
   padding: 44px 0 60px;
 }
 
-/* Hero centré comme sur ta maquette */
-.hero{
+.blablabook{
   text-align:center;
   margin: 10px 0 30px;
 }
 
-.hero-title{
+.blablabook-title{
   margin:0;
   font-size: 32px;
   letter-spacing: 0.04em;
 }
 
-.hero-subtitle{
+.blablabook-subtitle{
   margin:6px 0 0;
   color:#64748b;
 }
 
-/* Bloc sélection */
 .selection{
   background:#fff;
   border-radius:22px;
   box-shadow: 0 18px 45px rgba(15,23,42,0.12);
   border:1px solid rgba(230,235,245,0.85);
 
-  padding: 40px;         /* + grand */
-  min-height: 520px;     /* optionnel */
+  padding: 40px;         
+  min-height: 520px;     
 }
 
 .selection h2{
@@ -43,7 +41,6 @@
   color:#111827;
 }
 
-/* cartes livres */
 .books{
   display:flex;
   flex-direction:column;
@@ -88,6 +85,7 @@
 }
 
 .add-btn{
+  text-align: center;
   width:100%;
   border:none;
   border-radius: 12px;
@@ -105,6 +103,7 @@
   box-shadow: 0 16px 30px rgba(106, 90, 205, 0.25);
 }
 
+/* ================= responsive ================= */
 @media (min-width: 768px){
   .books{
     flex-direction:row;

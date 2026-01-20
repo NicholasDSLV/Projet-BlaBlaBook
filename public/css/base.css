@@ -1,4 +1,13 @@
 /* ================= BASE ================= */
+html, body{
+  width: 100%;
+  overflow-x: hidden;
+}
+img{
+  max-width: 100%;
+  height: auto;
+}
+
 body{
   margin:0;
   min-height:100vh;
@@ -121,3 +130,4 @@ label[for="toggle"], #toggle{ display:none; }
   #toggle:checked + .main_pages{ display:flex; }
   .main_pages .nav-item{ width:100%; }
 }
+

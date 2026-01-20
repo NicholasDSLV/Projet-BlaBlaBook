@@ -173,26 +173,6 @@
   box-shadow: none;
 }
 
-/* ================= FOOTER ================= */
-.footer{
-  padding: 18px 14px;
-  text-align:center;
-  color:#475569;
-  font-size: 14px;
-  background: rgba(255,255,255,0.75);
-  backdrop-filter: blur(10px);
-  border-top: 1px solid rgba(230,235,245,0.9);
-}
-
-.footer a{
-  color:#4f46e5;
-  text-decoration:none;
-  font-weight: 700;
-}
-
-.footer a:hover{
-  text-decoration: underline;
-}
 
 /* ================= RESPONSIVE ================= */
 @media (max-width: 900px){

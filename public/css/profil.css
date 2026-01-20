@@ -85,7 +85,7 @@
   box-shadow: 0 10px 22px rgba(15,23,42,0.18);
 }
 
-/* Zone danger (comme ta maquette) */
+/* Danger area */
 .danger-zone{
   border-radius: 20px;
   padding: 26px;
@@ -124,8 +124,8 @@
 }
 
 
-/* ================= DESKTOP GRID ================= */
-@media (min-width: 900px) {
+/* ================= RESPONSIVE ================= */
+@media (min-width: 769px) {
   .grid{
     flex-direction: row;
     gap: 22px;

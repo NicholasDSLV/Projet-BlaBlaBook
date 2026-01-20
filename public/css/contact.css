@@ -1,0 +1,103 @@
+/* ================= PAGE ================= */
+.contact{
+  flex: 1;
+  width: min(900px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 40px 0 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ================= CARD ================= */
+.contact-card{
+  width: 100%;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: var(--blur);
+  border: 1px solid var(--border);
+  border-radius: var(--r-2xl);
+  box-shadow: 0 18px 45px rgba(15,23,42,0.12);
+  padding: 34px;
+}
+
+/* ================= TITLES ================= */
+.contact-title{
+  margin: 0;
+  font-size: clamp(26px, 3vw, 34px);
+  font-weight: 900;
+  color: #0f172a;
+  text-align: center;
+}
+
+.contact-subtitle{
+  margin: 10px 0 26px;
+  text-align: center;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* ================= FORM ================= */
+.contact-form{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.form-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.text{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+label{
+  font-size: 14px;
+  color: #0f172a;
+  font-weight: 800;
+}
+
+input, textarea{
+  width: 100%;
+  border-radius: var(--r-md);
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  padding: 12px 14px;
+  color: var(--text);
+  font-weight: 650;
+  outline: none;
+}
+
+textarea{
+  resize: vertical;
+  min-height: 140px;
+}
+
+input:focus, textarea:focus{
+  border-color: rgba(102,126,234,0.55);
+  box-shadow: 0 0 0 4px rgba(102,126,234,0.18);
+}
+
+/* ================= BUTTON ================= */
+.btn-send{
+  margin-top: 6px;
+  text-align: center;
+  height: 46px;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--r-md);
+  font-weight: 900;
+  color: #fff;
+  background: var(--bg-primary);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.btn-send:hover{
+  transform: translateY(-2px);
+  box-shadow: var(--sh-hover);
+}
+

@@ -12,8 +12,9 @@ for (let year = currentYear; year >= startYear; year--) {
     option.textContent = year;
     yearSelect.appendChild(option);
 }
-//---------selecteur pour le menu déroulant des genres---------------------------------------
 
+
+//---------selecteur pour le menu déroulant des genres---------------------------------------
 
 const genres = [
     "Roman", "Roman policier", "Thriller", "Science-fiction",

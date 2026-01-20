@@ -1,0 +1,93 @@
+/* ================= PAGE WRAP ================= */
+.container{
+  width: min(1000px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 34px 0 70px;
+  flex: 1;
+}
+
+/* ================= TITLE ================= */
+h1{
+  margin: 0 0 18px;
+  text-align: center;
+  font-size: clamp(26px, 3vw, 34px);
+  letter-spacing: 0.02em;
+  color: #0f172a;
+}
+
+section{
+  background: rgba(255,255,255,0.82);
+  backdrop-filter: var(--blur);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  box-shadow: var(--sh-md-dark);
+  padding: 22px;
+  margin: 14px 0;
+}
+
+/* ================= SECTION HEADINGS ================= */
+h2{
+  margin: 0 0 10px;
+  font-size: 18px;
+  font-weight: 900;
+  color: #111827;
+  text-decoration: underline;
+}
+
+/* ================= TEXT ================= */
+p{
+  margin: 10px 0;
+  line-height: 1.6;
+  color: var(--text);
+  font-weight: 600;
+}
+
+strong{
+  color: #111827;
+}
+
+/* ================= LISTS ================= */
+ul{
+  margin: 10px 0 0;
+  padding-left: 18px;
+}
+
+li{
+  margin: 8px 0;
+  line-height: 1.5;
+  color: var(--text-muted);
+  font-weight: 650;
+}
+
+/* ================= LINKS ================= */
+a{
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 800;
+}
+
+a:hover{
+  color: var(--secondary);
+  text-decoration: underline;
+}
+
+/* ================= SMALL SCREEN ================= */
+@media (max-width: 768px){
+  .container{
+    width: min(1000px, calc(100% - 28px));
+    padding: 26px 0 60px;
+  }
+
+  section{
+    padding: 18px;
+    border-radius: var(--r-lg);
+  }
+
+  h2{
+    font-size: 17px;
+  }
+
+  p, li{
+    font-size: 14px;
+  }
+}
