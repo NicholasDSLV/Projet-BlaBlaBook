@@ -17,9 +17,9 @@ CREATE TABLE "user" (
 CREATE TABLE "book" (
   "id" integer PRIMARY KEY,
   "isbn" varchar(20) NOT NULL,
-  "title" varchar NOT NULL,
-  "author" varchar(50) NOT NULL,
-  "category" varchar(50),
+  "title" varchar(255) NOT NULL,
+  "author" varchar(255) NOT NULL,
+  "category" varchar(100),
   "summary" text,
   "coverUrl" varchar(50),
   "publication_date" date

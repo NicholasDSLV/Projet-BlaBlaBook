@@ -27,19 +27,19 @@ Book.init(
 		},
 		title: {
 			// reference CHAR(9) UNIQUE NOT NULL,
-			type: DataTypes.STRING,
+			type: DataTypes.STRING(255),
 			// null interdit
 			allowNull: false,
 		},
 		author: {
 			// type string
-			type: DataTypes.STRING(50),
+			type: DataTypes.STRING(255),
 			// null interdit
 			allowNull: false,
 		},
 		category: {
 			// type string
-			type: DataTypes.STRING(50),
+			type: DataTypes.STRING(100),
 			// null interdit
 			allowNull: true,
 		},

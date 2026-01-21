@@ -1,0 +1,48 @@
+<%- include('partials/head') %>
+
+<body>
+<header>
+<img class="logo" src="../img/Logo 2.png" alt="logo de blablabook" style="width:130px; ">
+
+<nav>
+    <label for="toggle">☰</label>
+    <input type="checkbox" id="toggle">
+
+    <div class="main_pages">
+    <a href="home.html" class="nav-item">Accueil</a>
+    <a href="library.html" class="nav-item">Bibliothèque</a>
+    <a href="books.html" class="nav-item">Rechercher</a>
+    <a href="login.html" class="nav-item">Connexion</a>
+    <a href="profil.html" class="nav-item active">Profil</a>
+    </div>
+</nav>
+</header>
+
+<main class="register-container">
+<section class="register-box">
+    <h2>Informations personnelles</h2>
+
+    <form>
+    <label for="pseudo">Pseudo</label>
+    <input type="text" id="pseudo" placeholder="Pseudo" required>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" placeholder="Email" required>
+
+    <label for="password">Mot de passe</label>
+    <input type="password" id="password" placeholder="Mot de passe" required>
+
+    <label for="confirm">Confirmer le mot de passe*</label>
+    <input type="password" id="confirm" placeholder="Confirmer le mot de passe*" required>
+
+    <p class="obligation">🛈 Minimum 20 caractères et un symbole obligatoire</p>
+
+    <div class="actions">
+        <button type="submit" class="btn-save">Enregistrer</button>
+        <button type="button" class="btn-cancel">Annuler</button>
+    </div>
+    </form>
+</section>
+</main>
+
+<%- include('partials/foot') %>

@@ -57,7 +57,7 @@ async function seed() {
     }
     }
 }
-    /*
+    
     // =================
 	// ** Liens entre user et book
 	// =================
@@ -66,9 +66,12 @@ async function seed() {
 
     // Objet Book initialisé à null
 	let myBook = null;
-
+    const library = data.library;
+    if (!library || library.length === 0) {
+    console.log('❌ library is empty or undefined');
+    return;
+    }
     for (let element of library) {
-
         // Pour chaque "element" : {user_id, book_id}
 		// Faire une recherche dans la BDD pour récupérer un objet User grace à user_id
 		// Faire une recherche dans la BDD pour récupérer un objet Book grace a book_id
@@ -76,27 +79,19 @@ async function seed() {
         // Recherche dans la BDD de l'User à modifier
 		// SELECT
 		myUser = await User.findByPk(element.user_id);
-
         if (myUser) {
+            myBook = await Book.findByPk(element.book_id);
+        }
+        if (myBook) {
+					// La User et le Book existent.
+					// Je peux ajouter le Book dans la liste des Books pour le User
 
-			// recherche dans la BDD du book
-			// SELECT
-			myBook = await Book.findByPk(element.book_id);
-
-            if (myBook) {
-				// Le User et le Book existe.
-				// Je peux ajouter le Book dans la bibliothèque des books pour le User
-
-				// Méthode magique fournie par Sequelize au moment où on a déclaré User Belongs To Many Book
-				await myUser.addBook(myBook);
+					// Méthode magique fournie par Sequelize au moment où on a déclaré User Belongs To Many Book
+					await myUser.addBook(myBook);
 				} else {
 					throw Error('myBook is null')
 				}
-			} else {
-				throw Error('myBook is null')
-			}
 		}
-            */
         console.log('✅ Seeding complete!');
 
 	} catch (error) {

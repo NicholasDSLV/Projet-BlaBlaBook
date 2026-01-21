@@ -1,0 +1,52 @@
+<%- include('partials/head') %>
+<main class="container">
+      <section class="book">
+        <article class="book-card">
+          <div class="isbn-badge">
+            <strong>ISBN:</strong> 2070256626
+          </div>
+
+          <div class="cover">
+            <img
+              class="book-cover"
+              src="/integration/img/petit_prince.jpg"
+              alt="Couverture du Petit Prince"
+            />
+          </div>
+
+          <div class="book-details">
+            <h1 class="title">Le petit prince</h1>
+
+            <div class="data">
+              <p><strong>Auteur :</strong> Antoine de Saint-Exupéry</p>
+              <p><strong>Année :</strong> 1943</p>
+              <p><strong>Genre :</strong> Conte philosophique</p>
+            </div>
+
+            <div class="tags">
+              <span class="tag tag-blue">Conte</span>
+              <span class="tag tag-pink">Classique</span>
+            </div>
+
+            <p class="description">
+              <strong>Résumé :</strong><br />
+              L'histoire d'un garçon venu d'une autre planète qui interroge la nature humaine à
+              travers ses rencontres... 
+            </p>
+
+            <div class="actions">
+              <button class="add-btn" type="button">+ Ajouter à ma bibliothèque</button>
+
+              <select class="status-select">
+                <option value="">Status</option>
+                <option>Déjà lu</option>
+                <option>En cours</option>
+                <option>À lire</option>
+              </select>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <%- include('partials/foot') %>

@@ -12,7 +12,9 @@ app.use(express.static(join(import.meta.dirname, 'public')));
 
 app.use(router);
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`🚀 blablabook app started at http://localhost:${PORT}`);
+const port = process.env.PORT || 3000;
+const base_url = process.env.BASE_URL || 'http://localhost';
+// * On démarre le serveur http
+app.listen(port, () => {
+    console.info(`Blablabook Listening on ${base_url}:${port}`);
 });
