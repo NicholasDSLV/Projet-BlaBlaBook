@@ -26,12 +26,12 @@
 
 .search__input{
   flex:1;
-  height: 44px;
+  width:100%;
+  padding: 12px 15px;
   border-radius: 12px;
   border: 1px solid #e5e7eb;
-  padding: 0 14px;
+  font-size:14px;
   background:#f9fafb;
-  color:#334155;
 }
 
 .search__button{

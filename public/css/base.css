@@ -52,8 +52,8 @@ label[for="toggle"], #toggle{ display:none; }
 }
 
 .nav-item:hover{
-  color: var(--primary);
-  background: rgba(102,126,234,0.08);
+  color: var(--white);
+  background: var(--bg-primary);
   transform: translateY(-1px);
 }
 
