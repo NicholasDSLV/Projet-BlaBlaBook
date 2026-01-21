@@ -68,7 +68,6 @@ async function seed() {
 	let myBook = null;
     const library = data.library;
     if (!library || library.length === 0) {
-    console.log('❌ library is empty or undefined');
     return;
     }
     for (let element of library) {

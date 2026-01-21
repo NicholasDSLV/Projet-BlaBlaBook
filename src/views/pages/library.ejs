@@ -1,21 +1,22 @@
-<%- include('partials/head') %>
+<%- include('../partials/head') %>
 
 <body>
-  <header>
-<img class="logo" src="../img/Logo 2.png" alt="logo de blablabook" style="width:130px; ">
-    <nav>
-      <label for="toggle">☰</label>
-      <input type="checkbox" id="toggle">
+    <header>
+      <img class="logo" src="../img/Logo 2.png" alt="logo de blablabook" style="width:130px; ">
 
-      <div class="main_pages">
-        <a href="home.html" class="nav-item">Accueil</a>
-        <a href="library.html" class="nav-item active">Bibliothèque</a>
-        <a href="books.html" class="nav-item">Rechercher</a>
-        <a href="login.html" class="nav-item">Connexion</a>
-        <a href="profil.html" class="nav-item">Profil</a>
-      </div>
-    </nav>
-  </header>
+      <nav>
+    <label for="toggle">☰</label>
+    <input type="checkbox" id="toggle">
+
+    <div class="main_pages">
+    <a href="/" class="nav-item ">Accueil</a>
+    <a href="/library" class="nav-item active">Bibliothèque</a>
+    <a href="/books" class="nav-item">Rechercher</a>
+    <a href="/login" class="nav-item">Connexion</a>
+    <a href="/profil" class="nav-item">Profil</a>
+    </div>
+</nav>
+    </header>
 
   <main class="page">
     <section class="search">
@@ -104,4 +105,4 @@
     </section>
   </main>
 
-<%- include('partials/foot') %>
+<%- include('../partials/foot') %>

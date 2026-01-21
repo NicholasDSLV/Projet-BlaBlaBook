@@ -1,4 +1,27 @@
-<%- include('partials/head') %>
+<%- include('../partials/head') %>
+
+<body>
+    <header>
+      <img class="logo" src="../img/Logo 2.png" alt="logo de blablabook" style="width:130px; ">
+
+      <nav>
+        <label for="toggle">☰</label>
+        <input type="checkbox" id="toggle" />
+
+        <nav>
+    <label for="toggle">☰</label>
+    <input type="checkbox" id="toggle">
+
+    <div class="main_pages">
+    <a href="/" class="nav-item active">Accueil</a>
+    <a href="/library" class="nav-item">Bibliothèque</a>
+    <a href="/books" class="nav-item">Rechercher</a>
+    <a href="/login" class="nav-item">Connexion</a>
+    <a href="/profil" class="nav-item">Profil</a>
+    </div>
+</nav>
+    </header>
+
 <main class="container">
       <section class="book">
         <article class="book-card">
@@ -49,4 +72,4 @@
       </section>
     </main>
 
-    <%- include('partials/foot') %>
+    <%- include('../partials/foot') %>

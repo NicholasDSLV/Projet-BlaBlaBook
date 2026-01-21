@@ -1,16 +1,30 @@
 import { join } from 'node:path';
 import 'dotenv/config';
 import express from 'express';
-import router from './router.js';
+
+// Import le middlewre qui vérifie les tokens
+import { validateToken } from './src/middlewares/auth.middleware.js';
+
+import indexRouter from './src/routes/index.router.js';
+import libraryRouter from './src/routes/library.router.js';
+import bookRouter from './src/routes/book.router.js';
+import authRouter from './src/routes/auth.router.js';
 
 const app = express();
-app.set('views', join(import.meta.dirname, 'app/views'));
+
+
+app.set('views', join(import.meta.dirname, 'src/views'));
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 // * statics : img, css, js etc
 app.use(express.static(join(import.meta.dirname, 'public')));
 
-app.use(router);
+app.use(authRouter);
+
+
+app.use(indexRouter);
+app.use(libraryRouter);
+app.use(bookRouter);
 
 const port = process.env.PORT || 3000;
 const base_url = process.env.BASE_URL || 'http://localhost';
