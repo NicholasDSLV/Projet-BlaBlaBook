@@ -10,6 +10,9 @@ import libraryRouter from './src/routes/library.router.js';
 import bookRouter from './src/routes/book.router.js';
 import authRouter from './src/routes/auth.router.js';
 
+// import xss sanitizer
+import { xss } from 'express-xss-sanitizer';
+
 const app = express();
 
 
@@ -18,6 +21,9 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 // * statics : img, css, js etc
 app.use(express.static(join(import.meta.dirname, 'public')));
+
+// Protection contre les failles XSS
+app.use(xss());
 
 app.use(authRouter);
 

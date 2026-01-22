@@ -5,10 +5,11 @@ class IndexController {
 
         try {
 
-            const book = await Book.findAll({
+            const books = await Book.findAll({
                 limit: 3
             });
-            res.render("pages/home", { book });
+            console.log(books)
+            res.render("pages/home", { books });
             } catch (error) {
 			    next(error);
         }

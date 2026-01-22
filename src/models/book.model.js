@@ -51,7 +51,7 @@ Book.init(
 		},
 		coverUrl: {
 			// type string
-			type: DataTypes.STRING(50),
+			type: DataTypes.TEXT,
 			// null interdit
 			allowNull: true,
 		},

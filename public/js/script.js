@@ -1,13 +1,15 @@
 // pour supprimer un article avec le bouton retirer //
 
 document.addEventListener("click", function (e) {
-    if (e.target.classList.contains("article__button--remove")) {
-        console.log("Bouton Retirer cliqué");
-        if (confirm("Retirer ce livre de la bibliothèque ?")) {
-            e.target.closest(".book-row").remove();
-        }
-    }
+  const btn = e.target.closest(".article__button--remove");
+  if (!btn) return;
+
+  console.log("Bouton Retirer cliqué");
+  if (confirm("Retirer ce livre de la bibliothèque ?")) {
+    btn.closest(".article").remove();
+  }
 });
+
 
 // Fin du script pour supprimer un article //
 
@@ -48,3 +50,8 @@ genres.forEach(genre => {
     option.textContent = genre;
     select.appendChild(option);
 });
+
+//---------fin du selecteur pour le menu déroulant des genres---------------------------------------
+
+// pour ajouter un livre à la bibliothèque //
+

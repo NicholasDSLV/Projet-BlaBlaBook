@@ -1,15 +1,25 @@
 import { User, Book } from '../models/index.js'
+import HttpError from '../utils/HttpError.js';
 import argon2 from 'argon2';
 import jwt from 'jsonwebtoken';
 import 'dotenv/config';
 
 class AuthController {
-    // register = async (req, res, next) => {
-    //}
+    showRegister = async (req, res, next) => {
+    try {
+      res.render("pages/register");
+    } catch (error) {
+      next(error);
+    }
+    }
 
-    // login = async (req, res, next) => {
-
-    //}
+    showlogin = async (req, res, next) => {
+        try {
+      res.render("pages/login");
+    } catch (error) {
+      next(error);
+    }
+    }
 
     profile = async (req, res, next) => {
 
@@ -48,3 +58,5 @@ class AuthController {
 }
 const myController = new AuthController();
 export default myController;
+
+

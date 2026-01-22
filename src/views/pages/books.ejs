@@ -1,22 +1,6 @@
 <%- include('../partials/head') %>
 
-<body>
-    <header>
-      <img class="logo" src="../img/Logo 2.png" alt="logo de blablabook" style="width:130px; ">
 
-      <nav>
-    <label for="toggle">☰</label>
-    <input type="checkbox" id="toggle">
-
-    <div class="main_pages">
-    <a href="/" class="nav-item ">Accueil</a>
-    <a href="/library" class="nav-item">Bibliothèque</a>
-    <a href="/books" class="nav-item active">Rechercher</a>
-    <a href="/login" class="nav-item">Connexion</a>
-    <a href="/profil" class="nav-item">Profil</a>
-    </div>
-</nav>
-    </header>
 
     <main class="container">
       <section class="search-box">
@@ -38,59 +22,24 @@
       </section>
 
       <section class="books">
+        <% books.forEach(article => { %>
         <div class="book-card">
-          <div class="title">Titre du livre</div>
+          <div class="title"><%= article.title %></div>
           <div class="cover">
             <img
-              src="path_to_icon.png"
-              alt=""
-              style="width: 40px; opacity: 0.3"
+              src="<%= article.coverUrl %>"
+              alt="<%= article.title %>"
             />
-            Couverture du livre
           </div>
           <div class="description">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit...
+            <% const s = article.summary || "" %>
+              <%= ((article.summary || "").slice(0, 150)) %>...
           </div>
           <button class="add-btn" aria-label="Ajouter à ma bibliothèque">
             Ajouter à ma bibliothèque
           </button>
         </div>
-
-        <div class="book-card">
-          <div class="title">Titre du livre</div>
-          <div class="cover">
-            <img
-              src="path_to_icon.png"
-              alt=""
-              style="width: 40px; opacity: 0.3"
-            />
-            Couverture du livre
-          </div>
-          <div class="description">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit...
-          </div>
-          <button class="add-btn" aria-label="Ajouter à ma bibliothèque">
-            Ajouter à ma bibliothèque
-          </button>
-        </div>
-
-        <div class="book-card">
-          <div class="title">Titre du livre</div>
-          <div class="cover">
-            <img
-              src="path_to_icon.png"
-              alt=""
-              style="width: 40px; opacity: 0.3"
-            />
-            Couverture du livre
-          </div>
-          <div class="description">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit...
-          </div>
-          <button class="add-btn" aria-label="Ajouter à ma bibliothèque">
-            Ajouter à ma bibliothèque
-          </button>
-        </div>
+        <% }) %>
       </section>
     </main>
 

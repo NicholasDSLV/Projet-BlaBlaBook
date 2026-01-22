@@ -52,8 +52,8 @@ label[for="toggle"], #toggle{ display:none; }
 }
 
 .nav-item:hover{
-  color: var(--primary);
-  background: rgba(102,126,234,0.08);
+  color: white;
+  background: var(--bg-primary);
   transform: translateY(-1px);
 }
 
@@ -109,10 +109,6 @@ label[for="toggle"], #toggle{ display:none; }
 }
 
 
-
-
-
-/* On applique le thème */
 body{
   margin:0;
   min-height:100vh;
@@ -153,7 +149,7 @@ input:focus, textarea:focus, select:focus{
   box-shadow: 0 0 0 4px var(--theme-focus);
 }
 
-/* Cartes (si tes pages ont ces classes) */
+/* Cartes  */
 .contact-card,
 .notfound-card,
 .login-box,
