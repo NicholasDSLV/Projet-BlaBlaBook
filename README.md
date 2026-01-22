@@ -158,11 +158,11 @@ Intéressés par la gestion de leur bibliothèque et la découverte de livres
 
 | Verbe HTTP | URL             | Nom du routeur | Contrôleur & méthode        | Description                |
 |------------|------------------|----------------|-----------------------------|----------------------------|
-| POST       | /auth/register   | auth.router    | authController.register     | Inscription utilisateur    |
-| GET        | /auth/register   | auth.router    | authController.register     | Inscription utilisateur    |
-| POST       | /auth/login      | auth.router    | authController.login        | Connexion utilisateur      |
-| GET        | /auth/login      | auth.router    | authController.showLogin    | Connexion utilisateur      |
-| GET        | /auth/profil     | auth.router    | authController.profile      | Profil utilisateur connecté|
+| POST       | /auth/register   | auth.router    | authController.registerUser | Création d'un compte utilisateur    |
+| GET        | /auth/register   | auth.router    | authController.showRegister | Affiche du formulaire d'inscription |
+| POST       | /auth/login      | auth.router    | authController.login        | Authentification de l'utilisateur (verification des identifiants) |
+| GET        | /auth/login      | auth.router    | authController.showLogin    | Affiche du formulaire de connexion|
+| GET        | /auth/profile    | auth.router    | authController.profile      | Affichage du profil de l'utilisateur connecté|
 
 
 

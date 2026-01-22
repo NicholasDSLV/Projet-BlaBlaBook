@@ -21,7 +21,7 @@
             <h1 class="title"><%= book.title %></h1>
 
             <div class="data">
-              <p><strong>Auteur :</strong> <%= book.author %></p>
+              <p><strong>Auteur :</strong> <a class="book__author" href="/books?author=<%=book.author %>"><%= book.author %></p></a>
               <p><strong>Date de publication :</strong> <%= book.publication_date.toLocaleDateString('fr-FR') %></p>
               <p><strong>Genre :</strong> <%= book.category %></p>
             </div>

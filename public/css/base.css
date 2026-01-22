@@ -57,11 +57,7 @@ label[for="toggle"], #toggle{ display:none; }
   transform: translateY(-1px);
 }
 
-.nav-item.active{
-  background: var(--bg-primary);
-  color:white;
-  box-shadow: 0 4px 15px rgba(106, 90, 205, 0.25);
-}
+
 
 /* ================= FOOTER ================= */
 .footer{
@@ -105,7 +101,7 @@ label[for="toggle"], #toggle{ display:none; }
 
 .theme-toggle:hover{
   transform: translateY(-1px);
-  box-shadow: 0 12px 24px rgba(15,23,42,0.12);
+  box-shadow: 0 12px 24px rgba(15,23,42);
 }
 
 

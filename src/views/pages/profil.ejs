@@ -6,25 +6,25 @@
 <section class="profil-box">
     <h2>Modifier les informations personnelles</h2>
 
-    <form class="profil-form">
+    <form class="profil-form" method="GET" action="/auth/profile">
     <div class="grid">
         <div class="col">
         <label for="pseudo">Pseudo</label>
-        <input type="text" id="pseudo" placeholder="Pseudo">
+        <input type="text" id="pseudo" name="username" placeholder="Pseudo">
 
         <label for="email">Email</label>
-        <input type="email" id="email" placeholder="Email">
+        <input type="email" id="email" name="email" placeholder="Email">
         </div>
 
         <div class="col">
         <label for="current">Mot de passe actuel</label>
-        <input type="password" id="current" placeholder="Mot de passe actuel">
+        <input type="password" id="current" name="password"placeholder="Mot de passe actuel">
 
         <label for="new">Nouveau mot de passe</label>
-        <input type="password" id="new" placeholder="Nouveau mot de passe">
+        <input type="password" id="new" name="password" placeholder="Nouveau mot de passe">
 
         <label for="confirm">Confirmer le mot de passe</label>
-        <input type="password" id="confirm" placeholder="Confirmer le mot de passe">
+        <input type="password" id="confirm" name="password" placeholder="Confirmer le mot de passe">
         </div>
     </div>
 

@@ -21,6 +21,7 @@
     "ejs": "^4.0.1",
     "express": "^5.2.1",
     "express-xss-sanitizer": "^2.0.1",
+    "joi": "^18.0.2",
     "jsonwebtoken": "^9.0.3",
     "pg": "^8.17.1",
     "pg-hstore": "^2.3.4",

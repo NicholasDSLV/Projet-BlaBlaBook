@@ -28,9 +28,10 @@
       </header>
       <% books.forEach(article => { %>
       <article class="article">
-        <img class="article__cover" src="<%= article.coverUrl %>" alt="">
-        <h1 class="article__title"><%= article.title %></h1>
-        <p class="article__author"><%= article.author %></p>
+        <a href="/books/<%= article.id %>"><img class="article__cover" src="<%= article.coverUrl %>" alt="couverture de <%= article.title %>"></a>
+        <a href="/books/<%= article.id %>"><h1 class="article__title"><%= article.title %></h1></a>
+        <a class="article__author" href="/books?author=<%=article.author %>"><%= article.author %>
+</a>
         <select class="article__status">
           <option value="<%= article.status %>">status</option>
           <option>Déjà lu</option>
