@@ -1,7 +1,6 @@
 import { User, Book } from '../models/index.js'
 import HttpError from '../utils/HttpError.js';
 import argon2 from 'argon2';
-import jwt from 'jsonwebtoken';
 import 'dotenv/config';
 
 class AuthController {
@@ -72,36 +71,8 @@ class AuthController {
     }
 
     profile = async (req, res, next) => {
-
         try {
-
-            const userId = req.user_id;
-            const dataJson = req.body;
-            const user = await User.findOne({
-                where: { username: dataJson.username }
-            });
-            if (!user) {
-            // user n'existe pas => lance une nouvelle erreur 404
-            return res.status(404).send('Utilisateur introuvable');
-            }
-            if (!(await argon2.verify(userFromBDD.password, dataJson.password))) {
-            // Le mot de passe ne correspond pas !
-            return res.status(401).send('login ou mot de passe incorrect');
-            }
-            // 4. Créer le token avec l'id de l'utilisateur
-            // process.env.JWT_SECRET ==> va chercher le secret qui est dans .env
-            //const token = jwt.sign(
-            // Les données à mettre dans le token ==> PAYLOAD (charge utile)
-            ////user_id: user.id
-            //},
-            // Le secret pour calculer le token
-            //process.env.JWT_SECRET, // Le secret que j'ai découvert de l'API
-            // Date d'expiration du token : le token expire dans une heure !
-            //{
-            //expiresIn: '1h'
-            //}
-            //);
-            res.render("pages/profil", { user });
+            res.render("pages/profil");
             } catch (error) {
 			    next(error);
         }
@@ -113,6 +84,10 @@ class AuthController {
       // Dans le body j'attends les données du nouvel utilisateur à enregistrer
       // dataJson = { username: "....", password: "....." }
       const dataJson = req.body;
+      console.log(
+      "l'utilisateur qui vient de remplir le formulaire est :",
+      dataJson,
+      );
       // 2. Chercher le user selon son nom
       // SELECT * FROM user ... WHERE username = dataJson.username
       const userFromBDD = await User.findOne(
@@ -121,33 +96,20 @@ class AuthController {
           where: { email: dataJson.email }
         }
       )
+      req.session.user = {
+      userFromBDD,
+      isAuthenticated: true,
+      };
+
       if (!userFromBDD) {
         // result est null ! L'utilisateur n'existe pas dans la BDD
         throw new HttpError('login ou mot de passe incorrect', 401);
       }
-
       // 3. Vérifier si le mot de passe de l'utilisateur correspond au hash mis dans la BDD
       if (!(await argon2.verify(userFromBDD.password, dataJson.password))) {
         // Le mot de passe ne correspond pas !
         throw new HttpError('login ou mot de passe incorrect', 401);
       }
-
-      // 4. Créer le token avec l'id de l'utilisateur
-      // process.env.JWT_SECRET ==> va chercher le secret qui est dans .env
-      const token = jwt.sign(
-        // Les données à mettre dans le token ==> PAYLOAD (charge utile)
-        {
-          // Id de l'utilisateur
-          user_id: userFromBDD.id
-        },
-        // Le secret pour calculer le token
-        process.env.JWT_SECRET, // Le secret que j'ai découvert de l'API
-        // Date d'expiration du token : le token expire dans une heure !
-        {
-          expiresIn: '1h'
-        }
-      );
-
       // 5. Redirection vers la session du client
       res.redirect('/');
 

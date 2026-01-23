@@ -53,7 +53,7 @@ BlaBlaBook mettra également l’accent sur la découverte de nouveaux livres gr
 
 * CRUD Users : Gestion basique des utilisateurs pour inscription et connexion.
 
-* Authentification JWT : Protection des routes sensibles.
+* Authentification express session : Protection des routes sensibles.
 
 ## Front-end
 
@@ -99,7 +99,7 @@ Base de données : PostgreSQL avec Sequelize ORM ==> PostgreSQL est une base rel
 
 Front-end : EJS ==> EJS permet de générer des pages HTML dynamiques côté serveur simplement, en intégrant facilement les données de l’API Express. Cela facilite le développement du MVP sans complexité SPA, tout en gardant une bonne cohérence avec NodeJS/Express et PostgreSQL.  
 
-Authentification : JWT (Json Web Token) ==> Permet une gestion sécurisée des sessions sans stocker les informations sensibles côté client.
+Authentification : express-session ==> Gère des sessions côté serveur via un cookie contenant un identifiant ; les données restent sur le serveur (mémoire/Redis), ce qui facilite la gestion des sessions, mais nécessite du stockage serveur.
 
 Appels API : CRUD livres, users ==> Assure la séparation front/back, la sécurité des données et la possibilité d’évoluer facilement vers d’autres clients (mobile, etc.).
 
@@ -137,7 +137,7 @@ Intéressés par la gestion de leur bibliothèque et la découverte de livres
 * " /library  "         => Ma bibliothèque
 * " /books "            => Recherche/Liste des livres
 * " /book/:id  "        => Détail d’un livre
-* " /profile "          => Profil utilisateur
+* " /profil "          => Profil utilisateur
 
 ### Tableau des EndPoints :
 
@@ -269,11 +269,11 @@ Page login / register :
 
 ### 2. Logo
 -----
-Le logo Blablabook utilise une écriture élégante, avec un mélange de couleurs chaudes et froides
+Le logo Blablabook utilise une écriture élégante, avec un mélange de couleurs 
 pour représenter la diversité et l’échange entre les personnes.
 Versions autorisées
-* Version principale : Logo en dégradé du jaune ocre vers le bleu-vert.
-* Version monochrome : Noir ou blanc selon le fond.
+* Version principale : Logo en dégradé du bleu au violet.
+* Version darkmode   :
 * Version fond clair : Utiliser la version couleur originale.
 * Version fond foncé : Utiliser la version blanche.
 * Marges de sécurité :

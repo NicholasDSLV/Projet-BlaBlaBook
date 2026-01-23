@@ -1,9 +1,7 @@
 import { join } from 'node:path';
 import 'dotenv/config';
 import express from 'express';
-
-// Import le middlewre qui vérifie les tokens
-import { validateToken } from './src/middlewares/auth.middleware.js';
+import session from "express-session";
 
 import indexRouter from './src/routes/index.router.js';
 import libraryRouter from './src/routes/library.router.js';
@@ -25,9 +23,16 @@ app.use(express.static(join(import.meta.dirname, 'public')));
 // Protection contre les failles XSS
 app.use(xss());
 
+app.use(
+  session({
+    secret: process.env.SECRET_SESSION,
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 60000 },
+  }),
+);
+
 app.use(authRouter);
-
-
 app.use(indexRouter);
 app.use(libraryRouter);
 app.use(bookRouter);
