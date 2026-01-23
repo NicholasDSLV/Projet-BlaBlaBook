@@ -164,6 +164,7 @@ Schema arborescence des routes :
 | POST       | /auth/login      | auth.router    | authController.login        | Authentification de l'utilisateur (verification des identifiants) |
 | GET        | /auth/login      | auth.router    | authController.showLogin    | Affiche du formulaire de connexion|
 | GET        | /auth/profile    | auth.router    | authController.profile      | Affichage du profil de l'utilisateur connecté|
+|DELETE      | /auth/profile    | auth.router    | authController.remove       | Supprimer utilisateur      |
 
 
 | Code | Signification                        | Cas typique                              |
@@ -212,7 +213,7 @@ Responsable de l’organisation du projet, du suivi des sprints et de la coordin
 ![MCD](./conception/BDD/MCD.svg)
 ![MLD](./conception/BDD/MLD.svg)
 ![MPD](./conception/BDD/MPD.svg)
-[MPD](./BDD/mpd.dbml)
+![MPD](./BDD/mpd.dbml)
 
 Dictionnaire des données
 |Table|	Champ|	Type|	Description|
@@ -276,7 +277,7 @@ Page login / register :
 
 ### 2. Logo
 -----
-Le logo Blablabook utilise une écriture élégante, avec 
+Le logo Blablabook utilise une écriture élégante.
 
 
 
@@ -298,14 +299,9 @@ Le logo Blablabook utilise une écriture élégante, avec
 ### 4. Typographie
 
 #### Police principale :
-Playfair Display 
+Cormorant Unicase 
 * Utilisée pour le logo, les titres et les citations.
 * Style : élégant, littéraire, avec empattements.
-
-#### Police secondaire :
-Lato ou Open Sans
-* Utilisée pour les textes courants et interfaces numériques.
-* Style : moderne, lisible, sans empattement.
 
 
 ### 5. Conclusion
