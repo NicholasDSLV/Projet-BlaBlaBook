@@ -1,0 +1,201 @@
+/* ================= PAGE BOOK ================= */
+
+main.container{
+  width: min(1200px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.book{
+  flex: 1;
+  padding: 34px 0 70px;
+  display: flex;
+  justify-content: center;
+}
+
+/* ================= CARD ================= */
+/* Plus spécifique que .book-card dans base.css (qui la restylise) */
+.book .book-card{
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 28px;
+  align-items: start;
+
+  padding: 28px;
+  border-radius: var(--r-2xl);
+
+  background: rgba(255,255,255,0.85);
+  border: 1px solid rgba(230,235,245,0.9);
+  box-shadow:
+    0 18px 45px rgba(15,23,42,0.12),
+    0 0 0 1px rgba(255,255,255,0.40) inset;
+  backdrop-filter: var(--blur);
+}
+
+/* ================= ISBN ================= */
+.book .isbn-badge{
+  position: absolute;
+  top: 14px;
+  right: 14px;
+
+  padding: 6px 10px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(102,126,234,0.25);
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(8px);
+
+  font-weight: 900;
+  font-size: 12px;
+  color: #0f172a;
+}
+
+/* ================= COVER ================= */
+.book .cover{
+  width: 100%;
+  aspect-ratio: 3 / 4;
+
+  border-radius: var(--r-xl);
+  overflow: hidden;
+
+  background: #e8edf5;
+  border: 1px solid rgba(148,163,184,0.50);
+  box-shadow: 0 12px 26px rgba(15,23,42,0.14);
+}
+
+.book .book-cover{
+  width: 100%;
+  height: 100%;
+  display: block;
+
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ================= DETAILS ================= */
+.book .book-details{
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+  padding-top: 6px;
+}
+
+.book .title{
+  margin: 4px 0 0;
+  font-size: clamp(22px, 2.4vw, 34px);
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.book .data p{
+  margin: 4px 0;
+  font-size: 14px;
+  color: #475569;
+  font-weight: 650;
+}
+
+.book .data strong{
+  color: #0f172a;
+}
+
+/* ================= TAGS ================= */
+.book .tags{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.book .tag{
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+  color: #fff;
+}
+
+.book .tag-blue{ background: #33CCFF; }
+.book .tag-pink{ background: #FF85BC; }
+
+/* ================= DESCRIPTION ================= */
+.book .description{
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #334155;
+  font-weight: 600;
+  width: 100%;
+  max-width: none;
+}
+
+/* ================= ACTIONS ================= */
+.book .actions{
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 12px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.book .add-btn{
+  height: 50px;
+  border: none;
+  border-radius: var(--r-m);
+  cursor: pointer;
+
+  color: #fff;
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: .2px;
+
+  background: var(--bg-primary);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.book .add-btn:hover{
+  transform: translateY(-2px);
+  box-shadow: var(--sh-l);
+}
+
+.book .status-select{
+  height: 50px;
+  border-radius: var(--r-m);
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  padding: 0 12px;
+  color: #0f172a;
+  font-weight: 800;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px){
+  .book{
+    padding: 22px 0 50px;
+  }
+
+  .book .book-card{
+    grid-template-columns: 1fr;
+    padding: 18px;
+    gap: 18px;
+  }
+
+  .book .isbn-badge{
+    position: static;
+    display: inline-block;
+    margin-bottom: 10px;
+    width: fit-content;
+  }
+
+  .book .actions{
+    grid-template-columns: 1fr;
+  }
+  
+
+  .book .status-select{
+    width: 100%;
+  }
+}

@@ -1,0 +1,185 @@
+{
+  "users": [
+    {
+      "email": "josiane94@hotmail.fr",
+      "username": "Josiane",
+      "password": "azertyuiop"
+    },
+    {
+      "email": "mariejouelle@hotmail.fr",
+      "username": "MarieJouelle",
+      "password": "qsdfghjklm"
+    },
+    {
+      "email": "jl@hotmail.fr",
+      "username": "JeanLouis",
+      "password": "azert12345"
+    },
+    {
+      "email": "lucas.martin@gmail.com",
+      "username": "LucasM",
+      "password": "password123"
+    },
+    {
+      "email": "emma.dupont@gmail.com",
+      "username": "EmmaD",
+      "password": "secretemma"
+    },
+    {
+      "email": "thomas.leclerc@gmail.com",
+      "username": "ThomasL",
+      "password": "thomas2024"
+    },
+    {
+      "email": "lea.bernard@gmail.com",
+      "username": "LeaB",
+      "password": "lea123456"
+    },
+    {
+      "email": "maxime.robert@gmail.com",
+      "username": "MaximeR",
+      "password": "maximepwd"
+    },
+    {
+      "email": "camille.petit@gmail.com",
+      "username": "CamilleP",
+      "password": "camillepwd"
+    },
+    {
+      "email": "julien.moreau@gmail.com",
+      "username": "JulienM",
+      "password": "julienpass"
+    },
+    {
+      "email": "sarah.leroy@gmail.com",
+      "username": "SarahL",
+      "password": "sarahpwd"
+    },
+    {
+      "email": "nicolas.fabre@gmail.com",
+      "username": "NicoF",
+      "password": "nicofabre"
+    },
+    {
+      "email": "pauline.girard@gmail.com",
+      "username": "PaulineG",
+      "password": "paulinepwd"
+    },
+    {
+      "email": "kevin.rousseau@gmail.com",
+      "username": "KevinR",
+      "password": "kevin123"
+    },
+    {
+      "email": "manon.blanc@gmail.com",
+      "username": "ManonB",
+      "password": "manonpwd"
+    },
+    {
+      "email": "alexandre.garnier@gmail.com",
+      "username": "AlexG",
+      "password": "alexg2024"
+    },
+    {
+      "email": "chloe.fontaine@gmail.com",
+      "username": "ChloeF",
+      "password": "chloepwd"
+    },
+    {
+      "email": "antoine.perrin@gmail.com",
+      "username": "AntoineP",
+      "password": "antoinepwd"
+    },
+    {
+      "email": "laura.mercier@gmail.com",
+      "username": "LauraM",
+      "password": "laurapwd"
+    },
+    {
+      "email": "quentin.durand@gmail.com",
+      "username": "QuentinD",
+      "password": "quentinpwd"
+    }
+  ],
+  "library": [
+    { "user_id": 1, "book_id": 1 },
+    { "user_id": 1, "book_id": 2 },
+    { "user_id": 1, "book_id": 3 },
+
+    { "user_id": 2, "book_id": 4 },
+    { "user_id": 2, "book_id": 5 },
+    { "user_id": 2, "book_id": 6 },
+
+    { "user_id": 3, "book_id": 1 },
+    { "user_id": 3, "book_id": 7 },
+    { "user_id": 3, "book_id": 8 },
+
+    { "user_id": 4, "book_id": 9 },
+    { "user_id": 4, "book_id": 10 },
+    { "user_id": 4, "book_id": 2 },
+
+    { "user_id": 5, "book_id": 3 },
+    { "user_id": 5, "book_id": 11 },
+    { "user_id": 5, "book_id": 12 },
+
+    { "user_id": 6, "book_id": 13 },
+    { "user_id": 6, "book_id": 14 },
+    { "user_id": 6, "book_id": 4 },
+
+    { "user_id": 7, "book_id": 5 },
+    { "user_id": 7, "book_id": 15 },
+    { "user_id": 7, "book_id": 16 },
+
+    { "user_id": 8, "book_id": 6 },
+    { "user_id": 8, "book_id": 17 },
+    { "user_id": 8, "book_id": 18 },
+
+    { "user_id": 9, "book_id": 7 },
+    { "user_id": 9, "book_id": 19 },
+    { "user_id": 9, "book_id": 20 },
+
+    { "user_id": 10, "book_id": 8 },
+    { "user_id": 10, "book_id": 21 },
+    { "user_id": 10, "book_id": 22 },
+
+    { "user_id": 11, "book_id": 9 },
+    { "user_id": 11, "book_id": 23 },
+    { "user_id": 11, "book_id": 24 },
+
+    { "user_id": 12, "book_id": 10 },
+    { "user_id": 12, "book_id": 25 },
+    { "user_id": 12, "book_id": 26 },
+
+    { "user_id": 13, "book_id": 11 },
+    { "user_id": 13, "book_id": 27 },
+    { "user_id": 13, "book_id": 28 },
+
+    { "user_id": 14, "book_id": 12 },
+    { "user_id": 14, "book_id": 29 },
+    { "user_id": 14, "book_id": 30 },
+
+    { "user_id": 15, "book_id": 13 },
+    { "user_id": 15, "book_id": 1 },
+    { "user_id": 15, "book_id": 2 },
+
+    { "user_id": 16, "book_id": 14 },
+    { "user_id": 16, "book_id": 3 },
+    { "user_id": 16, "book_id": 4 },
+
+    { "user_id": 17, "book_id": 15 },
+    { "user_id": 17, "book_id": 5 },
+    { "user_id": 17, "book_id": 6 },
+
+    { "user_id": 18, "book_id": 16 },
+    { "user_id": 18, "book_id": 7 },
+    { "user_id": 18, "book_id": 8 },
+
+    { "user_id": 19, "book_id": 17 },
+    { "user_id": 19, "book_id": 9 },
+    { "user_id": 19, "book_id": 10 },
+
+    { "user_id": 20, "book_id": 18 },
+    { "user_id": 20, "book_id": 11 },
+    { "user_id": 20, "book_id": 12 }
+  ]
+}
