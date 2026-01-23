@@ -1,0 +1,40 @@
+<%- include('partials/head') %>
+
+<body>
+    <header>
+      <img class="logo" src="../img/Logo 2.png" alt="logo de blablabook" style="width:130px; ">
+
+      <nav>
+    <label for="toggle">☰</label>
+    <input type="checkbox" id="toggle">
+
+    <div class="main_pages">
+    <a href="/" class="nav-item ">Accueil</a>
+    <a href="/library" class="nav-item">Bibliothèque</a>
+    <a href="/books" class="nav-item">Rechercher</a>
+    <a href="/login" class="nav-item">Connexion</a>
+    <a href="/profil" class="nav-item">Profil</a>
+    </div>
+</nav>
+    </header>
+
+    <main class="notfound">
+      <section class="notfound-card">
+        <p class="notfound-code">404</p>
+        <h1 class="notfound-title">Page introuvable</h1>
+        <p class="notfound-text">
+          On dirait que cette page a été rangée sur la mauvaise étagère…
+        </p>
+
+        <div class="notfound-actions">
+          <a class="btn btn-primary" href="home.html">Retour à l’accueil</a>
+          <a class="btn btn-ghost" href="books.html">Rechercher un livre</a>
+        </div>
+
+        <p class="notfound-hint">
+          Si le problème persiste, passe par la page <a href="contact.html">Contact</a>.
+        </p>
+      </section>
+    </main>
+
+    <%- include('partials/foot') %>

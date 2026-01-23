@@ -55,6 +55,7 @@
   display:flex;
   flex-direction:column;
   gap: 16px;
+  text-align: center;
 }
 
 .title{
@@ -65,23 +66,34 @@
 }
 
 .cover{
-  background:#c8d0dd;
-  height: 180px;
-  border-radius: 14px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#5f6b7a;
-  font-size: 12px;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  background: #e8edf5;
+  border: 1px solid rgba(148,163,184,0.35);
+  box-shadow: 0 10px 22px rgba(15,23,42,0.10);
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  max-width: 240px;     
+  margin: 0 auto;
 }
+
+.book-cover{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;     
+  object-position: center;
+}
+
 
 .description{
   border:1px dashed #c8d0dd;
   border-radius:12px;
   padding: 12px;
-  font-size:12px;
   color:#5f6b7a;
-  text-align:center;
+  max-width: 240px;     
+  margin: 15px auto;
+  text-align: center;
 }
 /* ================= BUTTON ================= */
 .add-btn{

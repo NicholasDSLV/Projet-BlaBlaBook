@@ -50,15 +50,15 @@
 }
 
 .search-box button{
-  width:100%;
-  background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
-  padding: 0.9rem 1.2rem;
-  cursor:pointer;
-  border:none;
+  height: 44px;
+  padding: 0 18px;
   border-radius: 12px;
+  border: none;
+  cursor:pointer;
+  font-weight: 800;
   color:#fff;
-  font-weight:700;
-  transition: transform .2s ease, box-shadow .2s ease;
+  background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+  transition: transform .6s ease, box-shadow .6s ease;
 }
 
 .search-box button:hover{
@@ -80,6 +80,7 @@
 }
 
 .book-card{
+  align-items: center;
   border: 1px solid rgba(173,160,255,0.55);
   border-radius: 16px;
   padding: 14px;
@@ -98,22 +99,28 @@
 
 .cover{
   width: 100%;
-  aspect-ratio: 2 / 3;   /* plus petit en hauteur */
+  aspect-ratio: 2 / 3;
   overflow: hidden;
-  border-radius: var(--r-xl);
+  border-radius: 16px;
+  background: #eef2f7;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
-
 .cover img{
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  opacity: 0.3;
 }
 
 
 
 .description{
+  width: 100%;
+  box-sizing: border-box;
+  display: block;
   border: 1px dashed #c8d0dd;
   border-radius: 12px;
   padding: 12px;
@@ -140,12 +147,24 @@
   box-shadow: 0 10px 22px rgba(106, 90, 205, 0.25);
 }
 
+.book-card .cover,
+.book-card .description,
+.book-card .add-btn{
+  width: 100%;                   
+}
 
+.book-card .description{
+  box-sizing: border-box;
+}
 /* ================= RESPONSIVE ================= */
+
 @media (min-width: 768px) {
   .filters{ flex-direction: row; }
-  .search-box button{ width: auto; align-self: flex-start; }
 
+  .search-box button{
+    width: auto;
+    align-self: center;    
+  }
   .books{
     flex-direction: row;
     flex-wrap: wrap;

@@ -1,0 +1,80 @@
+<%- include('partials/head') %>
+
+<body>
+    <header>
+      <img class="logo" src="../img/Logo 2.png" alt="logo de blablabook" style="width:130px; ">
+
+      <nav>
+    <label for="toggle">☰</label>
+    <input type="checkbox" id="toggle">
+
+    <div class="main_pages">
+    <a href="/" class="nav-item active">Accueil</a>
+    <a href="/library" class="nav-item">Bibliothèque</a>
+    <a href="/books" class="nav-item">Rechercher</a>
+    <a href="/login" class="nav-item">Connexion</a>
+    <a href="/profil" class="nav-item">Profil</a>
+    </div>
+</nav>
+    </header>
+
+<main class="contact">
+    <section class="contact-card">
+    <h1 class="contact-title">Nous contacter</h1>
+    <p class="contact-subtitle">
+        Une question ? Écris-nous un message 👇
+    </p>
+
+    <form class="contact-form" action="#" method="post">
+        <div class="form-grid">
+        <div class="field">
+            <label for="lastname">Nom</label>
+            <input
+            type="text"
+            id="lastname"
+            name="lastname"
+            placeholder="Votre nom"
+            required
+            />
+        </div>
+
+        <div class="field">
+            <label for="firstname">Prénom</label>
+            <input
+            type="text"
+            id="firstname"
+            name="firstname"
+            placeholder="Votre prénom"
+            required
+            />
+        </div>
+        </div>
+
+        <div class="field">
+        <label for="email">Email</label>
+        <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="votre@email.com"
+            required
+        />
+        </div>
+
+        <div class="text">
+        <label for="message">Votre message</label>
+        <textarea
+            id="message"
+            name="message"
+            rows="6"
+            placeholder="Écrivez votre message ici..."
+            required
+        ></textarea>
+        </div>
+
+        <button type="submit" class="btn-send">Envoyer</button>
+    </form>
+    </section>
+</main>
+
+    <%- include('partials/foot') %>
