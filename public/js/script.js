@@ -34,3 +34,9 @@ genres.forEach(genre => {
     option.textContent = genre;
     select.appendChild(option);
 });
+
+
+
+
+
+

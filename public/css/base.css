@@ -28,7 +28,7 @@ header{
   align-items:center;
   padding: var(--header-pad);
   border-bottom: 1px solid var(--border);
-  box-shadow: var(--sh-sm);
+  box-shadow: var(--sh-s);
 }
 
 .logo{ height:40px; }
@@ -47,7 +47,7 @@ label[for="toggle"], #toggle{ display:none; }
   font-size:16px;
   font-weight:500;
   padding:10px 12px;
-  border-radius: var(--r-md);
+  border-radius: var(--r-m);
   transition: transform .6s, background .6s, color .6s;
 }
 
@@ -85,6 +85,91 @@ label[for="toggle"], #toggle{ display:none; }
   text-decoration: underline;
 }
 
+
+.theme-toggle{
+  margin-left: 12px;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-m);
+  border: 1px solid var(--theme-border);
+  background: var(--theme-glass);
+  backdrop-filter: var(--blur);
+  cursor: pointer;
+  font-size: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--theme-shadow-s);
+  transition: transform .6s ease, box-shadow .6s ease;
+}
+
+.theme-toggle:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(15,23,42,0.12);
+}
+
+
+
+
+
+/* On applique le thème */
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+
+  background: var(--bg-page);
+  color: var(--text);
+
+  font-family: var(--font-main);
+  font-weight: bold;
+}
+
+
+header{
+  background: var(--glass);
+  backdrop-filter: var(--blur);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--sh-s);
+}
+
+.footer{
+  background: var(--glass);
+  backdrop-filter: var(--blur);
+  border-top: 1px solid var(--border);
+}
+
+/* Inputs */
+input, textarea, select{
+  background: var(--theme-input-bg);
+  border: 1px solid var(--theme-input-border);
+  color: var(--theme-text);
+}
+
+input:focus, textarea:focus, select:focus{
+  outline: none;
+  border-color: rgba(102,126,234,0.55);
+  box-shadow: 0 0 0 4px var(--theme-focus);
+}
+
+/* Cartes (si tes pages ont ces classes) */
+.contact-card,
+.notfound-card,
+.login-box,
+.register-box,
+.profil-box,
+.book-card,
+.article-list,
+.search,
+.search-box,
+.books{
+  background: var(--theme-surface);
+  border: 1px solid var(--theme-border);
+  box-shadow: var(--theme-shadow-md);
+}
+
+
 /* ================= BURGER (mobile) ================= */
 @media (max-width: 768px){
   header{
@@ -100,7 +185,7 @@ label[for="toggle"], #toggle{ display:none; }
     justify-content:center;
     width:44px;
     height:44px;
-    border-radius: var(--r-md);
+    border-radius: var(--r-m);
     border: 1px solid var(--border);
     background: var(--glass);
     cursor: pointer;
@@ -120,7 +205,7 @@ label[for="toggle"], #toggle{ display:none; }
     flex-direction:column;
     gap:8px;
     padding:12px;
-    border-radius: var(--r-lg);
+    border-radius: var(--r-l);
     background: rgba(255,255,255,0.92);
     border: 1px solid var(--border);
     box-shadow: 0 18px 45px rgba(15,23,42,0.14);

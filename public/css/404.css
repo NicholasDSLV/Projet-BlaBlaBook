@@ -1,0 +1,125 @@
+/* ================= PAGE ================= */
+.notfound{
+  flex: 1;
+  width: min(900px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 46px 0 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ================= CARD ================= */
+.notfound-card{
+  width: 100%;
+  text-align: center;
+  padding: 34px;
+  border-radius: var(--r-2xl);
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: var(--blur);
+  box-shadow: 0 18px 45px rgba(15,23,42,0.12);
+}
+
+/* ================= TEXT ================= */
+.notfound-code{
+  margin: 0;
+  font-size: clamp(56px, 8vw, 90px);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  background: var(--bg-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.notfound-title{
+  margin: 6px 0 8px;
+  font-size: clamp(22px, 3vw, 34px);
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.notfound-text{
+  margin: 0 auto 18px;
+  max-width: 46ch;
+  color: var(--text-muted);
+  font-weight: 650;
+  line-height: 1.6;
+}
+
+/* ================= BUTTON ================= */
+.notfound-actions{
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  padding: 0 18px;
+  border-radius: var(--r-m);
+  font-weight: 900;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-primary{
+  border: none;
+  color: #fff;
+  background: var(--bg-primary);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.btn-primary:hover{
+  transform: translateY(-2px);
+  box-shadow: var(--sh-hover);
+}
+
+.btn-ghost{
+  color: #0f172a;
+  background: rgba(255,255,255,0.65);
+  border: 1px solid rgba(102,126,234,0.25);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.btn-ghost:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(15,23,42,0.12);
+}
+
+/* ================= HINT ================= */
+.notfound-hint{
+  margin: 16px 0 0;
+  color: var(--text-muted);
+  font-weight: 650;
+}
+
+.notfound-hint a{
+  color: var(--primary);
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.notfound-hint a:hover{
+  color: var(--secondary);
+  text-decoration: underline;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px){
+  .notfound{
+    width: min(900px, calc(100% - 28px));
+    padding: 26px 0 60px;
+  }
+
+  .notfound-card{
+    padding: 22px;
+    border-radius: var(--r-xl);
+  }
+}

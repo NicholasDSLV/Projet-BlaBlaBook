@@ -1,6 +1,4 @@
-
-
-/* ================= PAGE WRAP ================= */
+/* ================= PAGE  ================= */
 .page{
   width: min(1100px, calc(100% - 48px));
   margin: 0 auto;
@@ -45,7 +43,7 @@
   font-weight: 800;
   color:#fff;
   background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
-  transition: transform .2s ease, box-shadow .2s ease;
+  transition: transform .6s ease, box-shadow .6s ease;
 }
 
 .search__button:hover{
@@ -82,7 +80,7 @@
   text-overflow: ellipsis;
 }
 
-/* ================= ARTICLE ROW ================= */
+/* ================= ARTICLE  ================= */
 .article{
   display:grid;
   grid-template-columns: 90px 1.6fr 1.2fr 150px 140px;
@@ -90,7 +88,7 @@
   align-items:center;
   padding: 14px 18px;
   border-bottom: 1px solid rgba(230,235,245,0.9);
-  transition: background .2s ease, transform .2s ease;
+  transition: background .6s ease, transform .6s ease;
 }
 
 .article:last-child{ border-bottom: none; }
@@ -123,7 +121,7 @@
   font-weight: 600;
 }
 
-/* ================= STATUS SELECT ================= */
+/* =================  SELECT ================= */
 .article__status{
   height: 42px;
   width: 100%;
@@ -135,7 +133,7 @@
   font-weight: 700;
   cursor: pointer;
   outline: none;
-  transition: box-shadow .2s ease, border-color .2s ease, transform .15s ease;
+  transition: box-shadow .6s ease, border-color .6s ease, transform .40s ease;
 }
 
 .article__status:focus{
@@ -143,7 +141,7 @@
   box-shadow: 0 0 0 4px rgba(102,126,234,0.18);
 }
 
-/* ================= ACTION BUTTON ================= */
+/* =================  BUTTON ================= */
 .article__actions{
   display:flex;
   justify-content:flex-start;
@@ -175,19 +173,9 @@
 
 
 /* ================= RESPONSIVE ================= */
-@media (max-width: 900px){
-  header{ padding: 14px 18px; }
-  .main_pages{ gap: 16px; }
 
-  .article-list__header{
-    grid-template-columns: 80px 1.4fr 1fr 140px 120px;
-  }
-  .article{
-    grid-template-columns: 80px 1.4fr 1fr 140px 120px;
-  }
-}
 
-@media (max-width: 720px){
+@media (max-width: 768px){
   /* Menu burger */
   label[for="toggle"]{
     display:block;

@@ -55,6 +55,8 @@ input{
 
 .forgot:hover{ text-decoration: underline; }
 
+/* ================= BUTTON ================= */
+
 button{
   margin-top: 10px;
   background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);

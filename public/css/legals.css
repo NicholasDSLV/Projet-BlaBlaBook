@@ -1,4 +1,4 @@
-/* ================= PAGE WRAP ================= */
+/* ================= PAGE  ================= */
 .container{
   width: min(1000px, calc(100% - 48px));
   margin: 0 auto;
@@ -20,12 +20,12 @@ section{
   backdrop-filter: var(--blur);
   border: 1px solid var(--border);
   border-radius: var(--r-xl);
-  box-shadow: var(--sh-md-dark);
+  box-shadow: var(--sh-m-dark);
   padding: 22px;
   margin: 14px 0;
 }
 
-/* ================= SECTION HEADINGS ================= */
+
 h2{
   margin: 0 0 10px;
   font-size: 18px;
@@ -46,7 +46,7 @@ strong{
   color: #111827;
 }
 
-/* ================= LISTS ================= */
+/* ================= LIST ================= */
 ul{
   margin: 10px 0 0;
   padding-left: 18px;
@@ -59,7 +59,7 @@ li{
   font-weight: 650;
 }
 
-/* ================= LINKS ================= */
+/* ================= LINK ================= */
 a{
   color: var(--primary);
   text-decoration: none;
@@ -71,7 +71,7 @@ a:hover{
   text-decoration: underline;
 }
 
-/* ================= SMALL SCREEN ================= */
+/* ================= RESPONSIVE ================= */
 @media (max-width: 768px){
   .container{
     width: min(1000px, calc(100% - 28px));
@@ -80,7 +80,7 @@ a:hover{
 
   section{
     padding: 18px;
-    border-radius: var(--r-lg);
+    border-radius: var(--r-l);
   }
 
   h2{

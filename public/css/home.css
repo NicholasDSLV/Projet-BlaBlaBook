@@ -83,7 +83,7 @@
   color:#5f6b7a;
   text-align:center;
 }
-
+/* ================= BUTTON ================= */
 .add-btn{
   text-align: center;
   width:100%;
@@ -94,23 +94,31 @@
   color:#fff;
   font-weight:600;
   background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
-  box-shadow: 0 10px 22px rgba(106, 90, 205, 0.20);
+  box-shadow: var(--sh-m);
   transition: transform .15s ease, box-shadow .15s ease;
 }
 
 .add-btn:hover{
   transform: translateY(-2px);
-  box-shadow: 0 16px 30px rgba(106, 90, 205, 0.25);
+  box-shadow: var(--sh-m);
 }
 
-/* ================= responsive ================= */
-@media (min-width: 768px){
+/* ================= RESPONSIVE ================= */
+
+@media (min-width: 768px) {
+  .filters{ flex-direction: row; }
+  .search-box button{ width: auto; align-self: flex-start; }
+
   .books{
-    flex-direction:row;
-    gap: 16px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
-  .book-card{
-    flex:1;
-  }
+  .book-card{ width: 48%; }
 }
+
+@media (min-width: 900px) {
+  .book-card{ width: 31%; }
+}
+
 
