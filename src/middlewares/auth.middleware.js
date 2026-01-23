@@ -26,9 +26,37 @@ export function validateUser(req, res, next) {
 	next();
 }
 
+export function validateLoginUser(req, res, next) {
+
+	// Schema du JSON attendu
+	const userSchema = Joi.object({
+		email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net']} }),
+		password: Joi.string().required(),
+	})
+
+	const validation = userSchema.validate(req.body)
+
+	if (validation.error) {
+		// ERROR le JSON de la request n'est pas valide !
+		// Erreur => lance une nouvelle erreur, elle sera attrapée par le middleware de gestion des erreurs
+		// Equivalent de : return next(new HttpError(validation.error, 400));
+        req.session.flash = {
+          type: 'error',
+          message: 'Email ou mot de passe incorrect',
+        };
+		// Email ou mot de pass invalide on est redirigé vers la page login avec un message temporaire
+		return res.redirect("/auth/login")
+	}
+	
+	// Je ne suis pas rentré dans le IF, le body est valide donc j'appel le middleware suivant
+	next();
+}
+
 export function loginMiddleware (req, res, next) {
   if (req.session?.user?.isAuthenticated) {
     return next();
   }
+  console.log('AUTH KO → redirect');
   res.redirect("/");
+
 };

@@ -13,6 +13,7 @@ main.container{
 }
 
 /* ================= CARD ================= */
+/* Plus spécifique que .book-card dans base.css (qui la restylise) */
 .book .book-card{
   position: relative;
   width: 100%;
@@ -55,7 +56,7 @@ main.container{
 /* ================= COVER ================= */
 .book .cover{
   width: 100%;
-  height: 450px;
+  aspect-ratio: 3 / 4;
 
   border-radius: var(--r-xl);
   overflow: hidden;
@@ -70,7 +71,7 @@ main.container{
   height: 100%;
   display: block;
 
-  object-fit: fill;
+  object-fit: cover;
   object-position: center;
 }
 
@@ -103,21 +104,37 @@ main.container{
 }
 
 /* ================= TAGS ================= */
-
-
-.book .tag{
-  padding: 6px 14px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 900;
-  color: #fff;
+.book .tags{
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
 }
 
-.book .tag-blue{ background: #33CCFF; }
-.book .tag-pink{ background: #FF85BC; }
+.book .tag{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 6px 14px;
+  border-radius: 999px;
+
+  font-size: 12px;
+  font-weight: 900;
+  color: #fff;
+
+  width: fit-content;      
+  white-space: nowrap;     
+}
+.tags a{ 
+  text-decoration: none;
+  font-size: xx-large;
+  color: white;
+  margin-left: 6px;}
+
+.book .tag-blue{ background: #1d42e7; }
+.book .tag-yellow{ background: #d69c14; }
+.book .tag-green{ background: #2edb1b; }
+.book .tag-purple{ background: #582fd2; }
 
 /* ================= DESCRIPTION ================= */
 .book .description{

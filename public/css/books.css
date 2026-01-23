@@ -14,7 +14,7 @@
   display:flex;
   flex-direction:column;
   gap: 14px;
-  box-shadow: 0 12px 26px rgba(15,23,42);
+  box-shadow: 0 10px 26px rgba(106, 90, 205, 0.20);
   border: 1px solid rgba(230,235,245,0.9);
 }
 
@@ -73,12 +73,13 @@
   width: 100%;
   padding: 22px;
   display:flex;
+  flex-direction:column;
   gap: 18px;
   border: 1px solid rgba(230,235,245,0.9);
-  box-shadow: 0 12px 26px rgba(15,23,42);
+  box-shadow: 0 10px 26px rgba(106, 90, 205, 0.14);
 }
 
-.book-card{
+.books .book-card{
   align-items: center;
   border: 1px solid rgba(173,160,255,0.55);
   border-radius: 16px;
@@ -87,32 +88,30 @@
   flex-direction:column;
   gap: 12px;
   background: #fff;
-  box-shadow: 15px 10px 23px rgb(124, 114, 189);
 }
 
-.title{
+.books .title{
   font-size: 14px;
   font-weight: 800;
   color:#333d4b;
   text-align:center;
 }
 
-.cover{
-  width: 170px;           
-  height: 250px;          
-  margin: 0 auto;
+.books .cover{
   border-radius: var(--r-xl);
   overflow: hidden;
   background: #e8edf5;
-  border: 1px solid rgba(148,163,184,0.50);
-  box-shadow: 0 12px 26px rgba(15,23,42,0.14);
+  border: 1px solid rgba(148,163,184,0.35);
+  box-shadow: 0 10px 22px rgba(15,23,42,0.10);
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  max-width: 240px;     
+  margin: 0 auto;
 }
 
-.cover img{
-  width: 100%;
-  height: 100%;
-  display: block;
-  max-width: none;
+.books .cover img{
+  width: 280px;
+  height: 450px;
   object-fit: fill;
 }
 
@@ -130,7 +129,7 @@
   text-align:center;
 }
 
-.add-btn{
+.books .add-btn{
   width:100%;
   background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
   padding: 0.8rem 1.1rem;
@@ -143,18 +142,18 @@
   text-align: center;
 }
 
-.add-btn:hover{
+.books .add-btn:hover{
   transform: translateY(-2px);
   box-shadow: 0 10px 22px rgba(106, 90, 205, 0.25);
 }
 
-.book-card,
-.book-card .description,
-.book-card .add-btn{
+.books .book-card .cover,
+.books .book-card .description,
+.books .book-card .add-btn{
   width: 100%;                   
 }
 
-.book-card .description{
+.books .book-card .description{
   box-sizing: border-box;
 }
 /* ================= RESPONSIVE ================= */
@@ -167,10 +166,9 @@
     align-self: center;    
   }
   .books{
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center; 
-  gap: 18px; 
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
   .book-card{ width: 48%; }
 }

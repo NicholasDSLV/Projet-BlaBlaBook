@@ -1,6 +1,7 @@
 <%- include('../partials/head') %>
 
 
+    <link rel="stylesheet" href="/css/book.css" />
 
 <main class="container">
       <section class="book">
@@ -23,12 +24,16 @@
             <div class="data">
               <p><strong>Auteur :</strong> <a class="book__author" href="/books?author=<%=book.author %>"><%= book.author %></p></a>
               <p><strong>Date de publication :</strong> <%= book.publication_date.toLocaleDateString('fr-FR') %></p>
-              <p><strong>Genre :</strong> <%= book.category %></p>
+              <p><strong>Genre :</strong><p><div class="tags">
+  <a href="/books?category=<%= encodeURIComponent(book.category) %>" class="tag <%= book.tagClass %>">
+    <%= book.category %>
+  </a>
+</div>
+
             </div>
 
             <div class="tags">
-              <span class="tag tag-blue">Conte</span>
-              <span class="tag tag-pink">Classique</span>
+              <span class="tag tag-pink"> <a class="book__category" href="/books?category=<%=book.category %>"><%= book.category %></p></a></span>
             </div>
 
             <p class="description">

@@ -4,7 +4,7 @@ import argon2 from 'argon2';
 import 'dotenv/config';
 
 class AuthController {
-    showRegister = async (req, res, next) => {
+  showRegister = async (req, res, next) => {
     try {
       res.render("pages/register");
     } catch (error) {
@@ -12,30 +12,41 @@ class AuthController {
     }
     }
 
-    showlogin = async (req, res, next) => {
-        try {
+  showlogin = async (req, res, next) => {
+    try {
       res.render("pages/login");
     } catch (error) {
       next(error);
     }
     }
+  logout = async (req, res, next) => {
+    try {
+      req.session.destroy(() => {
+      res.redirect("/");
+      });
+      } catch (error) {
+      next(error);
+    }
+  }
 
-    registerUser = async (req, res, next) => {
-        try {
-        // 1. récupérer le body de la requête
-        // Dans le body j'attends les données du nouvel utilisateur à enregsitrer
-      const dataJson = req.body;
+  registerUser = async (req, res, next) => {
+    try {
+      // 1. récupérer le body de la requête
+      // Dans le body j'attends les données du nouvel utilisateur à enregsitrer
+    const dataJson = req.body;
 
       // 2 Vérifier si le nom de l'utilisateur existe déjà dans la BDD
       // Si oui, refuser l'enregistrement et renvoyer une erreur 409
       // Rechercher dans la BDD un utilsateur par son username
       // SELECT * FROM user ... WHERE blabla 
-      const result = await User.findOne(
-        {
+    const result = await User.findOne(
+      {
           // WHERE username = dataJson.username
-          where: { username: dataJson.username }
-        }
+        where: { username: dataJson.username }
+      }
+
       )
+
       if (result) {
         // result n'est pas null ! J'ai déjà un utilisateur avec ce username dans la BDD
         throw new HttpError('Username already exists', 409);
@@ -70,54 +81,64 @@ class AuthController {
         }
     }
 
-    profile = async (req, res, next) => {
-        try {
-            res.render("pages/profil");
-            } catch (error) {
-			    next(error);
-        }
-    }
-
     login = async (req, res, next) => {
         try {
       // 1. récupérer le body de la requête
-      // Dans le body j'attends les données du nouvel utilisateur à enregistrer
-      // dataJson = { username: "....", password: "....." }
       const dataJson = req.body;
-      console.log(
-      "l'utilisateur qui vient de remplir le formulaire est :",
-      dataJson,
-      );
-      // 2. Chercher le user selon son nom
-      // SELECT * FROM user ... WHERE username = dataJson.username
+      // 2. Vérifier qu'il existe
       const userFromBDD = await User.findOne(
         {
           // WHERE username = dataJson.username
           where: { email: dataJson.email }
         }
       )
-      req.session.user = {
-      userFromBDD,
-      isAuthenticated: true,
-      };
-
       if (!userFromBDD) {
         // result est null ! L'utilisateur n'existe pas dans la BDD
-        throw new HttpError('login ou mot de passe incorrect', 401);
+        req.session.flash = {
+          type: 'error',
+          message: 'Email ou mot de passe incorrect',
+        };
+        return res.redirect("/auth/login")
       }
       // 3. Vérifier si le mot de passe de l'utilisateur correspond au hash mis dans la BDD
       if (!(await argon2.verify(userFromBDD.password, dataJson.password))) {
-        // Le mot de passe ne correspond pas !
-        throw new HttpError('login ou mot de passe incorrect', 401);
+      // Le mot de passe ne correspond pas !
+        req.session.flash = {
+          type: 'error',
+          message: 'Mot de passe incorrect',
+        }
+        return res.redirect("/auth/login")
       }
-      // 5. Redirection vers la session du client
-      res.redirect('/');
 
+      // 4. Créer la session
+      req.session.user = {
+      id: userFromBDD.id,
+      email: userFromBDD.email,
+      isAuthenticated: true,
+      };
+      console.log(req.session.user)
+      // 5. Redirection vers la session du client
+    res.redirect('/');
     } catch (error) {
       next(error);
     }
   }
-}
+
+    profile = async (req, res, next) => {
+      try {
+        const userId = req.session.user.id;
+        console.log(userId)
+        const user = await User.findByPk(userId,
+          {
+            attributes: ['id'],
+          }
+          )
+            res.render("pages/profil", {user});
+          } catch (error) {
+			    next(error);
+          }
+    }
+  }
 const myController = new AuthController();
 export default myController;
 

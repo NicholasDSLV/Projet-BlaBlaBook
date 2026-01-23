@@ -1,12 +1,13 @@
-<%- include('partials/head') %>
+<%- include('../partials/head') %>
 
 
+    <link rel="stylesheet" href="/css/profil.css" />
 
 <main class="profil-container">
 <section class="profil-box">
     <h2>Modifier les informations personnelles</h2>
 
-    <form class="profil-form" method="GET" action="/auth/profile">
+    <form class="profil-form" method="PATCH" action="/auth/profile">
     <div class="grid">
         <div class="col">
         <label for="pseudo">Pseudo</label>
@@ -42,4 +43,4 @@
 </section>
 </main>
 
-<%- include('partials/foot') %>
+<%- include('../partials/foot') %>

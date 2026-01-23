@@ -7,6 +7,7 @@ import indexRouter from './src/routes/index.router.js';
 import libraryRouter from './src/routes/library.router.js';
 import bookRouter from './src/routes/book.router.js';
 import authRouter from './src/routes/auth.router.js';
+import { localsUser } from './src/middlewares/locals.middleware.js';
 
 // import xss sanitizer
 import { xss } from 'express-xss-sanitizer';
@@ -32,6 +33,7 @@ app.use(
   }),
 );
 
+app.use(localsUser);
 app.use(authRouter);
 app.use(indexRouter);
 app.use(libraryRouter);

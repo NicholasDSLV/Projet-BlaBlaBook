@@ -1,6 +1,7 @@
 <%- include('../partials/head') %>
 
 
+    <link rel="stylesheet" href="/css/login.css" />
 
 <main class="login-container">
     <section class="login-box">
@@ -15,6 +16,12 @@
         placeholder="votre@email.com"
         required
         />
+
+        <% if (flash) { %>
+        <div class="flash flash--<%= flash.type %>">
+        <%= flash.message %>
+        </div>
+        <% } %>
 
         <label for="password">Mot de passe</label>
         <input

@@ -1,6 +1,7 @@
 <%- include('../partials/head') %>
 
 
+    <link rel="stylesheet" href="/css/books.css" />
 
     <main class="container">
       <section class="search-box">
@@ -24,13 +25,9 @@
       <section class="books">
         <% books.forEach(article => { %>
         <div class="book-card">
-          <div class="title"><%= article.title %></div>
-          <div class="cover">
-            <img
-              src="<%= article.coverUrl %>"
-              alt="<%= article.title %>"
-            />
-          </div>
+          <a href="/books/<%= article.id %>"><h1 class="article__title"><%= article.title %></h1></a>
+          <a class="cover" href="/books/<%= article.id %>">
+        <img src="<%= article.coverUrl %>" alt="image du livre <%= article.title %>"></a>
           <div class="description">
             <% const s = article.summary || "" %>
               <%= ((article.summary || "").slice(0, 150)) %>...
