@@ -52,16 +52,12 @@ label[for="toggle"], #toggle{ display:none; }
 }
 
 .nav-item:hover{
-  color: var(--white);
+  color: white;
   background: var(--bg-primary);
   transform: translateY(-1px);
 }
 
-.nav-item.active{
-  background: var(--bg-primary);
-  color:white;
-  box-shadow: 0 4px 15px rgba(106, 90, 205, 0.25);
-}
+
 
 /* ================= FOOTER ================= */
 .footer{
@@ -105,14 +101,10 @@ label[for="toggle"], #toggle{ display:none; }
 
 .theme-toggle:hover{
   transform: translateY(-1px);
-  box-shadow: 0 12px 24px rgba(15,23,42,0.12);
+  box-shadow: 0 12px 24px rgba(15,23,42);
 }
 
 
-
-
-
-/* On applique le thème */
 body{
   margin:0;
   min-height:100vh;
@@ -153,7 +145,7 @@ input:focus, textarea:focus, select:focus{
   box-shadow: 0 0 0 4px var(--theme-focus);
 }
 
-/* Cartes (si tes pages ont ces classes) */
+/* Cartes  */
 .contact-card,
 .notfound-card,
 .login-box,

@@ -1,18 +1,17 @@
-import { User, Book } from '../models/index.js'
+import { User, Book } from "../models/index.js";
 
 class IndexController {
     showHome = async (req, res, next) => {
-
         try {
+            const books = await Book.findAll();             // récupère tout
+            books.sort(() => Math.random() - 0.5);          // mélange
+            const dailyBooks = books.slice(0, 3);           // garde 3
 
-            const book = await Book.findAll({
-                limit: 3
-            });
-            res.render("pages/home", { book });
-            } catch (error) {
-			    next(error);
-        }
-    }
+      res.render("pages/home", { books: dailyBooks }); // on garde "books" pour pas changer ton EJS
+    } catch (error) {
+        next(error);
+    }};
 }
+
 const myController = new IndexController();
 export default myController;

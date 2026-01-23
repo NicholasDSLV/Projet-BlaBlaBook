@@ -49,7 +49,7 @@ async function seed() {
           : 'Unknown',
         category: 'fantasy',
         summary: item.volumeInfo.description || null,
-        cover_url: item.volumeInfo.imageLinks?.thumbnail || null,
+        coverUrl: item.volumeInfo.imageLinks?.thumbnail || item.volumeInfo.imageLinks?.smallThumbnail || null,
         publication_date: item.volumeInfo.publishedDate
         ? item.volumeInfo.publishedDate.slice(0, 10)
         : null,
@@ -57,7 +57,6 @@ async function seed() {
     }
     }
 }
-    
     // =================
 	// ** Liens entre user et book
 	// =================

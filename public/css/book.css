@@ -13,7 +13,6 @@ main.container{
 }
 
 /* ================= CARD ================= */
-/* Plus spécifique que .book-card dans base.css (qui la restylise) */
 .book .book-card{
   position: relative;
   width: 100%;
@@ -56,7 +55,7 @@ main.container{
 /* ================= COVER ================= */
 .book .cover{
   width: 100%;
-  aspect-ratio: 3 / 4;
+  height: 450px;
 
   border-radius: var(--r-xl);
   overflow: hidden;
@@ -71,7 +70,7 @@ main.container{
   height: 100%;
   display: block;
 
-  object-fit: cover;
+  object-fit: fill;
   object-position: center;
 }
 
@@ -104,11 +103,7 @@ main.container{
 }
 
 /* ================= TAGS ================= */
-.book .tags{
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
+
 
 .book .tag{
   padding: 6px 14px;
@@ -116,6 +111,9 @@ main.container{
   font-size: 12px;
   font-weight: 900;
   color: #fff;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .book .tag-blue{ background: #33CCFF; }

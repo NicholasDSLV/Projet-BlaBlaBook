@@ -1,26 +1,10 @@
 <%- include('../partials/head') %>
 
-<body>
-    <header>
-      <img class="logo" src="../img/Logo 2.png" alt="logo de blablabook" style="width:130px; ">
 
-      <nav>
-    <label for="toggle">☰</label>
-    <input type="checkbox" id="toggle">
-
-    <div class="main_pages">
-    <a href="/" class="nav-item ">Accueil</a>
-    <a href="/library" class="nav-item active">Bibliothèque</a>
-    <a href="/books" class="nav-item">Rechercher</a>
-    <a href="/login" class="nav-item">Connexion</a>
-    <a href="/profil" class="nav-item">Profil</a>
-    </div>
-</nav>
-    </header>
 
   <main class="page">
     <section class="search">
-      <form class="search__form" method="GET" action="books">
+      <form class="search__form" method="GET" action="/books">
         <label class="search__label" for="search"></label>
         <input
           class="search__input"
@@ -42,13 +26,14 @@
         <span class="article-list__col">Status</span>
         <span class="article-list__col">Action</span>
       </header>
-
+      <% books.forEach(article => { %>
       <article class="article">
-        <img class="article__cover" src="/integration/img/petit_prince.jpg" alt="">
-        <h1 class="article__title">Le petit Prince</h1>
-        <p class="article__author">Antoine de Saint-Exupéry</p>
+        <a href="/books/<%= article.id %>"><img class="article__cover" src="<%= article.coverUrl %>" alt="couverture de <%= article.title %>"></a>
+        <a href="/books/<%= article.id %>"><h1 class="article__title"><%= article.title %></h1></a>
+        <a class="article__author" href="/books?author=<%=article.author %>"><%= article.author %>
+</a>
         <select class="article__status">
-          <option value="">status</option>
+          <option value="<%= article.status %>">status</option>
           <option>Déjà lu</option>
           <option>En cours</option>
           <option>A lire</option>
@@ -57,51 +42,8 @@
           <button class="article__button--remove">Retirer</button>
         </div>
       </article>
+      <% }) %>
 
-      <article class="article">
-        <img class="article__cover" src="" alt="">
-        <h1 class="article__title">1984</h1>
-        <p class="article__author">Georges Orwell</p>
-        <select class="article__status">
-          <option value="">status</option>
-          <option>Déjà lu</option>
-          <option>En cours</option>
-          <option>A lire</option>
-        </select>
-        <div class="article__actions">
-          <button class="article__button--remove">Retirer</button>
-        </div>
-      </article>
-
-      <article class="article">
-        <img class="article__cover" src="" alt="image-harrypotter">
-        <h1 class="article__title">Harry Potter</h1>
-        <p class="article__author">J.K Rowling</p>
-        <select class="article__status">
-          <option value="">status</option>
-          <option>Déjà lu</option>
-          <option>En cours</option>
-          <option>A lire</option>
-        </select>
-        <div class="article__actions">
-          <button class="article__button--remove">Retirer</button>
-        </div>
-      </article>
-
-      <article class="article">
-        <img class="article__cover" src="" alt="">
-        <h1 class="article__title">Hunger Games</h1>
-        <p class="article__author">Suzanne Collins</p>
-        <select class="article__status">
-          <option value="">status</option>
-          <option>Déjà lu</option>
-          <option>En cours</option>
-          <option>A lire</option>
-        </select>
-        <div class="article__actions">
-          <button class="article__button--remove">Retirer</button>
-        </div>
-      </article>
     </section>
   </main>
 

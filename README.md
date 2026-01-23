@@ -53,7 +53,7 @@ BlaBlaBook mettra également l’accent sur la découverte de nouveaux livres gr
 
 * CRUD Users : Gestion basique des utilisateurs pour inscription et connexion.
 
-* Authentification JWT : Protection des routes sensibles.
+* Authentification express session : Protection des routes sensibles.
 
 ## Front-end
 
@@ -99,7 +99,7 @@ Base de données : PostgreSQL avec Sequelize ORM ==> PostgreSQL est une base rel
 
 Front-end : EJS ==> EJS permet de générer des pages HTML dynamiques côté serveur simplement, en intégrant facilement les données de l’API Express. Cela facilite le développement du MVP sans complexité SPA, tout en gardant une bonne cohérence avec NodeJS/Express et PostgreSQL.  
 
-Authentification : JWT (Json Web Token) ==> Permet une gestion sécurisée des sessions sans stocker les informations sensibles côté client.
+Authentification : express-session ==> Gère des sessions côté serveur via un cookie contenant un identifiant ; les données restent sur le serveur (mémoire/Redis), ce qui facilite la gestion des sessions, mais nécessite du stockage serveur.
 
 Appels API : CRUD livres, users ==> Assure la séparation front/back, la sécurité des données et la possibilité d’évoluer facilement vers d’autres clients (mobile, etc.).
 
@@ -136,8 +136,8 @@ Intéressés par la gestion de leur bibliothèque et la découverte de livres
 * " /register "         => Inscription
 * " /library  "         => Ma bibliothèque
 * " /books "            => Recherche/Liste des livres
-* " /books/:id  "        => Détail d’un livre
-* " /profile "          => Profil utilisateur
+* " /book/:id  "        => Détail d’un livre
+* " /profil "          => Profil utilisateur
 
 Schema arborescence des routes :
  
@@ -159,11 +159,11 @@ Schema arborescence des routes :
 
 | Verbe HTTP | URL             | Nom du routeur | Contrôleur & méthode        | Description                |
 |------------|------------------|----------------|-----------------------------|----------------------------|
-| POST       | /auth/register   | auth.router    | authController.register     | Inscription utilisateur    |
-| POST       | /auth/login      | auth.router    | authController.login        | Connexion utilisateur      |
-| POST       | /auth/logout    | auth.router    | authController.logout       | Déconnexion utilisateur    |
-| GET        | /auth/profile    | auth.router    | authController.profile      | Profil utilisateur connecté|
-|DELETE      | /auth/profile    | auth.router    | authController.remove       | Supprimer utilisateur      |
+| POST       | /auth/register   | auth.router    | authController.registerUser | Création d'un compte utilisateur    |
+| GET        | /auth/register   | auth.router    | authController.showRegister | Affiche du formulaire d'inscription |
+| POST       | /auth/login      | auth.router    | authController.login        | Authentification de l'utilisateur (verification des identifiants) |
+| GET        | /auth/login      | auth.router    | authController.showLogin    | Affiche du formulaire de connexion|
+| GET        | /auth/profile    | auth.router    | authController.profile      | Affichage du profil de l'utilisateur connecté|
 
 
 | Code | Signification                        | Cas typique                              |
