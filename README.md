@@ -136,7 +136,7 @@ Intéressés par la gestion de leur bibliothèque et la découverte de livres
 * " /register "         => Inscription
 * " /library  "         => Ma bibliothèque
 * " /books "            => Recherche/Liste des livres
-* " /book/:id  "        => Détail d’un livre
+* " /books/:id  "        => Détail d’un livre
 * " /profile "          => Profil utilisateur
 
 Schema arborescence des routes :
@@ -161,6 +161,7 @@ Schema arborescence des routes :
 |------------|------------------|----------------|-----------------------------|----------------------------|
 | POST       | /auth/register   | auth.router    | authController.register     | Inscription utilisateur    |
 | POST       | /auth/login      | auth.router    | authController.login        | Connexion utilisateur      |
+| POST       | /auth/logout    | auth.router    | authController.logout       | Déconnexion utilisateur    |
 | GET        | /auth/profile    | auth.router    | authController.profile      | Profil utilisateur connecté|
 |DELETE      | /auth/profile    | auth.router    | authController.remove       | Supprimer utilisateur      |
 
@@ -283,9 +284,9 @@ Le logo Blablabook utilise une écriture élégante, avec
 
 | Nom | Code HEX | Utilisation |
 |:---|:---------|:------------|
-| Fond principal | #E38F1 | Couleur de fond de l’écran |
+| Fond principal | #E3E9F2 | Couleur de fond de l’écran |
 | Blanc pur | #FFFFFF | Header, footer et containers |
-| Bleu clair | #DCE3EC | Bloc de présentation de la page d’accueil |
+| gris clair | #DCE3EC | Bloc de présentation de la page d’accueil |
 | Violet navigation | #6D67C9 | Boutons de navigation de la page d’accueil |
 | Gris bleuté | #919FB3 | Bouton « Enregistrer » |
 | Blanc | #FFFFFF | Texte du bouton « Enregistrer » |
