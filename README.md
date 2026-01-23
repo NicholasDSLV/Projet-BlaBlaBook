@@ -139,22 +139,23 @@ Intéressés par la gestion de leur bibliothèque et la découverte de livres
 * " /book/:id  "        => Détail d’un livre
 * " /profil "          => Profil utilisateur
 
-### Tableau des EndPoints :
+Schema arborescence des routes :
+ 
+![arborescence](./conception/arborescence.svg)
 
-| Verbe HTTP | URL          | Nom du routeur | Contrôleur & méthode        | Modèle & méthodes |
-|------------|--------------|----------------|-----------------------------|-------------------|
-| GET        | /books       | book.router    | bookController.getAll       | Book.findAll      |
-| GET        | /books/:id   | book.router    | bookController.getById      | Book.findByPk     |
-| POST       | /books       | book.router    | bookController.create       | Book.create       |
-| PATCH      | /books/:id   | book.router    | bookController.update       | Book.update       |
-| DELETE     | /books/:id   | book.router    | bookController.remove       | Book.delete       |
+### Tableau des EndPoints et code erreur :
 
-| Verbe HTTP | URL                 | Nom du routeur   | Contrôleur & méthode          | Modèle & méthodes |
-|------------|---------------------|------------------|-------------------------------|-------------------|
-| GET        | /library            | library.router   | libraryController.getAll      | Library.findAll   |
-| POST       | /library            | library.router   | libraryController.create      | Library.create   |
-| PATCH      | /library/:id    | library.router   | libraryController.update      | Library.update   |
-| DELETE     | /library/:id    | library.router   | libraryController.remove      | Library.delete   |
+| Verbe HTTP | URL          | Nom du routeur | Contrôleur & méthode        | Modèle & méthodes |Description|
+|------------|--------------|----------------|-----------------------------|-------------------|-----------|
+| GET        | /book       | book.router    | bookController.getAll       | Book.findAll      | Lister tous les livres|
+| GET        | /book/:id   | book.router    | bookController.getById      | Book.findByPk     | Trouver un livre par id|
+
+| Verbe HTTP | URL                 | Nom du routeur   | Contrôleur & méthode          | Modèle & méthodes |Description|
+|------------|---------------------|------------------|-------------------------------|-------------------|-----------|
+| GET        | /library            | library.router   | libraryController.getAll      | Library.findAll   | Acceder à la bibliothèque d'un utilisateur connecté|
+| POST       | /library            | library.router   | libraryController.create      | Library.create   | Ajouter un livre à la bibliothèque d'un utilisateur connecté|
+| PATCH      | /library/:id    | library.router   | libraryController.update      | Library.update   | Modifier le status d'un livre dans la bibliothèque de l'utilisateur connecté|
+| DELETE     | /library/:id    | library.router   | libraryController.remove      | Library.delete   | Retirer un livre de le bibliothèque de l'utilisateur connecté|
 
 | Verbe HTTP | URL             | Nom du routeur | Contrôleur & méthode        | Description                |
 |------------|------------------|----------------|-----------------------------|----------------------------|
@@ -165,7 +166,17 @@ Intéressés par la gestion de leur bibliothèque et la découverte de livres
 | GET        | /auth/profile    | auth.router    | authController.profile      | Affichage du profil de l'utilisateur connecté|
 
 
-
+| Code | Signification                        | Cas typique                              |
+|------|--------------------------------------|------------------------------------------|
+| `200`| OK                                   | Requête réussie (GET, PUT, PATCH)        |
+| `201`| Created                              | Ressource créée (POST)                   |
+| `204`| No Content                           | Suppression réussie (DELETE)             |
+| `400`| Bad Request                          | Données manquantes ou invalides          |
+| `401`| Unauthorized                         | Authentification requise                 |
+| `403`| Forbidden                            | Accès refusé malgré l’authentification   |
+| `404`| Not Found                            | Ressource introuvable                    |
+| `409`| Conflict                             | Conflit lors de la création/modification |
+| `500`| Internal Server Error                | Erreur serveur                           |
 
 
 ## 6️⃣ User Stories
@@ -185,26 +196,22 @@ Intéressés par la gestion de leur bibliothèque et la découverte de livres
 Rôles
 ---
 
-* Développeur Front-end (Svelte) :
+* Lead Développeur Front-end / git master // UI/UX Designer :
 En charge du développement des composants front-end, de l’intégration des maquettes et de la gestion des appels aux API
 ======> Emmanuel Paparis
 
-* Développeur Back-end :
+* Lead Développeur Back-end / git master // UI/UX Designer:
 Responsable du développement des API Express, de la gestion de la base de données et de la mise en place de l’authentification.
 ======> Nicholas Da Silva
 
-* UI/UX Designer :
-Chargé de la conception des wireframes, de la définition de la charte graphique et de l’amélioration de l’expérience utilisateur.
-======> Morgan Leotet
-
-* Chef de projet / Scrum Master :
+* Chef de projet / Scrum Master / git master // UI/UX Designer :
 Responsable de l’organisation du projet, du suivi des sprints et de la coordination de l’équipe selon la méthodologie Scrum.
 ======> Yoann Schieritz
 
 ## 7️⃣ Base de données
-![MCD](./BDD/MCD.svg)
-![MLD](./BDD/MLD.svg)
-![MPD](./BDD/MPD.svg)
+![MCD](./conception/BDD/MCD.svg)
+![MLD](./conception/BDD/MLD.svg)
+![MPD](./conception/BDD/MPD.svg)
 [MPD](./BDD/mpd.dbml)
 
 Dictionnaire des données
@@ -269,62 +276,39 @@ Page login / register :
 
 ### 2. Logo
 -----
-Le logo Blablabook utilise une écriture élégante, avec un mélange de couleurs 
-pour représenter la diversité et l’échange entre les personnes.
-Versions autorisées
-* Version principale : Logo en dégradé du bleu au violet.
-* Version darkmode   :
-* Version fond clair : Utiliser la version couleur originale.
-* Version fond foncé : Utiliser la version blanche.
-* Marges de sécurité :
-Laisser un espace équivalent à la hauteur du « B » autour du logo pour garantir sa lisibilité.
-* Taille minimale :
-Ne pas utiliser le logo en dessous de 2 cm de largeur pour éviter toute perte de lisibilité.
-### 3. Couleurs
-Palette principale :
-|Nom| Code HEX| Utilisation|
-|:--|:--------|:-----------|
-|Ocre doré| #D89A1D |Accent, titres, éléments chaleureux
-|Vert sauge| #7BA48A | Éléments secondaires, fonds doux
-|Bleu pétrole| #4A6E7E |Texte, boutons, contrastes
-|Crème clair| #F7F0E6 | Fond principal|
+Le logo Blablabook utilise une écriture élégante, avec 
 
-Palette secondaire :
 
-|Nom| Code HEX |Utilisation|
-|:--|:---------|:----------|
-|Gris doux| #E0DED9 |Arrière-plans neutres|
-Bleu clair| #A3C1C9 |Survols, détails graphiques|
+
+### 3 Couleur / Palette principale
+
+| Nom | Code HEX | Utilisation |
+|:---|:---------|:------------|
+| Fond principal | #E3E9F2 | Couleur de fond de l’écran |
+| Blanc pur | #FFFFFF | Header, footer et containers |
+| gris clair | #DCE3EC | Bloc de présentation de la page d’accueil |
+| Violet navigation | #6D67C9 | Boutons de navigation de la page d’accueil |
+| Gris bleuté | #919FB3 | Bouton « Enregistrer » |
+| Blanc | #FFFFFF | Texte du bouton « Enregistrer » |
+| Bleu nuit | #1A1F2C | Bouton « Annuler » |
+| Blanc | #FFFFFF | Texte du bouton « Annuler » |
+| Violet connexion | #6A6ED4 | Bouton « Se connecter » (page connexion) |
+
 
 ### 4. Typographie
+
 #### Police principale :
 Playfair Display 
 * Utilisée pour le logo, les titres et les citations.
 * Style : élégant, littéraire, avec empattements.
+
 #### Police secondaire :
 Lato ou Open Sans
 * Utilisée pour les textes courants et interfaces numériques.
 * Style : moderne, lisible, sans empattement.
-### 5. Iconographie et visuels
-* Style : Illustrations douces, textures papier, ambiances chaleureuses.
-* Photographies : Scènes de lecture, échanges, cafés, bibliothèques.
-* Filtres : Tons chauds et naturels, lumière douce.
 
-### 6. Utilisation digitale
-* Boutons : Fond bleu pétrole (#4A6E7E), texte blanc.
-* Liens : Texte ocre doré (#D89A1D), survol en vert sauge (#7BA48A).
-* Fonds : Crème clair (#F7F0E6) pour une lecture confortable.
-### 7. Papeterie et supports
-* Cartes de visite : Logo centré, fond crème, texte bleu pétrole.
-* En-têtes : Logo en haut à gauche, typographie Playfair Display.
-* Présentations : Utiliser la palette principale et des visuels cohérents.
 
-### 8. Interdits
-* Ne pas modifier les couleurs du logo.
-* Ne pas étirer ou déformer le logo.
-* Ne pas ajouter d’effets (ombres, contours, dégradés supplémentaires).
-* Ne pas placer le logo sur un fond trop chargé.
-### 10. Conclusion
+### 5. Conclusion
 La charte graphique de Blablabook reflète une identité à la fois élégante et chaleureuse, liée à
 l’univers du livre et au partage entre les personnes. Elle a pour but d’offrir une expérience visuelle
-agréable et cohérente sur tous les supports.
+agréable sur tous les supports.

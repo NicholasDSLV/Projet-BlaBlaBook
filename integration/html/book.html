@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Livre – BlaBlaBook</title>
+
+    <link rel="icon" type="image/png" href="../img/Favicon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Unicase:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/public/css/reset.css" />
+    <link rel="stylesheet" href="/public/css/variables.css" />
+    <link rel="stylesheet" href="/public/css/base.css" />
+    <link rel="stylesheet" href="/public/css/book.css" />
+  </head>
+
+  <body>
+    <header>
+      <img class="logo" src="/public/img/Logo 2.png" alt="logo de blablabook" style="width:130px; ">
+
+      <nav>
+        <label for="toggle">☰</label>
+        <input type="checkbox" id="toggle" />
+
+        <div class="main_pages">
+          <a href="home.html" class="nav-item">Accueil</a>
+          <a href="library.html" class="nav-item">Bibliothèque</a>
+          <a href="books.html" class="nav-item">Rechercher</a>
+          <a href="login.html" class="nav-item">Connexion</a>
+          <a href="profil.html" class="nav-item">Profil</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="book">
+        <article class="book-card">
+          <div class="isbn-badge">
+            <strong>ISBN:</strong> 2070256626
+          </div>
+
+          <div class="cover">
+            <img
+              class="book-cover"
+              src="/public/img/petit_prince.jpg"
+              alt="Couverture du Petit Prince"
+            />
+          </div>
+
+          <div class="book-details">
+            <h1 class="title">Le petit prince</h1>
+
+            <div class="data">
+              <p><strong>Auteur :</strong> Antoine de Saint-Exupéry</p>
+              <p><strong>Année :</strong> 1943</p>
+              <p><strong>Genre :</strong> Conte philosophique</p>
+            </div>
+
+            <div class="tags">
+              <span class="tag tag-blue">Conte</span>
+              <span class="tag tag-pink">Classique</span>
+            </div>
+
+            <p class="description">
+              <strong>Résumé :</strong><br />
+              L'histoire d'un garçon venu d'une autre planète qui interroge la nature humaine à
+              travers ses rencontres... 
+            </p>
+
+            <div class="actions">
+              <button class="add-btn" type="button">+ Ajouter à ma bibliothèque</button>
+
+              <select class="status-select">
+                <option value="">Status</option>
+                <option>Déjà lu</option>
+                <option>En cours</option>
+                <option>À lire</option>
+              </select>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <a href="legals.html">Mentions légales</a> |
+      <a href="contact.html">Contact</a> | © 2026 BlaBlaBook <br /><em
+        >Développé par la team Nicolas, Yoann et Manu</em
+      >
+    </footer>
+  </body>
+</html>

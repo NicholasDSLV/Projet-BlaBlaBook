@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 – Page introuvable | BlaBlaBook</title>
+
+    <link rel="icon" type="image/png" href="../img/Favicon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Unicase:wght@400;700&display=swap"
+      rel="stylesheet"/>
+      <script src="/integration/js/script.js" defer></script>
+
+
+
+    <link rel="stylesheet" href="/public/css/reset.css" />
+    <link rel="stylesheet" href="/public/css/variables.css" />
+    <link rel="stylesheet" href="/public/css/base.css" />
+    <link rel="stylesheet" href="/public/css/404.css" />
+  </head>
+
+  <body>
+    <header>
+      <img class="logo" src="/public/img/Logo 2.png" alt="logo de blablabook" style="width:130px; ">
+      
+
+      <nav>
+        <label for="toggle">☰</label>
+        <input type="checkbox" id="toggle" />
+
+        <div class="main_pages">
+          <a href="home.html" class="nav-item">Accueil</a>
+          <a href="library.html" class="nav-item">Bibliothèque</a>
+          <a href="books.html" class="nav-item">Rechercher</a>
+          <a href="login.html" class="nav-item">Connexion</a>
+          <a href="profil.html" class="nav-item">Profil</a>
+          <button class="theme-toggle" type="button" id="themeToggle" aria-label="Activer le mode sombre">
+  🌙
+</button>
+        </div>
+      </nav>
+    </header>
+
+    <main class="notfound">
+      <section class="notfound-card">
+        <p class="notfound-code">404</p>
+        <h1 class="notfound-title">Page introuvable</h1>
+        <p class="notfound-text">
+          On dirait que cette page a été rangée sur la mauvaise étagère…
+        </p>
+
+        <div class="notfound-actions">
+          <a class="btn btn-primary" href="home.html">Retour à l’accueil</a>
+          <a class="btn btn-ghost" href="books.html">Rechercher un livre</a>
+        </div>
+
+        <p class="notfound-hint">
+          Si le problème persiste, passe par la page <a href="contact.html">Contact</a>.
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <a href="legals.html">Mentions légales</a> |
+      <a href="contact.html">Contact</a> | © 2026 BlaBlaBook <br /><em
+        >Développé par la team Nicolas, Yoann et Manu</em
+      >
+    </footer>
+  </body>
+</html>
