@@ -124,21 +124,43 @@ class AuthController {
     }
   }
 
-    profile = async (req, res, next) => {
-      try {
-        const userId = req.session.user.id;
-        console.log(userId)
-        const user = await User.findByPk(userId,
-          {
-            attributes: ['id'],
-          }
-          )
-            res.render("pages/profil", {user});
-          } catch (error) {
-			    next(error);
-          }
+  profile = async (req, res, next) => {
+    try {
+      const userId = req.session.user.id;
+      console.log(userId)
+      const user = await User.findByPk(userId,
+        {
+          attributes: ['id'],
+        }
+        )
+          res.render("pages/profil", {user});
+        } catch (error) {
+			  next(error);
+        }
+    }
+  
+  updateUser = async (req, res, next) => {
+    try {
+      const dataJson = req.body;
+      const userId = req.session.user.id;
+      const user = await User.update(
+        {
+          username: dataJson.username,
+          email: dataJson.email,
+          password: dataJson.password
+        },
+        {
+          where: { id: userId},
+        }
+        )
+          res.render("pages/profil", {user});
+        } catch (error) {
+			  next(error);
+        }
     }
   }
+
+
 const myController = new AuthController();
 export default myController;
 

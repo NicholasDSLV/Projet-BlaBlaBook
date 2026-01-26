@@ -53,25 +53,3 @@ genres.forEach(genre => {
 
 //---------fin du selecteur pour le menu déroulant des genres---------------------------------------
 
-// -------------------------DARKMODE---------------------------------- //
-
- const root = document.documentElement;
-  const btn = document.getElementById("themeToggle");
-
-  const saved = localStorage.getItem("theme");
-  if (saved) root.setAttribute("data-theme", saved);
-
-  function updateIcon(){
-    const isDark = root.getAttribute("data-theme") === "dark";
-    btn.textContent = isDark ? "☀️" : "🌙";
-  }
-
-  btn?.addEventListener("click", () => {
-    const current = root.getAttribute("data-theme");
-    const next = current === "dark" ? "light" : "dark";
-    root.setAttribute("data-theme", next);
-    localStorage.setItem("theme", next);
-    updateIcon();
-  });
-
-  updateIcon();

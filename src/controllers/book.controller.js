@@ -1,30 +1,40 @@
-import { User, Book } from "../models/index.js";
+import { Book } from "../models/index.js";
 
 class BookController {
   getAll = async (req, res, next) => {
     try {
-      const { author, category } = req.query;
+      const { search = "", category = "", year = "", author = "" } = req.query;
 
       const where = {};
-      if (author) where.author = author;
-      if (category) where.category = category;
 
-      const colors = {
-        Conte: "tag-blue",
-        Classique: "tag-yellow",
-        Fantasy: "tag-green",
-        "Science-fiction": "tag-purple",
-      };
+      // Recherche exacte par titre ou auteur
+      if (search) {
+        where.title = search;
+      }
 
-      const booksRaw = await Book.findAll({ where });
+      if (author) {
+        where.author = author;
+      }
 
-      const books = booksRaw.map((book) => {
-        const b = book.toJSON(); // Sequelize -> objet JS
-        b.tagClass = colors[b.category] || "tag-blue";
-        return b;
+      // Filtre catégorie
+      if (category) {
+        where.category = category;
+      }
+
+      // Filtre année (exacte)
+      if (year) {
+        where.publication_date = year;
+      }
+
+      const books = await Book.findAll({ where });
+
+      res.render("pages/books", {
+        books,
+        search,
+        category,
+        year,
+        author,
       });
-
-      res.render("pages/books", { books, author, category });
     } catch (error) {
       next(error);
     }
@@ -32,20 +42,7 @@ class BookController {
 
   getById = async (req, res, next) => {
     try {
-      const bookRaw = await Book.findByPk(req.params.id);
-
-      if (!bookRaw) return res.status(404).render("pages/404");
-
-      const colors = {
-        Conte: "tag-blue",
-        Classique: "tag-yellow",
-        Fantasy: "tag-green",
-        "Science-fiction": "tag-purple",
-      };
-
-      const book = bookRaw.toJSON();
-      book.tagClass = colors[book.category] || "tag-blue";
-
+      const book = await Book.findByPk(req.params.id);
       res.render("pages/book", { book });
     } catch (error) {
       next(error);
@@ -54,6 +51,3 @@ class BookController {
 }
 
 export default new BookController();
-
-
-

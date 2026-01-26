@@ -168,7 +168,7 @@
   .books{
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
   }
   .book-card{ width: 48%; }
 }

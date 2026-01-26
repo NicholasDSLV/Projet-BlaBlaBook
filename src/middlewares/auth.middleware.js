@@ -50,6 +50,44 @@ export function validateLoginUser(req, res, next) {
 	
 	// Je ne suis pas rentré dans le IF, le body est valide donc j'appel le middleware suivant
 	next();
+};
+
+export function validateUserUpdate(req, res, next) {
+
+	// Schema du JSON attendu
+	const userSchema = Joi.object({
+		username: Joi.string().alphanum().min(3).max(30),
+		email: Joi.string().email(),
+  		currentPassword: Joi.string().min(20),
+  		newPassword: Joi.string().min(20),
+  		confirmPassword: Joi.string().valid(Joi.ref('newPassword')),
+	})
+
+    	// au moins un champ envoyé
+    	.min(1)
+
+    	// si newPassword → currentPassword obligatoire
+    	.with('newPassword', 'currentPassword')
+
+    	// si newPassword → confirmPassword obligatoire
+    	.with('newPassword', 'confirmPassword');
+
+	const validation = userSchema.validate(req.body)
+
+	if (validation.error) {
+		// ERROR le JSON de la request n'est pas valide !
+		// Erreur => lance une nouvelle erreur, elle sera attrapée par le middleware de gestion des erreurs
+		// Equivalent de : return next(new HttpError(validation.error, 400));
+        req.session.flash = {
+          type: 'error',
+          message: 'Données du formulaire invalides',
+        };
+		// Donnée invalide on est redirigé vers la page profile avec un message temporaire
+		return res.redirect("/auth/profile")
+	}
+	
+	// Je ne suis pas rentré dans le IF, le body est valide donc j'appel le middleware suivant
+	next();
 }
 
 export function loginMiddleware (req, res, next) {
