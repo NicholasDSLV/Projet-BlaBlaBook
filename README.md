@@ -166,7 +166,10 @@ Schema arborescence des routes :
 |DELETE      | /auth/profile    | auth.router    | authController.remove       | Supprimer utilisateur      |
 |PATCH       | /auth/profile    | auth.router    | authController.update       | modifier utilisateur       |
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 578b472c6cf96e00de5a9a7adf05b5f01d83f206
 | Code | Signification                        | Cas typique                              |
 |------|--------------------------------------|------------------------------------------|
 | `200`| OK                                   | Requête réussie (GET, PUT, PATCH)        |
@@ -213,7 +216,11 @@ Responsable de l’organisation du projet, du suivi des sprints et de la coordin
 ![MCD](./conception/BDD/MCD.svg)
 ![MLD](./conception/BDD/MLD.svg)
 ![MPD](./conception/BDD/MPD.svg)
+<<<<<<< HEAD
 ![MPD](./conception/BDD/mpd.dbml)
+=======
+[MPD](./BDD/mpd.dbml)
+>>>>>>> 578b472c6cf96e00de5a9a7adf05b5f01d83f206
 
 Dictionnaire des données
 |Table|	Champ|	Type|	Description|
@@ -277,7 +284,11 @@ Page login / register :
 
 ### 2. Logo
 -----
+<<<<<<< HEAD
 Le logo Blablabook utilise une écriture élégante.
+=======
+Le logo Blablabook utilise une écriture élégante, avec 
+>>>>>>> 578b472c6cf96e00de5a9a7adf05b5f01d83f206
 
 
 
@@ -302,9 +313,19 @@ Le logo Blablabook utilise une écriture élégante.
 Cormorant Unicase 
 * Utilisée pour le logo, les titres et les citations.
 * Style : élégant, littéraire, avec empattements.
+<<<<<<< HEAD
 
 
 
+=======
+
+#### Police secondaire :
+Lato ou Open Sans
+* Utilisée pour les textes courants et interfaces numériques.
+* Style : moderne, lisible, sans empattement.
+
+
+>>>>>>> 578b472c6cf96e00de5a9a7adf05b5f01d83f206
 ### 5. Conclusion
 La charte graphique de Blablabook reflète une identité à la fois élégante et chaleureuse, liée à
 l’univers du livre et au partage entre les personnes. Elle a pour but d’offrir une expérience visuelle

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Livres – BlaBlaBook</title>
+
+  <link rel="icon" type="image/png" href="../img/Favicon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Unicase:wght@400;700&display=swap" rel="stylesheet">
+  <script defer src="/public/js/script.js"></script>
+
+
+  <link rel="stylesheet" href="/public/css/reset.css" />
+  <link rel="stylesheet" href="/public/css/variables.css" />
+  <link rel="stylesheet" href="/public/css/base.css" />
+  <link rel="stylesheet" href="/public/css/books.css" />
+</head>
+
+
+  <body>
+    <header>
+      <img class="logo" src="/public/img/Logo 2.png" alt="logo de blablabook" style="width:130px; ">
+
+      <nav>
+        <label for="toggle">☰</label>
+        <input type="checkbox" id="toggle" />
+
+        <div class="main_pages">
+          <a href="home.html" class="nav-item">Accueil</a>
+          <a href="library.html" class="nav-item">Bibliothèque</a>
+          <a href="books.html" class="nav-item active">Rechercher</a>
+          <a href="login.html" class="nav-item">Connexion</a>
+          <a href="profil.html" class="nav-item">Profil</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="search-box">
+        <h2>Rechercher un livre</h2>
+
+        <input type="text" placeholder="Titre, auteur, ISBN..." />
+
+        <div class="filters">
+          <select id="genreSelect">
+            <option value="">Genre</option>
+          </select>
+
+          <select id="yearSelect">
+            <option value="">Année</option>
+          </select>
+        </div>
+
+        <button>Rechercher</button>
+      </section>
+
+      <section class="books">
+        <div class="book-card">
+          <div class="title">Le petit prince</div>
+          <div class="cover">
+            <img class="book-cover" src="/public/img/petit_prince.jpg" alt="Couverture du livre" />
+          </div>
+
+          <div class="description">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit...
+          </div>
+          <button class="add-btn" aria-label="Ajouter à ma bibliothèque">
+            Ajouter à ma bibliothèque
+          </button>
+        </div>
+
+        <div class="book-card">
+          <div class="title">Titre du livre</div>
+          <div class="cover">
+            <img
+              src="path_to_icon.png"
+              alt=""
+              style="width: 40px; opacity: 0.3"
+            />
+          </div>
+          <div class="description">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit...
+          </div>
+          <button class="add-btn" aria-label="Ajouter à ma bibliothèque">
+            Ajouter à ma bibliothèque
+          </button>
+        </div>
+
+        <div class="book-card">
+          <div class="title">Titre du livre</div>
+          <div class="cover">
+            <img
+              src="path_to_icon.png"
+              alt=""
+              style="width: 40px; opacity: 0.3"
+            />
+          </div>
+          <div class="description">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit...
+          </div>
+          <button class="add-btn" aria-label="Ajouter à ma bibliothèque">
+            Ajouter à ma bibliothèque
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <a href="legals.html">Mentions légales</a> |
+      <a href="contact.html">Contact</a> |
+      © 2026 BlaBlaBook <br /><em>Développé par la team Nicolas, Yoann et Manu</em>
+    </footer>
+  </body>
+</html>
