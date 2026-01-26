@@ -127,8 +127,8 @@ class AuthController {
   profile = async (req, res, next) => {
     try {
       const userId = req.session.user.id;
-      const user = await User.findByPk(userId)
-          res.render("pages/profil", {user});
+      await User.findByPk(userId)
+          res.render("pages/profil");
         } catch (error) {
 			  next(error);
         }
@@ -148,7 +148,7 @@ class AuthController {
           where: { id: userId},
         }
         )
-          res.redirect("pages/profil");
+          res.redirect("/");
         } catch (error) {
 			  next(error);
         }

@@ -23,7 +23,6 @@ class LibraryController {
             return res.redirect('/auth/login');
             }
             res.render('pages/library', { 
-                user, 
                 books: user.books });
             } catch (error) {
 			    next(error);
@@ -50,11 +49,11 @@ class LibraryController {
             // user n'existe pas => redirige vers la page login
                 return res.redirect('/auth/login');
             }
-            const book = await Book.findByPk(req.body.id);
+            const book = await Book.findByPk(req.body.articleId);
             if (!book) {
-                return res.redirect('/library');
+            return res.redirect('/');
             }
-            await user.addBook(req.body.id);
+            await user.addBook(req.body.articleId);
             await user.reload(
                 {
                     include: [
@@ -69,7 +68,6 @@ class LibraryController {
                 }
             );
             res.render('pages/library', { 
-                user, 
                 books: user.books });
             } catch (error) {
 			    next(error);

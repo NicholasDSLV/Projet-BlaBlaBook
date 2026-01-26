@@ -4,7 +4,7 @@ import { validateUser, validateLoginUser, loginMiddleware, validateUserUpdate} f
 
 const router = Router();
 router.get('/auth/register', authController.showRegister);
-router.get('/auth/login', validateUser, authController.showlogin);
+router.get('/auth/login', authController.showlogin);
 router.get('/auth/logout', authController.logout);
 router.get('/auth/profile', loginMiddleware, authController.profile);
 router.patch("/auth/profile", validateUserUpdate, authController.updateUser);
