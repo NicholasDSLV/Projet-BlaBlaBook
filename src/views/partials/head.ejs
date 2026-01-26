@@ -33,16 +33,13 @@
 
     <div class="main_pages">
     <a href="/" class="nav-item ">Accueil</a>
-    <a href="/library" class="nav-item">Bibliothèque</a>
     <a href="/books" class="nav-item">Rechercher</a>
-    <a href="/auth/profile" class="nav-item">Profil</a>
     <% if(locals.user?.isAuthenticated) {%>
+    <a href="/library" class="nav-item">Bibliothèque</a>
+    <a href="/auth/profile " class="nav-item" >Mon profil</a>
     <a href='/auth/logout'class="nav-item active">Se déconnecter</a>
     <%} else {%>
     <a href='/auth/login'class="nav-item">Se connecter</a>
-    <%}%>
-    <% if(locals.user?.username) {%>
-    <a href='/profil'>Mon profil</a>
     <%}%>
     
 

@@ -35,7 +35,7 @@ async function seed() {
     );
     console.log('status:', response.status);
     const result = await response.json();
-     console.log('📚 items:', result.items?.length)
+     console.log(' items:', result.items?.length)
 
     if (result.items){
     for (const item of result.items) {
@@ -90,7 +90,7 @@ async function seed() {
 					throw Error('myBook is null')
 				}
 		}
-        console.log('✅ Seeding complete!');
+        console.log(' Seeding complete!');
 
 	} catch (error) {
 		console.log('Error seeding BDD', error);

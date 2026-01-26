@@ -1,40 +1,30 @@
-import { Book } from "../models/index.js";
+import { User, Book } from "../models/index.js";
 
 class BookController {
   getAll = async (req, res, next) => {
     try {
-      const { search = "", category = "", year = "", author = "" } = req.query;
+      const { author, category } = req.query;
 
       const where = {};
+      if (author) where.author = author;
+      if (category) where.category = category;
 
-      // Recherche exacte par titre ou auteur
-      if (search) {
-        where.title = search;
-      }
+      const colors = {
+        Conte: "tag-blue",
+        Classique: "tag-yellow",
+        Fantasy: "tag-green",
+        "Science-fiction": "tag-purple",
+      };
 
-      if (author) {
-        where.author = author;
-      }
+      const booksRaw = await Book.findAll({ where });
 
-      // Filtre catégorie
-      if (category) {
-        where.category = category;
-      }
-
-      // Filtre année (exacte)
-      if (year) {
-        where.publication_date = year;
-      }
-
-      const books = await Book.findAll({ where });
-
-      res.render("pages/books", {
-        books,
-        search,
-        category,
-        year,
-        author,
+      const books = booksRaw.map((book) => {
+        const b = book.toJSON(); // Sequelize -> objet JS
+        b.tagClass = colors[b.category] || "tag-blue";
+        return b;
       });
+
+      res.render("pages/books", { books, author, category });
     } catch (error) {
       next(error);
     }
@@ -42,7 +32,20 @@ class BookController {
 
   getById = async (req, res, next) => {
     try {
-      const book = await Book.findByPk(req.params.id);
+      const bookRaw = await Book.findByPk(req.params.id);
+
+      if (!bookRaw) return res.status(404).render("pages/404");
+
+      const colors = {
+        conte: "tag-blue",
+        classique: "tag-yellow",
+        fantasy: "tag-green",
+        "Science-fiction": "tag-purple",
+      };
+
+      const book = bookRaw.toJSON();
+      book.tagClass = colors[book.category] || "tag-blue";
+
       res.render("pages/book", { book });
     } catch (error) {
       next(error);
@@ -51,3 +54,6 @@ class BookController {
 }
 
 export default new BookController();
+
+
+

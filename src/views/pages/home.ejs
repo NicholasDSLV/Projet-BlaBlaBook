@@ -12,17 +12,22 @@
 <section class="selection">
     <h2>Notre sélection :</h2>
 
-    <div class="books">
     <% books.forEach(article => { %>
     <article class="book-card">
         <a href="/books/<%= article.id %>"><h1 class="article__title"><%= article.title %></h1></a>
         <a class="cover" href="/books/<%= article.id %>">
         <img src="<%= article.coverUrl %>" alt="image du livre <%= article.title %>"></a>
         <div class="description"><%= ((article.summary || "").slice(0, 150)) %>...</div>
-        <button class="add-btn">+ Ajouter à ma bibliothèque</button>
+        <form action="/library" method="POST">
+            <input type="hidden" name="articleId" value="<%= article.id %>">
+            <button class="add-btn" type="submit">
+                Ajouter à ma bibliothèque
+            </button>
+        </form>
+
     </article>
     <% }) %>
-    </div>
+
 </section>
 </main>
 

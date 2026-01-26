@@ -209,8 +209,6 @@
     display:flex;
   }
 
-  /* La "table" devient des cartes */
-  .article-list__header{ display:none; }
 
   .article{
     grid-template-columns: 84px 1fr;

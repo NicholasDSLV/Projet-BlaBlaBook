@@ -7,7 +7,7 @@ class IndexController {
             books.sort(() => Math.random() - 0.5);          // mélange
             const dailyBooks = books.slice(0, 3);           // garde 3
 
-      res.render("pages/home", { books: dailyBooks }); // on garde "books" pour pas changer ton EJS
+      res.render("pages/home", { books: dailyBooks }); // on garde "books" pour pas changer le EJS
     } catch (error) {
         next(error);
     }};

@@ -94,7 +94,5 @@ export function loginMiddleware (req, res, next) {
   if (req.session?.user?.isAuthenticated) {
     return next();
   }
-  console.log('AUTH KO → redirect');
   res.redirect("/");
-
 };

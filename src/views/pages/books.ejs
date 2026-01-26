@@ -5,31 +5,22 @@
 
     <main class="container">
       <section class="search-box">
-  <h2>Rechercher un livre</h2>
+        <h2>Rechercher un livre</h2>
 
-  <form method="GET" action="/books">
-    <input
-      type="text"
-      name="search"
-      placeholder="Titre, auteur, ISBN..."
-      value="<%= search || '' %>"
-    />
+        <input type="text" placeholder="Titre, auteur, ISBN..." />
 
-    <div class="filters">
-      <select id="genreSelect" name="category">
-        <option value="">Genre</option>
-      </select>
+        <div class="filters">
+          <select id="genreSelect">
+            <option value="">Genre</option>
+          </select>
 
-      <select id="yearSelect" name="year">
-        <option value="">Année</option>
-      </select>
-    </div>
+          <select id="yearSelect">
+            <option value="">Année</option>
+          </select>
+        </div>
 
-    <button type="submit">Rechercher</button>
-  </form>
-</section>
-
-
+        <button>Rechercher</button>
+      </section>
 
       <section class="books">
         <% books.forEach(article => { %>
@@ -41,9 +32,12 @@
             <% const s = article.summary || "" %>
               <%= ((article.summary || "").slice(0, 150)) %>...
           </div>
-          <button class="add-btn" aria-label="Ajouter à ma bibliothèque">
-            Ajouter à ma bibliothèque
-          </button>
+          <form action="/library/add/<%= article.id %>" method="POST">
+            <input type="hidden" name="articleId" value="<%= article.id %>">
+            <button class="add-btn" type="submit">
+                Ajouter à ma bibliothèque
+            </button>
+        </form>
         </div>
         <% }) %>
       </section>

@@ -132,11 +132,10 @@ input:focus, textarea:focus, select:focus{
 .book-card,
 .article-list,
 .search,
-.search-box,
-.books{
+.search-box{
   background: var(--theme-surface);
-  border: 1px solid var(--theme-border);
-  box-shadow: var(--theme-shadow-md);
+  border: 1px solid var(--border);
+  box-shadow: var(--sh-l);
 }
 
 /* ================= BURGER (mobile) ================= */
