@@ -40,7 +40,12 @@
           <option>A lire</option>
         </select>
         <div class="article__actions">
-          <button class="article__button--remove">Retirer</button>
+        <form action="/library" method="POST">
+            <input type="hidden" name="articleId" value="<%= article.id %>">
+            <button class="article__button--remove" type="submit">
+                Retirer
+            </button>
+        </form>
         </div>
       </article>
       <% }) %>

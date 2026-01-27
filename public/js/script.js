@@ -1,17 +1,4 @@
-// pour supprimer un article avec le bouton retirer //
 
-document.addEventListener("click", function (e) {
-  const btn = e.target.closest(".article__button--remove");
-  if (!btn) return;
-
-  console.log("Bouton Retirer cliqué");
-  if (confirm("Retirer ce livre de la bibliothèque ?")) {
-    btn.closest(".article").remove();
-  }
-});
-
-
-// Fin du script pour supprimer un article //
 
 
 //---------selecteur pour le menu déroulant des années---------------------------------------

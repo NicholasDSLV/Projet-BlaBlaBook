@@ -32,7 +32,7 @@
             <% const s = article.summary || "" %>
               <%= ((article.summary || "").slice(0, 150)) %>...
           </div>
-          <form action="/library/add/<%= article.id %>" method="POST">
+          <form action="/library" method="POST">
             <input type="hidden" name="articleId" value="<%= article.id %>">
             <button class="add-btn" type="submit">
                 Ajouter à ma bibliothèque
