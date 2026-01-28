@@ -55,8 +55,8 @@ async function initDatabase() {
     console.log('Database connected');
 
     // ⚠️ TEMPORAIRE : première mise en prod
-    await import('./migrations/01.create-tables.js');
-    await import('./migrations/02.seed-tables.js');
+    await import('./src/migrations/01.create-tables.js');
+    await import('./src/migrations/02.seed-tables.js');
 
     console.log('Database initialized');
   } catch (err) {
