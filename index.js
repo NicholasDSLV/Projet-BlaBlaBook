@@ -47,7 +47,25 @@ app.use(legalsRouter);
 const port = process.env.PORT || 4000;
 const base_url = process.env.BASE_URL || 'http://localhost';
 
-// ⚠️ Ne pas démarrer le serveur pendant les tests
+import sequelize from './models/sequelize.client.js';
+
+async function initDatabase() {
+  try {
+    await sequelize.authenticate();
+    console.log('Database connected');
+
+    // ⚠️ TEMPORAIRE : première mise en prod
+    await import('./migrations/01.create-tables.js');
+    await import('./migrations/02.seed-tables.js');
+
+    console.log('Database initialized');
+  } catch (err) {
+    console.error('Database init failed', err);
+  }
+}
+
+await initDatabase();
+
   app.listen(port, () => {
     console.log(`Blablabook Listening on ${port}`);
   });
