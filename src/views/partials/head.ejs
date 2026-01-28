@@ -18,33 +18,41 @@
     <link rel="stylesheet" href="/css/reset.css" />
     <link rel="stylesheet" href="/css/variables.css" />
     <link rel="stylesheet" href="/css/base.css" />
-    <link rel="stylesheet" href="/css/404.css" />
-    <link rel="stylesheet" href="/css/home.css" />
-    <link rel="stylesheet" href="/css/book.css" />
-    <link rel="stylesheet" href="/css/books.css" />
-    <link rel="stylesheet" href="/css/library.css" />
-    <link rel="stylesheet" href="/css/register.css" />
-    <link rel="stylesheet" href="/css/profil.css" />
-    <link rel="stylesheet" href="/css/login.css" />
-    <link rel="stylesheet" href="/css/legals.css" />
-    <link rel="stylesheet" href="/css/contact.css" />
+
 
 </head>
 
 <body>
     <header>
-    <img class="logo" src="../img/Logo 2.png" alt="logo de blablabook" style="width:130px; ">
+      
+      <img class="logo" src="../img/Logo 2.png" alt="logo de blablabook" style="width:130px; ">
+        <% if(locals.user?.isAuthenticated) { %>
+          <div class="welcome-container">
+            <p class="welcome-message">
+              Bienvenue <%= user.username %>
+            </p>
+          </div>
+        <% } %>
+      <nav>
+        <label for="toggle">☰</label>
+        <input type="checkbox" id="toggle">
 
-    <nav>
-    <label for="toggle">☰</label>
-    <input type="checkbox" id="toggle">
-
-    <div class="main_pages">
-    <a href="/" class="nav-item ">Accueil</a>
-    <a href="/library" class="nav-item">Bibliothèque</a>
-    <a href="/books" class="nav-item">Rechercher</a>
-    <a href="/auth/login" class="nav-item">Connexion</a>
-    <a href="/profil" class="nav-item">Profil</a>
-    </div>
-</nav>
+        <div class="main_pages">
+          <a href="/" class="nav-item ">Accueil</a>
+          <a href="/books" class="nav-item">Rechercher</a>
+          <% if(locals.user?.isAuthenticated) { %>
+          <a href="/library" class="nav-item">Bibliothèque</a>
+          <a href="/auth/profile" class="nav-item" >Mon profil</a>
+          <a href='/auth/logout'class="nav-item active">Se déconnecter</a>
+          <% } else { %>
+          <a href='/auth/login'class="nav-item">Se connecter</a>
+          <% } %>
+        </div>
+      </nav>
+      
     </header>
+            <% if (flash) { %>
+          <div id="flash" class="flash flash--<%= flash.type %>">
+            <%= flash.message %>
+          </div>
+        <% } %>

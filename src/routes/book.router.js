@@ -6,5 +6,4 @@ router.get('/books', bookController.getAll);
 router.get('/books/:id', bookController.getById);
 
 
-
 export default router;

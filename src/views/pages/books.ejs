@@ -1,43 +1,52 @@
 <%- include('../partials/head') %>
 
 
+    <link rel="stylesheet" href="/css/books.css" />
 
     <main class="container">
       <section class="search-box">
-        <h2>Rechercher un livre</h2>
+  <h2>Rechercher un livre</h2>
 
-        <input type="text" placeholder="Titre, auteur, ISBN..." />
+  <form method="GET" action="/books">
+    <input 
+      type="search" 
+      name="search" 
+      placeholder="Titre, auteur, ISBN..." 
+      value="<%= locals.searchQuery || '' %>"
+    />
 
-        <div class="filters">
-          <select id="genreSelect">
-            <option value="">Genre</option>
-          </select>
+    <div class="filters">
+      <select id="genreSelect">
+        <option value="">Genre</option>
+      </select>
 
-          <select id="yearSelect">
-            <option value="">Année</option>
-          </select>
-        </div>
+      <select id="yearSelect">
+        <option value="">Année</option>
+      </select>
+    </div>
 
-        <button>Rechercher</button>
-      </section>
-
+    <button type="submit">Rechercher</button>
+  </form>
+</section>
+ 
       <section class="books">
         <% books.forEach(article => { %>
         <div class="book-card">
-          <div class="title"><%= article.title %></div>
-          <div class="cover">
-            <img
-              src="<%= article.coverUrl %>"
-              alt="<%= article.title %>"
-            />
-          </div>
+          <a href="/books/<%= article.id %>"><h1 class="article__title"><%= article.title %></h1></a>
+          <a class="cover" href="/books/<%= article.id %>">
+        <img src="<%= article.coverUrl %>" alt="image du livre <%= article.title %>"></a>
           <div class="description">
             <% const s = article.summary || "" %>
               <%= ((article.summary || "").slice(0, 150)) %>...
           </div>
-          <button class="add-btn" aria-label="Ajouter à ma bibliothèque">
-            Ajouter à ma bibliothèque
-          </button>
+          <form action="/library/add" method="POST">
+            <input type="hidden" name="articleId" value="<%= article.id %>">
+            <% if(locals.user?.isAuthenticated) { %>
+            <button class="add-btn" type="submit">
+                Ajouter à ma bibliothèque
+            </button>
+            <% } %>
+        </form>
         </div>
         <% }) %>
       </section>

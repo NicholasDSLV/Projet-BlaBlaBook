@@ -1,7 +1,8 @@
 <%- include('../partials/head') %>
 
 
-
+  <link rel="stylesheet" href="/css/library.css" />
+  
   <main class="page">
     <section class="search">
       <form class="search__form" method="GET" action="/books">
@@ -12,7 +13,7 @@
           type="search"
           name="search"
           placeholder="Rechercher un livre..."
-          value=""
+          value="<%= locals.searchQuery || '' %>"
         >
         <button class="search__button" type="submit">Rechercher</button>
       </form>
@@ -39,7 +40,12 @@
           <option>A lire</option>
         </select>
         <div class="article__actions">
-          <button class="article__button--remove">Retirer</button>
+        <form action="/library/remove" method="POST">
+            <input type="hidden" name="articleId" value="<%= article.id %>">
+            <button class="article__button--remove" type="submit">
+                Retirer
+            </button>
+        </form>
         </div>
       </article>
       <% }) %>

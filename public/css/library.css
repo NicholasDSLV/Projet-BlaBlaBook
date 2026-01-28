@@ -14,7 +14,7 @@
   background:#fff;
   border-radius: 16px;
   padding: 14px;
-  box-shadow: 0 12px 26px rgba(15,23,42);
+  box-shadow: var(--sh-l);
   border: 1px solid rgba(230,235,245,0.9);
 }
 
@@ -24,7 +24,8 @@
   align-items:center;
 }
 
-.search-box input{
+.search__input{
+  flex:1;
   width:100%;
   padding: 12px 15px;
   border-radius: 12px;
@@ -56,7 +57,7 @@
   backdrop-filter: blur(10px);
   border-radius: 16px;
   border: 1px solid rgba(230,235,245,0.9);
-  box-shadow: 0 10px 26px rgba(0,0,0,0.06);
+  box-shadow: var(--sh-m);
   overflow: hidden;
 }
 
@@ -67,7 +68,7 @@
   align-items: center;
   padding: 14px 18px;
   background: linear-gradient(135deg, rgba(102,126,234,0.10), rgba(118,75,162,0.10));
-  border-bottom: 1px solid rgba(230,235,245,0.9);
+  border-bottom: 1px solid rgba(245, 230, 230, 0.9);
   color:#475569;
   font-weight: 800;
   font-size: 14px;
@@ -86,7 +87,8 @@
   gap: 12px;
   align-items:center;
   padding: 14px 18px;
-  border-bottom: 1px solid rgba(230,235,245,0.9);
+  border: 1px solid rgba(152, 126, 255, 0.603);
+  border-radius: var(--r-l);
   transition: background .6s ease, transform .6s ease;
 }
 
@@ -94,22 +96,16 @@
 
 .article:hover{
   background: rgba(102,126,234,0.05);
-  transform: translateY(-2px);
-  transition: .2s ease;
 }
 
 .article__cover{
-  width: 100%;
-  aspect-ratio: 3 / 4;
-display: block;        /* important pour garder le cadre */
-  text-decoration: none; /* enlève soulignement */
-  color: inherit;
-  border-radius: var(--r-xl);
-  overflow: hidden;
-
-  background: #e8edf5;
-  border: 1px solid rgba(148,163,184,0.50);
-  box-shadow: 0 12px 26px rgba(15,23,42,0.14);;
+  width: 64px;
+  height: 86px;
+  border-radius: 10px;
+  object-fit: cover;
+  background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+  border: 1px solid rgba(148,163,184,0.35);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
 }
 
 .article__title{
@@ -149,12 +145,12 @@ display: block;        /* important pour garder le cadre */
 /* =================  BUTTON ================= */
 .article__actions{
   display:flex;
-  justify-content:flex-start;
+  justify-content:center;
 }
 
 .article__button--remove{
-  height: 42px;
-  width: 100%;
+  height: 50px;
+  width: 150%;
   border-radius: 12px;
   border: 1px solid rgba(239,68,68,0.25);
   background: rgba(239,68,68,0.10);
@@ -214,8 +210,6 @@ display: block;        /* important pour garder le cadre */
     display:flex;
   }
 
-  /* La "table" devient des cartes */
-  .article-list__header{ display:none; }
 
   .article{
     grid-template-columns: 84px 1fr;

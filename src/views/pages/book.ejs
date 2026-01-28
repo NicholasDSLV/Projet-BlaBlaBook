@@ -1,6 +1,7 @@
 <%- include('../partials/head') %>
 
 
+    <link rel="stylesheet" href="/css/book.css" />
 
 <main class="container">
       <section class="book">
@@ -20,16 +21,32 @@
           <div class="book-details">
             <h1 class="title"><%= book.title %></h1>
 
-            <div class="data">
-              <p><strong>Auteur :</strong> <a class="book__author" href="/books?author=<%=book.author %>"><%= book.author %></p></a>
-              <p><strong>Date de publication :</strong> <%= book.publication_date.toLocaleDateString('fr-FR') %></p>
-              <p><strong>Genre :</strong> <%= book.category %></p>
-            </div>
+          <div class="data">
 
-            <div class="tags">
-              <span class="tag tag-blue">Conte</span>
-              <span class="tag tag-pink">Classique</span>
-            </div>
+  <p>
+    <strong>Auteur :</strong>
+    <a class="book__author" href="/books?author=<%= encodeURIComponent(book.author) %>">
+      <%= book.author %>
+    </a>
+  </p>
+
+  <p>
+    <strong>Date de publication :</strong>
+    <%= book.publication_date.toLocaleDateString("fr-FR") %>
+  </p>
+
+  <p>
+    <strong>Genre :</strong>
+    <a
+      href="/books?category=<%= encodeURIComponent(book.category) %>"
+      class="tag <%= book.tagClass %>"
+    >
+      <%= book.category %>
+    </a>
+  </p>
+
+</div>
+
 
             <p class="description">
               <strong>Résumé :</strong><br />
@@ -37,7 +54,14 @@
             </p>
 
             <div class="actions">
-              <button class="add-btn" type="button">+ Ajouter à ma bibliothèque</button>
+            <form action="/library/add" method="POST">
+            <input type="hidden" name="articleId" value="<%= book.id %>">
+            <% if(locals.user?.isAuthenticated) { %>
+            <button class="add-btn" type="submit">
+                Ajouter à ma bibliothèque
+            </button>
+            <% } %>
+        </form>
 
               <select class="status-select">
                 <option value="">Status</option>

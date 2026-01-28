@@ -1,38 +1,25 @@
-// pour supprimer un article avec le bouton retirer //
+console.log("script.js chargé");
 
-document.addEventListener("click", function (e) {
-  const btn = e.target.closest(".article__button--remove");
-  if (!btn) return;
-
-  console.log("Bouton Retirer cliqué");
-  if (confirm("Retirer ce livre de la bibliothèque ?")) {
-    btn.closest(".article").remove();
-  }
-});
-
-
-// Fin du script pour supprimer un article //
-
-
-//---------selecteur pour le menu déroulant des années---------------------------------------
+// --------- Années ---------
 const yearSelect = document.getElementById("yearSelect");
 
-// Définir l'année de début et l'année actuelle
-const currentYear = new Date().getFullYear();
-const startYear = 1900; // par exemple, ou ce que tu veux comme début
+if (yearSelect) {
+  const currentYear = new Date().getFullYear();
+  const startYear = 1900;
 
-// Boucler de l'année de début jusqu'à l'année actuelle
-for (let year = currentYear; year >= startYear; year--) {
+  for (let year = currentYear; year >= startYear; year--) {
     const option = document.createElement("option");
-    option.value = year;
-    option.textContent = year;
+    option.value = String(year);
+    option.textContent = String(year);
     yearSelect.appendChild(option);
+  }
 }
 
+// --------- Genres ---------
+const genreSelect = document.getElementById("genreSelect");
 
-//---------selecteur pour le menu déroulant des genres---------------------------------------
-
-const genres = [
+if (genreSelect) {
+  const genres = [
     "Roman", "Roman policier", "Thriller", "Science-fiction",
     "Fantasy", "Fantastique", "Horreur", "Aventure",
     "Historique", "Biographie", "Autobiographie", "Essai",
@@ -41,17 +28,49 @@ const genres = [
     "Documentaire", "Science", "Politique", "Économie",
     "Histoire", "Art", "Musique", "Cuisine", "Voyage",
     "Religion / Spiritualité"
-];
+  ];
 
-const select = document.getElementById("genreSelect");
-
-genres.forEach(genre => {
+  genres.forEach((genre) => {
     const option = document.createElement("option");
+    option.value = genre;          // important si tu veux récupérer la valeur
     option.textContent = genre;
-    select.appendChild(option);
-});
+    genreSelect.appendChild(option);
+  });
+}
 
-//---------fin du selecteur pour le menu déroulant des genres---------------------------------------
+// --------- Flash message ---------
+const flash = document.getElementById("flash");
 
-// pour ajouter un livre à la bibliothèque //
+if (flash) {
+  setTimeout(() => {
+    flash.classList.add("hide");
+    setTimeout(() => flash.remove(), 500);
+  }, 4000);
+}
+
+// --------- Confettis ---------
+
+
+const flashSuccess = document.querySelector("#flash.flash--success");
+
+if (flashSuccess) {
+
+  for (let i = 0; i < 50; i++) {
+    const confetti = document.createElement("span");
+    confetti.classList.add("confetti");
+
+    confetti.style.setProperty("--x", Math.random());
+    confetti.style.setProperty("--y", Math.random());
+    confetti.style.background = randomColor();
+
+    flashSuccess.appendChild(confetti);
+    setTimeout(() => confetti.remove(), 2500);
+  }
+
+}
+
+function randomColor(){
+  const colors = ["#667EEA", "#764BA2", "#22c55e", "#facc15", "#ec4899"];
+  return colors[Math.floor(Math.random() * colors.length)];
+}
 
