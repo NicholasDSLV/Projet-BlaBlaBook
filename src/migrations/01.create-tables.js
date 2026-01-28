@@ -13,10 +13,7 @@ async function run() {
 
 	} catch (error) {
 		console.log('Error sync BDD', error);
-	} finally {
-		// Ferme la connexion à la BDD
-		await sequelize.close();
-	}
+	} 
 
 }
 
