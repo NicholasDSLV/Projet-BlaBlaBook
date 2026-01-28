@@ -118,7 +118,7 @@ class LibraryController {
       await user.removeBook(req.body.articleId);
 
       req.session.flash = {
-        type: "error",
+        type: "success",
         message: "Livre supprimé de la bibliothèque",
       };
 

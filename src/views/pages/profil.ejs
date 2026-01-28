@@ -5,11 +5,7 @@
 
 <main class="profil-container">
 <section class="profil-box">
-        <% if (flash) { %>
-        <div class="flash flash--<%= flash.type %>">
-        <%= flash.message %>
-        </div>
-        <% } %>
+        
     <h2>Modifier les informations personnelles</h2>
 
     <form class="profil-form" method="POST" action="/auth/profile">
