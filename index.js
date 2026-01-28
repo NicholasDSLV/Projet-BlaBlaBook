@@ -47,7 +47,7 @@ app.use(legalsRouter);
 const port = process.env.PORT || 4000;
 const base_url = process.env.BASE_URL || 'http://localhost';
 
-import sequelize from './models/sequelize.client.js';
+import sequelize from './src/models/sequelize.client.js';
 
 async function initDatabase() {
   try {
