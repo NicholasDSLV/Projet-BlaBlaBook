@@ -11,6 +11,14 @@ import 'dotenv/config';
 
 // On récupère la string DATABASE_URL écrite dans le .env
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
+
+	dialect: 'postgres',
+  	dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  },
 	// define configure le comportement par défaut de Sequelize
 	define: {
 		// Une convention pour que Sequelize ne mette pas les noms de table au pluriel
