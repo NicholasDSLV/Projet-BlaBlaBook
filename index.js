@@ -44,7 +44,7 @@ app.use(bookRouter);
 app.use(contactRouter);
 app.use(legalsRouter);
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 const base_url = process.env.BASE_URL || 'http://localhost';
 
 // ⚠️ Ne pas démarrer le serveur pendant les tests
