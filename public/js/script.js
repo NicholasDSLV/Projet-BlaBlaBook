@@ -40,3 +40,11 @@ genres.forEach(genre => {
 
 //---------fin du selecteur pour le menu déroulant des genres---------------------------------------
 
+//---------suppression des messages flash---------------------------------------
+
+  setTimeout(() => {
+    const flash = document.querySelector(".flash");
+    if(flash) flash.remove();
+  }, 4000);
+
+//---------fin de la suppression des messages flash---------------------------------------

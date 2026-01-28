@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="/css/home.css" />
 
 <main class="container">
+    
 <section class="blablabook">
     <h1 class="blablabook-title">BLABLABOOK</h1>
     <p class="blablabook-subtitle">à la découverte des livres</p>
@@ -18,7 +19,7 @@
         <a class="cover" href="/books/<%= article.id %>">
         <img src="<%= article.coverUrl %>" alt="image du livre <%= article.title %>"></a>
         <div class="description"><%= ((article.summary || "").slice(0, 150)) %>...</div>
-        <form action="/library" method="POST">
+        <form action="/library/add" method="POST">
             <input type="hidden" name="articleId" value="<%= article.id %>">
             <button class="add-btn" type="submit">
                 Ajouter à ma bibliothèque
@@ -32,3 +33,5 @@
 </main>
 
 <%- include('../partials/foot') %>
+
+        

@@ -45,11 +45,23 @@ class LibraryController {
         // user n'existe pas => redirige vers la page login
         return res.redirect("/auth/login");
       }
-      const book = await Book.findByPk(req.body.articleId);
+      // sans Number devant (req.body.articleId) c'est une string donc l'ajouter sinon .some() échoue
+      const bookId = Number(req.body.articleId) // string
+      const book = await Book.findByPk(bookId);
       if (!book) {
         return res.redirect("/");
       }
-      await user.addBook(req.body.articleId);
+      const alreadyInLibrary = user.books.some(
+        (book) => book.id === bookId  // number === string => false du coup ça bug (rajouter Number devant req.body.articleId)
+      );                              // 3 === "3" --> false, donc alreadyInlibrary reste faux
+      if (alreadyInLibrary){
+        req.session.flash = {
+        type: 'info',
+        message: 'Ce livre est déjà dans votre bibliothèque',
+        };
+        return res.redirect('/library')
+      }
+      await user.addBook(bookId);
       await user.reload({
         include: [
           {
@@ -61,9 +73,13 @@ class LibraryController {
           },
         ],
       });
-      res.render("pages/library", {
-        books: user.books,
-      });
+
+      req.session.flash = {
+        type: "success",
+        message: "Livre ajouté à la bibliothèque",
+      };
+
+      res.redirect("/library");
     } catch (error) {
       next(error);
     }
@@ -97,7 +113,14 @@ class LibraryController {
       }
 
       // Supprime le book de la bibliothèque de livre
-      await user.removeTag(req.body.articleId);
+      await user.removeBook(req.body.articleId);
+
+      req.session.flash = {
+        type: "error",
+        message: "Livre supprimé de la bibliothèque",
+      };
+
+      return res.redirect("/library");
 
       // "Refresh" de user pour récupérer le user avec tous ses books
       await user.reload({
@@ -112,9 +135,7 @@ class LibraryController {
         ],
       });
 
-      res.render("pages/library", {
-        books: user.books,
-      });
+      res.redirect("/library");
     } catch (error) {
       next(error);
     }

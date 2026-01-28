@@ -2,7 +2,7 @@
 
 
   <link rel="stylesheet" href="/css/library.css" />
-
+  
   <main class="page">
     <section class="search">
       <form class="search__form" method="GET" action="/books">
@@ -40,7 +40,7 @@
           <option>A lire</option>
         </select>
         <div class="article__actions">
-        <form action="/library" method="POST">
+        <form action="/library/remove" method="POST">
             <input type="hidden" name="articleId" value="<%= article.id %>">
             <button class="article__button--remove" type="submit">
                 Retirer

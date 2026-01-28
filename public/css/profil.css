@@ -15,7 +15,7 @@
   background:#fff;
   border-radius: 20px;
   padding: 34px;
-  box-shadow: 0 10px 26px rgba(106, 90, 205, 0.22);
+  box-shadow: var(--sh-m)
 }
 
 .profil-box h2{
@@ -65,9 +65,9 @@
 .danger-zone{
   border-radius: 20px;
   padding: 26px;
-  background: rgba(17,24,39,0.35);
+  background: rgba(126, 5, 5, 0.718);
   color: #fff;
-  box-shadow: 0 10px 26px rgba(15,23,42,0.18);
+  box-shadow: 3px 10px 26px rgb(222, 4, 7);
 }
 
 .danger-zone h3{
