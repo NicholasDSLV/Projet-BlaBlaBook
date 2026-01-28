@@ -106,6 +106,7 @@ class AuthController {
       // 4. Créer la session
       req.session.user = {
         id: userFromBDD.id,
+        username: userFromBDD.username,
         email: userFromBDD.email,
         isAuthenticated: true,
       };

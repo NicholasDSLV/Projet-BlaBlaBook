@@ -4,9 +4,9 @@
 Présentation du projet
 ----
 Le projet BlaBlaBook est une application web dédiée à la gestion d’une bibliothèque personnelle. Il s’inscrit dans un cadre pédagogique et a pour objectif de valider le TP du titre Développeur Web et Web Mobile (DWWM).
-Ce projet est porté par une association fictive de passionnés de lecture, souhaitant mettre à disposition un outil simple et efficace pour organiser, suivre et enrichir une collection de livres. L’application s’adresse à tous les profils de lecteurs, qu’ils soient occasionnels ou lecteurs confirmés, désireux de gérer leur bibliothèque de manière centralisée.
+Ce projet est porté par 3 etudiants DWWM , souhaitant mettre à disposition un outil simple et efficace pour organiser, suivre et enrichir une collection de livres. L’application s’adresse à tous les profils de lecteurs, qu’ils soient occasionnels ou lecteurs confirmés, désireux de gérer leur bibliothèque de manière centralisée.
 L’objectif principal de BlaBlaBook est de permettre aux utilisateurs de référencer leurs livres, de suivre leurs lectures et de mieux organiser leur collection personnelle, tout en proposant une expérience utilisateur accessible et intuitive.
-Le développement de l’application est réalisé en équipe, en suivant une méthodologie agile basée sur des sprints. Le suivi de l’avancement, la répartition des tâches et la collaboration sont assurés à l’aide des outils proposés par GitHub, notamment via les GitHub Projects.
+Le développement de l’application est réalisé en équipe, en suivant une méthodologie agile basée sur des sprints. Le suivi de l’avancement, la répartition des tâches et la collaboration sont assurés à l’aide des outils proposés par GitHub.
 
 Besoins & objectifs
 --
@@ -14,7 +14,7 @@ De nombreux lecteurs rencontrent des difficultés pour organiser et suivre leur 
 
 Le projet BlaBlaBook a pour objectif de proposer une application web simple et accessible, permettant à chaque utilisateur de gérer sa bibliothèque personnelle. L’application offrira la possibilité d’ajouter des livres, de suivre leur état de lecture et de retirer des ouvrages de sa collection si nécessaire.
 
-BlaBlaBook mettra également l’accent sur la découverte de nouveaux livres grâce à des fonctionnalités de recherche, ainsi qu’à une option de sélection aléatoire mettant en avant un « livre du jour ». Cette approche vise à encourager la curiosité et à renouveler l’intérêt pour la lecture.
+BlaBlaBook mettra également l’accent sur la découverte de nouveaux livres grâce à des fonctionnalités de recherche, ainsi qu’à une option de sélection aléatoire mettant en avant une sélection de « livre du jour ». Cette approche vise à encourager la curiosité et à renouveler l’intérêt pour la lecture.
 
 À terme, le projet pourra évoluer vers des fonctionnalités plus sociales, telles que le partage d’avis et de notes, afin de créer davantage d’interactions entre les lecteurs.
 
@@ -27,13 +27,13 @@ BlaBlaBook mettra également l’accent sur la découverte de nouveaux livres gr
 
 * Inscription : L’utilisateur peut créer un compte avec email + mot de passe.
 
-* Connexion / Déconnexion : Accès sécurisé à son espace personnel via JWT.
+* Connexion / Déconnexion : Accès sécurisé à son espace personnel via Express-session.
 
-* Profil basique : L’utilisateur peut voir son nom et sa bibliothèque personnelle.
+* Profil basique : L’utilisateur peut voir son nom et sa bibliothèque personnelle ainsi que la modifier (ajouter ou supprimer des livres).
 
 ### Gestion de bibliothèque
 
-* Ajouter un livre : L’utilisateur peut ajouter un livre à sa bibliothèque (lu ou à lire).
+* Ajouter un livre : L’utilisateur peut ajouter un livre à sa bibliothèque (lu à lire en cour de lecture).
 
 * Supprimer un livre : Retirer un livre de sa bibliothèque personnelle.
 
@@ -43,17 +43,17 @@ BlaBlaBook mettra également l’accent sur la découverte de nouveaux livres gr
 
 * Voir les détails d’un livre : Titre, auteur, description, couverture (image).
 
-* Rechercher un livre : Par titre ou auteur.
+* Rechercher un livre : Par titre, auteur ou ISBN.
 
 * Liste aléatoire sur la page d’accueil : Affiche quelques livres .
 
 ### Back-end / API
 
-* CRUD Livres : GET (liste et détails), POST (ajout), PATCH (modification), DELETE (suppression) via Express + Sequelize.
+* CRUD Livres : GET (liste et détails), POST (ajout, modification et suppression) via Express  + EJS + Sequelize.
 
 * CRUD Users : Gestion basique des utilisateurs pour inscription et connexion.
 
-* Authentification JWT : Protection des routes sensibles.
+* Authentification Express-Session : Protection des routes sensibles.
 
 ## Front-end
 
@@ -99,7 +99,7 @@ Base de données : PostgreSQL avec Sequelize ORM ==> PostgreSQL est une base rel
 
 Front-end : EJS ==> EJS permet de générer des pages HTML dynamiques côté serveur simplement, en intégrant facilement les données de l’API Express. Cela facilite le développement du MVP sans complexité SPA, tout en gardant une bonne cohérence avec NodeJS/Express et PostgreSQL.  
 
-Authentification : JWT (Json Web Token) ==> Permet une gestion sécurisée des sessions sans stocker les informations sensibles côté client.
+Authentification : Express-Session ==> Permet une gestion sécurisée des sessions le middleware express-session stocke les données de session sur le serveur il ne sauvegarde que l'ID session dans le cookie lui-même, mais pas les données de session.
 
 Appels API : CRUD livres, users ==> Assure la séparation front/back, la sécurité des données et la possibilité d’évoluer facilement vers d’autres clients (mobile, etc.).
 
@@ -108,7 +108,6 @@ Sécurité : Hash mot de passe (argon2), protection XSS, validation inputs ==> G
 Responsive / Mobile first : Oui ==> Permet une utilisation sur tous types d’écrans et appareils, en suivant les bonnes pratiques .
 
 Accessibilité : WCAG = W3C  Assure que l’application est utilisable par tous, y compris les personnes en situation de handicap (navigation clavier, contraste, lisibilité).
-
 
 SEO : tags meta, urls friendly, titre , Attribut ALT des images ==> Optimise le référencement , facilite la lecture par les moteurs de recherche et améliore la visibilité du site, notamment pour les personnes atteintent de handicap.
 
@@ -147,15 +146,15 @@ Schema arborescence des routes :
 
 | Verbe HTTP | URL          | Nom du routeur | Contrôleur & méthode        | Modèle & méthodes |Description|
 |------------|--------------|----------------|-----------------------------|-------------------|-----------|
-| GET        | /book       | book.router    | bookController.getAll       | Book.findAll      | Lister tous les livres|
-| GET        | /book/:id   | book.router    | bookController.getById      | Book.findByPk     | Trouver un livre par id|
+| GET        | /books        | book.router    | bookController.getAll       | Book.findAll      | Lister tous les livres|
+| GET        | /books/:id    | book.router    | bookController.getById      | Book.findByPk     | Trouver un livre par id|
 
 | Verbe HTTP | URL                 | Nom du routeur   | Contrôleur & méthode          | Modèle & méthodes |Description|
 |------------|---------------------|------------------|-------------------------------|-------------------|-----------|
 | GET        | /library            | library.router   | libraryController.getAll      | Library.findAll   | Acceder à la bibliothèque d'un utilisateur connecté|
 | POST       | /library            | library.router   | libraryController.create      | Library.create   | Ajouter un livre à la bibliothèque d'un utilisateur connecté|
-| PATCH      | /library/:id    | library.router   | libraryController.update      | Library.update   | Modifier le status d'un livre dans la bibliothèque de l'utilisateur connecté|
-| DELETE     | /library/:id    | library.router   | libraryController.remove      | Library.delete   | Retirer un livre de le bibliothèque de l'utilisateur connecté|
+| POST      | /library/add         | library.router   | libraryController.update      | Library.update   | Modifier le status d'un livre dans la bibliothèque de l'utilisateur connecté|
+| POST     | /library/remove       | library.router   | libraryController.remove       | Library.delete   | Retirer un livre de le bibliothèque de l'utilisateur connecté|
 
 | Verbe HTTP | URL             | Nom du routeur | Contrôleur & méthode        | Description                |
 |------------|------------------|----------------|-----------------------------|----------------------------|
@@ -163,13 +162,9 @@ Schema arborescence des routes :
 | POST       | /auth/login      | auth.router    | authController.login        | Connexion utilisateur      |
 | POST       | /auth/logout     | auth.router    | authController.logout       | Déconnexion utilisateur    |
 | GET        | /auth/profile    | auth.router    | authController.profile      | Profil utilisateur connecté|
-|DELETE      | /auth/profile    | auth.router    | authController.remove       | Supprimer utilisateur      |
-|PATCH       | /auth/profile    | auth.router    | authController.update       | modifier utilisateur       |
+ |POST        | /auth/profile    | auth.router    | authController.remove       | Supprimer utilisateur      |
+ POST         | /auth/profile    | auth.router    | authController.update       | modifier utilisateur       |
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 578b472c6cf96e00de5a9a7adf05b5f01d83f206
 | Code | Signification                        | Cas typique                              |
 |------|--------------------------------------|------------------------------------------|
 | `200`| OK                                   | Requête réussie (GET, PUT, PATCH)        |
@@ -216,11 +211,8 @@ Responsable de l’organisation du projet, du suivi des sprints et de la coordin
 ![MCD](./conception/BDD/MCD.svg)
 ![MLD](./conception/BDD/MLD.svg)
 ![MPD](./conception/BDD/MPD.svg)
-<<<<<<< HEAD
 ![MPD](./conception/BDD/mpd.dbml)
-=======
-[MPD](./BDD/mpd.dbml)
->>>>>>> 578b472c6cf96e00de5a9a7adf05b5f01d83f206
+![MPD](./BDD/mpd.dbml)
 
 Dictionnaire des données
 |Table|	Champ|	Type|	Description|
@@ -284,11 +276,7 @@ Page login / register :
 
 ### 2. Logo
 -----
-<<<<<<< HEAD
 Le logo Blablabook utilise une écriture élégante.
-=======
-Le logo Blablabook utilise une écriture élégante, avec 
->>>>>>> 578b472c6cf96e00de5a9a7adf05b5f01d83f206
 
 
 
@@ -312,20 +300,7 @@ Le logo Blablabook utilise une écriture élégante, avec
 #### Police principale :
 Cormorant Unicase 
 * Utilisée pour le logo, les titres et les citations.
-* Style : élégant, littéraire, avec empattements.
-<<<<<<< HEAD
-
-
-
-=======
-
-#### Police secondaire :
-Lato ou Open Sans
-* Utilisée pour les textes courants et interfaces numériques.
-* Style : moderne, lisible, sans empattement.
-
-
->>>>>>> 578b472c6cf96e00de5a9a7adf05b5f01d83f206
+* Style : élégant, littéraire.
 ### 5. Conclusion
 La charte graphique de Blablabook reflète une identité à la fois élégante et chaleureuse, liée à
 l’univers du livre et au partage entre les personnes. Elle a pour but d’offrir une expérience visuelle

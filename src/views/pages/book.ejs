@@ -56,9 +56,11 @@
             <div class="actions">
             <form action="/library/add" method="POST">
             <input type="hidden" name="articleId" value="<%= book.id %>">
+            <% if(locals.user?.isAuthenticated) { %>
             <button class="add-btn" type="submit">
                 Ajouter à ma bibliothèque
             </button>
+            <% } %>
         </form>
 
               <select class="status-select">

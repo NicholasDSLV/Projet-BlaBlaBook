@@ -13,7 +13,7 @@
           type="search"
           name="search"
           placeholder="Rechercher un livre..."
-          value=""
+          value="<%= locals.searchQuery || '' %>"
         >
         <button class="search__button" type="submit">Rechercher</button>
       </form>

@@ -26,7 +26,13 @@
     <header>
       
       <img class="logo" src="../img/Logo 2.png" alt="logo de blablabook" style="width:130px; ">
-
+        <% if(locals.user?.isAuthenticated) { %>
+          <div class="welcome-container">
+            <p class="welcome-message">
+              Bienvenue <%= user.username %>
+            </p>
+          </div>
+        <% } %>
       <nav>
         <label for="toggle">☰</label>
         <input type="checkbox" id="toggle">
@@ -45,8 +51,8 @@
       </nav>
       
     </header>
-    <% if (flash) { %>
-          <div class="flash flash--<%= flash.type %>">
-          <%= flash.message %>
+            <% if (flash) { %>
+          <div id="flash" class="flash flash--<%= flash.type %>">
+            <%= flash.message %>
           </div>
-          <% } %>
+        <% } %>

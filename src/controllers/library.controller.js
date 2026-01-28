@@ -51,12 +51,13 @@ class LibraryController {
       if (!book) {
         return res.redirect("/");
       }
+      // Reconnais qu'il y a 2 fois le même livre en bibliothèque
       const alreadyInLibrary = user.books.some(
         (book) => book.id === bookId  // number === string => false du coup ça bug (rajouter Number devant req.body.articleId)
       );                              // 3 === "3" --> false, donc alreadyInlibrary reste faux
       if (alreadyInLibrary){
         req.session.flash = {
-        type: 'info',
+        type: 'error',
         message: 'Ce livre est déjà dans votre bibliothèque',
         };
         return res.redirect('/library')
@@ -78,8 +79,9 @@ class LibraryController {
         type: "success",
         message: "Livre ajouté à la bibliothèque",
       };
-
-      res.redirect("/library");
+      // referer est un header HTTP envoyé par le navigateur, il dit : "je viens de cette page-là" et /search c'est le plan B ça veux dire : si le referer existe --> on y retourne sinon --> on redirige vers /
+      const redirectTo = req.get("referer") || "/";
+      res.redirect(redirectTo);
     } catch (error) {
       next(error);
     }

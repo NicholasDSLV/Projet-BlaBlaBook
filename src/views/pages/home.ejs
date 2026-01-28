@@ -21,9 +21,11 @@
         <div class="description"><%= ((article.summary || "").slice(0, 150)) %>...</div>
         <form action="/library/add" method="POST">
             <input type="hidden" name="articleId" value="<%= article.id %>">
+            <% if(locals.user?.isAuthenticated) { %>
             <button class="add-btn" type="submit">
                 Ajouter à ma bibliothèque
             </button>
+            <% } %>
         </form>
 
     </article>

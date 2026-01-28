@@ -1,14 +1,23 @@
 import { User, Book } from "../models/index.js";
+import { Op } from "sequelize";
 
 class BookController {
   getAll = async (req, res, next) => {
     try {
-      const { author, category } = req.query;
+      const { author, category, search } = req.query;
+
+    
 
       const where = {};
       if (author) where.author = author;
       if (category) where.category = category;
-
+      // AJOUTEZ LA RECHERCHE ICI
+      if (search) {
+        where[Op.or] = [
+          { title: { [Op.iLike]: `%${search}%` } },
+          { author: { [Op.iLike]: `%${search}%` } }
+        ];
+      }
       const colors = {
         Conte: "tag-blue",
         Classique: "tag-yellow",
@@ -24,7 +33,7 @@ class BookController {
         return b;
       });
 
-      res.render("pages/books", { books, author, category });
+      res.render("pages/books", { books, author, category, searchQuery: search || '' });
     } catch (error) {
       next(error);
     }
@@ -51,6 +60,8 @@ class BookController {
       next(error);
     }
   };
+
+  
 }
 
 export default new BookController();

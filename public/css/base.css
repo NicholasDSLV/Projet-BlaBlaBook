@@ -18,7 +18,10 @@ body{
   font-weight: bold;
   color: var(--text);
 }
-
+.book-card:hover{
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 1px 22px 55px rgba(15,23,42);
+}
 /* ================= HEADER ================= */
 header{
   background: var(--glass);
@@ -30,6 +33,42 @@ header{
   border-bottom: 1px solid var(--border);
   box-shadow: var(--sh-s);
 }
+.welcome-container{
+  position: relative;
+  margin-left: 30px;
+}
+
+.welcome-message{
+  position: relative; /* zone de référence */
+  display: inline-block;
+  color: var(--secondary);
+  font-weight: bold;
+  font-size: x-large;
+}
+
+/* paillettes */
+.confetti{
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: confetti-pop 2s ease-out forwards;
+}
+
+@keyframes confetti-pop{
+  from{
+    transform: translate(-10px, 0) scale(1);
+    opacity: 1;
+  }
+  to{
+    transform: translate(
+      calc(-500px + 800px * var(--x)),
+      calc(200px + 800px * var(--y))
+    ) scale(0.3);
+    opacity: 0;
+  }
+}
+
 
 .logo{ height:40px; }
 

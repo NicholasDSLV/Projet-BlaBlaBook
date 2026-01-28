@@ -56,6 +56,7 @@
   background: var(--theme-surface);
   border: 1px solid var(--border);
   box-shadow: var(--sh-l);
+  transition: transform .4s ease, box-shadow .4s ease;
 }
 
 /* ================= LINK ================= */
