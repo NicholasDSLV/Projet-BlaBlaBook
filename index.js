@@ -48,10 +48,9 @@ const port = process.env.PORT || 4000;
 const base_url = process.env.BASE_URL || 'http://localhost';
 
 // ⚠️ Ne pas démarrer le serveur pendant les tests
-if (process.env.NODE_ENV !== 'test') {
   app.listen(port, () => {
-    console.info(`Blablabook Listening on ${base_url}:${port}`);
+    console.log(`Blablabook Listening on ${port}`);
   });
-}
+
 
 export default app;
