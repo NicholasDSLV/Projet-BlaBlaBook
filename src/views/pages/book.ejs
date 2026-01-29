@@ -62,13 +62,14 @@
             </button>
             <% } %>
         </form>
-
+            <% if(locals.user?.isAuthenticated) { %>
               <select class="status-select">
                 <option value="status">Status</option>
                 <option>Déjà lu</option>
                 <option>En cours</option>
                 <option>À lire</option>
               </select>
+            <% } %>
             </div>
           </div>
         </article>
