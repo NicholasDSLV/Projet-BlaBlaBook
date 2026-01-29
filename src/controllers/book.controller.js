@@ -3,32 +3,39 @@ import { Op } from "sequelize";
 
 
 const TAG_CLASS_BY_CATEGORY = {
-  // Fiction
+  // Fiction (tag-blue)
   fiction: "tag-blue",
-  "juvenile fiction": "tag-green",
-  juvenile: "tag-green",
-  "juvenile fict": "tag-green",
+  "comics & graphic novels": "tag-blue", // reste de la fiction / récit
 
-  // Tech
-  computers: "tag-purple",
-  programming: "tag-purple",
+  // Jeunesse (tag-green)
+  "juvenile iction": "tag-green",
+  "juvenile nonfiction": "tag-green",
+  "young adult fiction": "tag-green",
 
-  // Jeunesse / famille
-  children: "tag-green",
-  "family & relationships": "tag-green",
+  // Tech / “discipline” 
+  psychology: "tag-purple",
+  "business & economics": "tag-purple",
+  "language arts & disciplines": "tag-purple",
 
-  // Science
-  science: "tag-yellow",
+  // Science / sciences humaines 
+  "social science": "tag-yellow",
 
-  // Littérature
+  // Littérature / critique 
   "literary collections": "tag-pink",
+  "literary criticism": "tag-pink",
 
-  // Philosophie
-  philosophy: "tag-purple",
+  // Arts / loisirs 
+  art: "tag-pink",
+  "performing arts": "tag-pink",
+  "games & activities": "tag-pink",
 
-  // Fallback
+  // Histoire 
+  history: "tag-yellow",
+
+  // Fallback 
   unknown: "tag-red",
 };
+
 
 function normalizeCategory(category) {
   return (category || "unknown")
