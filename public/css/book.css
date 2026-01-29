@@ -112,14 +112,11 @@ main.container{
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   padding: 6px 14px;
   border-radius: 999px;
-
   font-size: 12px;
   font-weight: 900;
   color: #fff;
-
   width: fit-content;      
   white-space: nowrap;     
 }
@@ -129,10 +126,12 @@ main.container{
   color: white;
   margin-left: 6px;}
 
-.book .tag-blue{ background: #1d42e7; }
-.book .tag-yellow{ background: #d69c14; }
-.book .tag-green{ background: #2edb1b; }
-.book .tag-purple{ background: #582fd2; }
+.book .tag-blue{ background:#1d42e7; }
+.book .tag-green{ background:#2edb1b; }
+.book .tag-yellow{ background:#f8c140; }
+.book .tag-purple{ background:#582fd2; }
+.book .tag-pink{ background:#db2777; }
+.book .tag-red{ background:#e02424; }
 
 /* ================= DESCRIPTION ================= */
 .book .description{

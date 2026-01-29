@@ -227,6 +227,19 @@
     width: 84px;
     height: 112px;
   }
+
+  .article-list__header{
+    grid-template-columns: 84px 1fr; 
+    gap: 10px 14px;
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .article-list__header .article-list__col:nth-child(3),
+  .article-list__header .article-list__col:nth-child(4),
+  .article-list__header .article-list__col:nth-child(5){
+    display: none;
+  }
   .article__title{ grid-area: title; font-size: 16px; }
   .article__author{ grid-area: author; }
   .article__status{ grid-area: status; }

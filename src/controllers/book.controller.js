@@ -1,6 +1,46 @@
 import { User, Book } from "../models/index.js";
 import { Op } from "sequelize";
 
+
+const TAG_CLASS_BY_CATEGORY = {
+  // Fiction
+  fiction: "tag-blue",
+  "juvenile fiction": "tag-green",
+  juvenile: "tag-green",
+  "juvenile fict": "tag-green",
+
+  // Tech
+  computers: "tag-purple",
+  programming: "tag-purple",
+
+  // Jeunesse / famille
+  children: "tag-green",
+  "family & relationships": "tag-green",
+
+  // Science
+  science: "tag-yellow",
+
+  // Littérature
+  "literary collections": "tag-pink",
+
+  // Philosophie
+  philosophy: "tag-purple",
+
+  // Fallback
+  unknown: "tag-red",
+};
+
+function normalizeCategory(category) {
+  return (category || "unknown")
+    .trim()
+    .toLowerCase();
+}
+
+function getTagClass(category) {
+  return TAG_CLASS_BY_CATEGORY[normalizeCategory(category)] || "tag-blue";
+}
+
+
 class BookController {
   getAll = async (req, res, next) => {
     try {
@@ -18,20 +58,15 @@ class BookController {
           { author: { [Op.iLike]: `%${search}%` } }
         ];
       }
-      const colors = {
-        Conte: "tag-blue",
-        Classique: "tag-yellow",
-        Fantasy: "tag-green",
-        "Science-fiction": "tag-purple",
-      };
+      
 
       const booksRaw = await Book.findAll({ where });
 
       const books = booksRaw.map((book) => {
-        const b = book.toJSON(); // Sequelize -> objet JS
-        b.tagClass = colors[b.category] || "tag-blue";
-        return b;
-      });
+      const b = book.toJSON();
+      b.tagClass = getTagClass(b.category);
+      return b;
+    });
 
       res.render("pages/books", { books, author, category, searchQuery: search || '' });
     } catch (error) {
@@ -45,15 +80,10 @@ class BookController {
 
       if (!bookRaw) return res.status(404).render("pages/404");
 
-      const colors = {
-        conte: "tag-blue",
-        classique: "tag-yellow",
-        fantasy: "tag-green",
-        "Science-fiction": "tag-purple",
-      };
+
 
       const book = bookRaw.toJSON();
-      book.tagClass = colors[book.category] || "tag-blue";
+      book.tagClass = getTagClass(book.category);
 
       res.render("pages/book", { book });
     } catch (error) {

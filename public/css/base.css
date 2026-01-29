@@ -3,51 +3,96 @@ html, body{
   width: 100%;
   overflow-x: hidden;
 }
+
 img{
   max-width: 100%;
   height: auto;
 }
 
 body{
-  margin:0;
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   background: var(--bg-page);
   font-family: var(--font-main);
   font-weight: bold;
   color: var(--text);
 }
+
+/* Hover carte */
 .book-card:hover{
   transform: translateY(-4px) scale(1.01);
   box-shadow: 1px 22px 55px rgba(15,23,42);
 }
+
 /* ================= HEADER ================= */
 header{
+  height: 70px;
+  display: flex;
+  align-items: center;
   background: var(--glass);
   backdrop-filter: var(--blur);
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding: var(--header-pad);
   border-bottom: 1px solid var(--border);
   box-shadow: var(--sh-s);
-  height: 70px;
 }
+
+.logo{
+  height: 200px;        
+  width: auto;
+  object-fit: contain;
+  display: block;    
+}
+
+
+label[for="toggle"], #toggle{ display: none; }
+
+.main_pages{
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+nav{
+  margin-left: auto;
+}
+
+
+.nav-item{
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 16px;
+  font-weight: 500;
+  padding: 10px 12px;
+  border-radius: var(--r-m);
+  transition: transform 1s, background-color 1s, color 1s;
+}
+
+.nav-item:hover{
+  color: var(--white);
+  background-color: var(--primary);
+  transform: translateY(-1px);
+}
+
+.nav-item.active{
+  background: var(--bg-primary);
+  color: white;
+  box-shadow: 0 4px 15px rgba(106, 90, 205, 0.25);
+}
+
+/* ================= WELCOME + CONFETTI ================= */
 .welcome-container{
   position: relative;
-  margin-left: 30px;
+  margin-left: 0px;
 }
 
 .welcome-message{
-  position: relative; /* zone de référence */
+  position: relative;
   display: inline-block;
   color: var(--secondary);
   font-weight: bold;
-  font-size: x-large;
+  font-size: large;
 }
 
-/* paillettes */
 .confetti{
   position: absolute;
   width: 8px;
@@ -70,46 +115,10 @@ header{
   }
 }
 
-
-.logo {
-  height: 180px;
-  object-fit: contain;
-}
-
-label[for="toggle"], #toggle{ display:none; }
-
-.main_pages{
-  display:flex;
-  align-items:center;
-  gap:30px;
-}
-
-.nav-item{
-  text-decoration:none;
-  color: var(--text-muted);
-  font-size:16px;
-  font-weight:500;
-  padding:10px 12px;
-  border-radius: var(--r-m);
-  transition: transform 1s, background-color 1s, color 1s;
-}
-
-.nav-item:hover{
-  color: var(--white);
-  background-color: var(--primary);
-  transform: translateY(-1px);
-}
-
-.nav-item.active{
-  background: var(--bg-primary);
-  color:white;
-  box-shadow: 0 4px 15px rgba(106, 90, 205, 0.25);
-}
-
 /* ================= FOOTER ================= */
 .footer{
   padding: 18px 14px;
-  text-align:center;
+  text-align: center;
   color: var(--text-muted);
   font-size: 14px;
   background: var(--glass);
@@ -119,7 +128,7 @@ label[for="toggle"], #toggle{ display:none; }
 
 .footer a{
   color: var(--primary);
-  text-decoration:none;
+  text-decoration: none;
   font-weight: 700;
 }
 
@@ -128,7 +137,7 @@ label[for="toggle"], #toggle{ display:none; }
   text-decoration: underline;
 }
 
-
+/* ================= THEME TOGGLE ================= */
 .theme-toggle{
   margin-left: 12px;
   width: 44px;
@@ -152,7 +161,6 @@ label[for="toggle"], #toggle{ display:none; }
 }
 
 /* ================= FLASH MESSAGE ================= */
-
 .flash{
   width: min(520px, calc(100% - 32px));
   margin: 22px auto;
@@ -166,13 +174,12 @@ label[for="toggle"], #toggle{ display:none; }
   text-align: center;
   transition: opacity .6s ease, transform .6s ease;
   box-shadow: var(--sh-m);
-  animation: flashIn 0.6s ease;
-  
+  animation: flashIn .6s ease;
 }
-/* Animation d'apparition */
+
 @keyframes flashIn{
   from{
-    opacity: 0px;
+    opacity: 0;           /* <-- corrigé (0px -> 0), même rendu */
     transform: translateY(-10px);
   }
   to{
@@ -181,7 +188,6 @@ label[for="toggle"], #toggle{ display:none; }
   }
 }
 
-/* Succès */
 .flash--success{
   color: #065f46;
   background: linear-gradient(
@@ -192,7 +198,6 @@ label[for="toggle"], #toggle{ display:none; }
   border-color: rgba(16,185,129,0.35);
 }
 
-/* Erreur */
 .flash--error{
   color: #7f1d1d;
   background: linear-gradient(
@@ -208,13 +213,7 @@ label[for="toggle"], #toggle{ display:none; }
   transform: translateY(-10px);
 }
 
-
-
-
-
 /* ================= THEME / COMPONENTS ================= */
-
-/* Inputs */
 input, textarea, select{
   background: var(--theme-input-bg);
   border: 1px solid var(--theme-input-border);
@@ -227,7 +226,6 @@ input:focus, textarea:focus, select:focus{
   box-shadow: 0 0 0 4px var(--theme-focus);
 }
 
-/* Cartes (si tes pages ont ces classes) */
 .contact-card,
 .notfound-card,
 .login-box,
@@ -243,7 +241,7 @@ input:focus, textarea:focus, select:focus{
 }
 
 /* ================= BURGER (mobile) ================= */
-@media (max-width: 930px){
+@media (max-width: 768px){
   header{
     padding: 14px 18px;
     position: sticky;
@@ -251,12 +249,14 @@ input:focus, textarea:focus, select:focus{
     z-index: 50;
   }
 
+  nav{ position: relative; }
+
   label[for="toggle"]{
     display: inline-flex;
-    align-items:center;
-    justify-content:center;
-    width:44px;
-    height:44px;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
     border-radius: var(--r-m);
     border: 1px solid var(--border);
     background: var(--glass);
@@ -265,18 +265,15 @@ input:focus, textarea:focus, select:focus{
     box-shadow: 0 8px 18px rgba(15,23,42,0.08);
   }
 
-  nav{ position: relative; }
-  #toggle{ display:none; }
-
   .main_pages{
-    display:none;
-    position:absolute;
-    right:0;
+    display: none;
+    position: absolute;
+    right: 0;
     top: calc(100% + 10px);
     width: min(280px, calc(100vw - 36px));
-    flex-direction:column;
-    gap:8px;
-    padding:12px;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
     border-radius: var(--r-l);
     background: rgba(255,255,255,0.92);
     border: 1px solid var(--border);
@@ -284,7 +281,6 @@ input:focus, textarea:focus, select:focus{
     backdrop-filter: var(--blur);
   }
 
-  #toggle:checked + .main_pages{ display:flex; }
-  .main_pages .nav-item{ width:100%; }
+  #toggle:checked + .main_pages{ display: flex; }
+  .main_pages .nav-item{ width: 100%; }
 }
-
