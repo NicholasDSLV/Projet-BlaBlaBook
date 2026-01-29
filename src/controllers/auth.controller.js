@@ -160,6 +160,31 @@ class AuthController {
       next(error);
     }
   };
+
+  deleteAccount = async (req, res, next) => {
+    try {
+      const userId = req.session.user.id;
+
+      // 🔗 Supprimer les relations User ↔ Book (important)
+      const user = await User.findByPk(userId);
+      if (user) {
+        await user.setBooks([]);
+      }
+
+      // ❌ Supprimer l’utilisateur
+      await User.destroy({
+        where: { id: userId },
+      });
+
+      // 🔐 Détruire la session
+      req.session.destroy(() => {
+        res.redirect("/");
+      });
+    } catch (error) {
+      next(error);
+    }
+  };
+
 }
 
 const myController = new AuthController();
