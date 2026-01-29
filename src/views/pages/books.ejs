@@ -31,24 +31,36 @@
  
       <section class="books">
         <% books.forEach(article => { %>
-        <div class="book-card">
-          <a href="/books/<%= article.id %>"><h1 class="article__title"><%= article.title %></h1></a>
-          <a class="cover" href="/books/<%= article.id %>">
-        <img src="<%= article.coverUrl %>" alt="image du livre <%= article.title %>"></a>
-          <div class="description">
-            <% const s = article.summary || "" %>
-              <%= ((article.summary || "").slice(0, 150)) %>...
-          </div>
-          <form action="/library/add" method="POST">
-            <input type="hidden" name="articleId" value="<%= article.id %>">
-            <% if(locals.user?.isAuthenticated) { %>
-            <button class="add-btn" type="submit">
-                Ajouter à ma bibliothèque
-            </button>
-            <% } %>
+  <div class="book-card">
+    <a href="/books/<%= article.id %>">
+      <h1 class="article__title"><%= article.title %></h1>
+    </a>
+
+    <a class="cover" href="/books/<%= article.id %>">
+      <img src="<%= article.coverUrl %>" alt="image du livre <%= article.title %>">
+    </a>
+
+    <div class="description">
+      <%= ((article.summary || "").slice(0, 150)) %>...
+    </div>
+
+    <% if (locals.user?.isAuthenticated) { %>
+      <% if (article.isInLibrary) { %>
+        <form action="/library/remove" method="POST">
+          <input type="hidden" name="articleId" value="<%= article.id %>">
+          <button class="add-btn" type="submit">Retirer de la bibliothèque</button>
         </form>
-        </div>
-        <% }) %>
+      <% } else { %>
+        <form action="/library/add" method="POST">
+          <input type="hidden" name="articleId" value="<%= article.id %>">
+          <button class="add-btn" type="submit">Ajouter à ma bibliothèque</button>
+        </form>
+      <% } %>
+    <% } %>
+
+  </div>
+<% }) %>
+
       </section>
     </main>
 
