@@ -1,31 +1,44 @@
 import { User, Book } from "../models/index.js";
+import { Op } from "sequelize";
 
 class LibraryController {
   getAll = async (req, res, next) => {
-    try {
-      const userId = req.session.user.id;
-      const user = await User.findByPk(userId, {
-        include: [
-          {
-            model: Book,
-            as: "books",
-            through: {
-              attributes: [],
-            },
+  try {
+    const userId = req.session.user.id;
+    const search = req.query.search || "";
+
+    const user = await User.findByPk(userId, {
+      include: [
+        {
+          model: Book,
+          as: "books",
+          through: {
+            attributes: [],
           },
-        ],
-      });
-      if (!user) {
-        // user n'existe pas => redirige vers la page login
-        return res.redirect("/auth/login");
-      }
-      res.render("pages/library", {
-        books: user.books,
-      });
-    } catch (error) {
-      next(error);
+          where: search
+            ? {
+                [Op.or]: [
+                  { title: { [Op.iLike]: `%${search}%` } },
+                  { author: { [Op.iLike]: `%${search}%` } },
+                ],
+              }
+            : undefined,
+        },
+      ],
+    });
+
+    if (!user) {
+      return res.redirect("/auth/login");
     }
-  };
+
+    res.render("pages/library", {
+      books: user.books,
+      searchQuery: search,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
   create = async (req, res, next) => {
     try {
