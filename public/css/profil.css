@@ -67,9 +67,14 @@
   padding: 26px;
   background: rgba(126, 5, 5, 0.718);
   color: #fff;
-  box-shadow: 3px 10px 26px rgb(222, 4, 7);
+  box-shadow: 3px 10px 26px  rgba(106, 90, 205);
+  transition: transform .4s ease, box-shadow .4s ease;
 }
 
+.danger-zone:hover{
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 1px 22px 55px rgb(222, 4, 7);
+}
 .danger-zone h3{
   margin:0 0 10px;
   font-size: 22px;
@@ -129,10 +134,4 @@
 }
 
 
-/* ================= RESPONSIVE ================= */
-@media (min-width: 769px) {
-  .grid{
-    flex-direction: row;
-    gap: 22px;
-  }
-}
+
