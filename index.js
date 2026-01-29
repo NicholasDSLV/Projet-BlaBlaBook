@@ -47,22 +47,24 @@ app.use(legalsRouter);
 const port = process.env.PORT || 4000;
 const baseUrl = process.env.NODE_ENV === 'production' || 'http://localhost:4000' || 'https://projet-blablabook-xxx.onrender.com';
 
-async function initDatabase() {
-  try {
-    console.log('⏳ Initialisation BDD…');
+// Permet de synchroniser la BDD avec render lors du déploiement à faire uniquement si on a fais des modifs avec la BDD qu'on veux rajouter sur le site déployé.
+// Ensuite il faut push en decommentant ce code puis repush en recommentant ce code sinon ça resync la BDD à chaque fois.
+// async function initDatabase() {
+//   try {
+//     console.log('⏳ Initialisation BDD…');
 
-    await sequelize.authenticate();
-    console.log('✅ Connexion BDD OK');
+//     await sequelize.authenticate();
+//     console.log('✅ Connexion BDD OK');
 
-    await import('./src/migrations/01.create-tables.js');
-    await import('./src/migrations/02.seed-tables.js');
+//     await import('./src/migrations/01.create-tables.js');
+//     await import('./src/migrations/02.seed-tables.js');
 
-    console.log('🎉 BDD initialisée');
-  } catch (err) {
-    console.error('❌ Erreur init BDD', err);
-  }
-}
-await initDatabase();
+//     console.log('🎉 BDD initialisée');
+//   } catch (err) {
+//     console.error('❌ Erreur init BDD', err);
+//   }
+// }
+// await initDatabase();
 
 if (process.env.NODE_ENV !== 'test') {
   app.listen(port, () => {
