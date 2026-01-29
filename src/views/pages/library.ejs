@@ -5,18 +5,17 @@
   
   <main class="page">
     <section class="search">
-      <form class="search__form" method="GET" action="/books">
-        <label class="search__label" for="search"></label>
-        <input
-          class="search__input"
-          id="search"
-          type="search"
-          name="search"
-          placeholder="Rechercher un livre..."
-          value="<%= locals.searchQuery || '' %>"
-        >
-        <button class="search__button" type="submit">Rechercher</button>
-      </form>
+      <form class="search__form" method="GET" action="/library">
+  <input
+    class="search__input"
+    id="search"
+    type="search"
+    name="search"
+    placeholder="Rechercher dans ma bibliothèque..."
+    value="<%= locals.searchQuery || '' %>"
+  >
+  <button class="search__button" type="submit">Rechercher</button>
+</form>
     </section>
 
     <section class="article-list">

@@ -24,6 +24,7 @@ Book.init(
 			type: DataTypes.STRING(20),
 			// null interdit
 			allowNull: true,
+			unique: true,
 		},
 		title: {
 			// reference CHAR(9) UNIQUE NOT NULL,

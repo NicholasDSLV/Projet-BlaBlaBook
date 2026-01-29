@@ -1,9 +1,11 @@
 import { User, Book, Library } from "../models/index.js";
+import { Op } from "sequelize";
 
 class LibraryController {
   getAll = async (req, res, next) => {
     try {
       const userId = req.session.user.id;
+      const search = req.query.search || "";
       const user = await User.findByPk(userId, {
         include: [
           {
@@ -13,15 +15,25 @@ class LibraryController {
               // Sequelize n'injecte la table pivot que si tu la demandes explicitement, rajouter le status pour avoir les livres avec le status
               attributes: ["status"],
             },
+            where: search
+              ? {
+                  [Op.or]: [
+                    { title: { [Op.iLike]: `%${search}%` } },
+                    { author: { [Op.iLike]: `%${search}%` } },
+                  ],
+                }
+              : undefined,
           },
         ],
       });
+
       if (!user) {
-        // user n'existe pas => redirige vers la page login
         return res.redirect("/auth/login");
       }
+
       res.render("pages/library", {
         books: user.books,
+        searchQuery: search,
       });
     } catch (error) {
       next(error);
@@ -145,7 +157,7 @@ class LibraryController {
       await user.removeBook(req.body.articleId);
 
       req.session.flash = {
-        type: "error",
+        type: "success",
         message: "Livre supprimé de la bibliothèque",
       };
 

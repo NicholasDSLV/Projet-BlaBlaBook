@@ -11,5 +11,7 @@ router.post('/auth/profile', validateUserUpdate, authController.updateUser);
 router.post('/auth/register', validateUser, authController.registerUser);
 router.post('/auth/login', validateLoginUser, authController.login)
 
+router.post('/auth/delete-account', loginMiddleware, authController.deleteAccount);
+
 
 export default router;

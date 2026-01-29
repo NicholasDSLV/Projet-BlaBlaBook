@@ -25,7 +25,10 @@
 <body>
     <header>
       
-      <img class="logo" src="../img/Logo 2.png" alt="logo de blablabook" style="width:130px; ">
+      <a href="/">
+        <img class="logo" src="../img/Logo1.png" alt="logo de blablabook">
+      </a>
+
         <% if(locals.user?.isAuthenticated) { %>
           <div class="welcome-container">
             <p class="welcome-message">
@@ -38,7 +41,6 @@
         <input type="checkbox" id="toggle">
 
         <div class="main_pages">
-          <a href="/" class="nav-item ">Accueil</a>
           <a href="/books" class="nav-item">Rechercher</a>
           <% if(locals.user?.isAuthenticated) { %>
           <a href="/library" class="nav-item">Bibliothèque</a>

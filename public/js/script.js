@@ -51,26 +51,26 @@ if (flash) {
 // --------- Confettis ---------
 
 
-const welcome = document.querySelector(".welcome-message");
+const flashSuccess = document.querySelector("#flash.flash--success");
 
-if (welcome) {
+if (flashSuccess) {
 
-  for (let i = 0; i < 80; i++) {
+  for (let i = 0; i < 50; i++) {
     const confetti = document.createElement("span");
     confetti.classList.add("confetti");
 
-    // directions aléatoires
     confetti.style.setProperty("--x", Math.random());
     confetti.style.setProperty("--y", Math.random());
     confetti.style.background = randomColor();
 
-    welcome.appendChild(confetti);
-
-    setTimeout(() => confetti.remove(), 5000);
+    flashSuccess.appendChild(confetti);
+    setTimeout(() => confetti.remove(), 2500);
   }
+
 }
 
 function randomColor(){
   const colors = ["#667EEA", "#764BA2", "#22c55e", "#facc15", "#ec4899"];
   return colors[Math.floor(Math.random() * colors.length)];
 }
+
