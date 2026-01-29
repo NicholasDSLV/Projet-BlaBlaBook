@@ -19,14 +19,16 @@ const TAG_CLASS_BY_CATEGORY = {
 
   // Science
   science: "tag-yellow",
+  Business: "tag-yellow",
 
   // Littérature
   "literary collections": "tag-pink",
 
   // Philosophie
   philosophy: "tag-purple",
+  art: "tag-purple",
 
-  // Fallback
+  // unknown
   unknown: "tag-red",
 };
 

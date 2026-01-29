@@ -20,64 +20,69 @@ async function seed() {
     // =====================
     // 2. BOOKS (Google API)
     // =====================
-    const queries = [
-      "subject:fantasy",
-      "subject:science fiction",
-      "subject:thriller",
-      "subject:romance",
-      "subject:mystery",
-      "subject:horror",
-      "subject:historical fiction",
-      "subject:biography",
-      "subject:poetry",
-      "subject:young adult",
-      "subject:children",
-      "subject:crime",
-      "subject:adventure",
-      "subject:philosophy",
-      "subject:psychology",
-      "subject:business",
-      "subject:programming",
-      "subject:cooking",
-      "subject:travel",
-      "inauthor:Stephen King",
-      "inauthor:Agatha Christie",
-      "inauthor:Jules Verne",
-      "inauthor:George Orwell",
-    ];
+      const queries = [
+        'harry potter',
+        'le seigneur des anneaux',
+        'game of thrones',
+        'the witcher'
+      ];
 
-    for (const query of queries) {
-      console.log("Query:", query);
-      const response = await fetch(
-        `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&maxResults=40&printType=books&orderBy=relevance&langRestrict=fr`,
-      );
-      console.log("status:", response.status);
-      const result = await response.json();
-      console.log(" items:", result.items?.length);
 
-      if (result.items) {
-        for (const item of result.items) {
-          await Book.create({
-            isbn: item.volumeInfo.industryIdentifiers
-              ? item.volumeInfo.industryIdentifiers[0].identifier
-              : null,
-            title: item.volumeInfo.title,
-            author: item.volumeInfo.authors
-              ? item.volumeInfo.authors.join(", ")
-              : "Unknown",
-            category: item.volumeInfo.categories  ? item.volumeInfo.categories[0]  : 'Unknown',
-            summary: item.volumeInfo.description || null,
-            coverUrl:
-                item.volumeInfo.imageLinks?.thumbnail ||
-                item.volumeInfo.imageLinks?.smallThumbnail ||
-                null,
-            publication_date: item.volumeInfo.publishedDate
-                ? item.volumeInfo.publishedDate.slice(0, 10)
-                : null,
-            });
-        }
-        }
+
+
+    function pickIsbn(volumeInfo) {
+  const ids = volumeInfo.industryIdentifiers || [];
+  const isbn13 = ids.find((i) => i.type === "ISBN_13")?.identifier;
+  const isbn10 = ids.find((i) => i.type === "ISBN_10")?.identifier;
+  return isbn13 || isbn10 || null;
+}
+
+for (const query of queries) {
+  console.log("Query:", query);
+
+  const response = await fetch(
+    `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&maxResults=40&printType=books&orderBy=relevance&langRestrict=fr`
+  );
+
+  console.log("status:", response.status);
+  const result = await response.json();
+  console.log("items:", result.items?.length || 0);
+
+  if (!result.items) continue;
+
+  for (const item of result.items) {
+    const v = item.volumeInfo || {};
+
+    const isbn = pickIsbn(v);
+    const cover =
+      v.imageLinks?.thumbnail || v.imageLinks?.smallThumbnail || null;
+    const summary = v.description || null;
+
+    //  filtres demandés
+    if (v.language !== "fr") continue;
+    if (!isbn) continue;
+    if (!cover) continue;
+    if (!summary) continue;
+
+    try {
+      await Book.findOrCreate({
+        where: { isbn },
+        defaults: {
+          isbn,
+          title: v.title,
+          author: v.authors ? v.authors.join(", ") : "Unknown",
+          category: v.categories ? v.categories[0] : "Unknown",
+          summary,
+          coverUrl: cover,
+          publication_date: v.publishedDate ? v.publishedDate.slice(0, 10) : null,
+        },
+      });
+    } catch (err) {
+      console.log("SKIP (DB error):", isbn, err?.message);
     }
+  }
+}
+
     // =================
     // ** Liens entre user et book
     // =================
