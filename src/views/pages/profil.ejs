@@ -38,9 +38,18 @@
 </section>
 
 <section class="danger-zone">
-    <h3>Attention</h3>
-    <p>Cette action est irréversible. Toutes vos données seront définitivement supprimées.</p>
-    <button class="btn-danger" type="button">Supprimer le compte</button>
+  <h3>Attention</h3>
+  <p>Cette action est irréversible. Toutes vos données seront définitivement supprimées.</p>
+
+  <form
+    method="POST"
+    action="/auth/delete-account"
+    onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible 😱!')"
+  >
+    <button class="btn-danger" type="submit">
+      Supprimer le compte
+    </button>
+  </form>
 </section>
 </main>
 
