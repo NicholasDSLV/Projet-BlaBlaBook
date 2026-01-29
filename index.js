@@ -45,7 +45,7 @@ app.use(contactRouter);
 app.use(legalsRouter);
 
 const port = process.env.PORT || 4000;
-const base_url = process.env.BASE_URL || 'http://localhost';
+const baseUrl = process.env.NODE_ENV === 'production' || 'http://localhost:4000' || 'https://projet-blablabook-xxx.onrender.com';
 
   app.listen(port, () => {
     console.log(`Blablabook Listening on ${port}`);

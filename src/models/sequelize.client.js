@@ -9,16 +9,22 @@ import { Sequelize } from 'sequelize';
 // import dotenv pour lire le fichier .env
 import 'dotenv/config';
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 // On récupère la string DATABASE_URL écrite dans le .env
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
-
+	// Ce bloc dit à Sequelize : si on est en production --> utilise SSL 
+	// sinon --> n'utilise pas SSL
 	dialect: 'postgres',
-  	dialectOptions: {
+  	dialectOptions: isProduction
+	?{
+	// SSL = prod uniquement
     ssl: {
       require: true,
       rejectUnauthorized: false,
     },
-  },
+  }
+  : {},
 	// define configure le comportement par défaut de Sequelize
 	define: {
 		// Une convention pour que Sequelize ne mette pas les noms de table au pluriel
@@ -28,6 +34,9 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
 		// Utilise le snake_case pour les champs auto-générés (createdAt -> created_at)
 		underscored: true,
 	},
+	// ça dit à Séquelize "ne logge pas toutes les requêtes SQL dans la console."
+	// en dev on peut  faire : logging: process.env.NODE_ENV !== 'production'
+	logging: false,
 });
 
 try {
