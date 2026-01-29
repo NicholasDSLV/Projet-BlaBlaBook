@@ -1,5 +1,6 @@
 import Book from './book.model.js';
 import User from './user.model.js';
+import Library from './library.model.js';
 
 // ** 1 Card belongs to many Tag **
 // Pour la relation N - N entre User et Book il faut utiliser une table pivot (une table intermédiaire)
@@ -7,7 +8,7 @@ import User from './user.model.js';
 User.belongsToMany(Book, {
 
 	// Nom de la table pivot entre User et Book
-	through: 'library',
+	through: 'Library',
 	
 	// On peut configurer la manière de traduire la relation ==> configurer la table pivot
 	// clé étrangère dans la table pivot vers la table user
@@ -27,7 +28,7 @@ Book.belongsToMany(User, {
 
 	// Nom de la table pivot entre User et Book
 	// ! Attention ! Il faut mettre le même nom de table pivot que dans le belongsToMany juste au dessus !
-	through: 'library',
+	through: 'Library',
 
 	// On peut configurer la manière de traduire la relation ==> configurer la table pivot
 	// clé étrangère dans la table pivot vers la table Category
@@ -43,4 +44,4 @@ Book.belongsToMany(User, {
 });
 
 // Ici on fait l'export des Modèles enrichit de leurs relations entre eux eux
-export { Book, User}
+export { Book, User, Library}

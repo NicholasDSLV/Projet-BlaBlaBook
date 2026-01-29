@@ -33,12 +33,20 @@
         <a href="/books/<%= article.id %>"><h1 class="article__title"><%= article.title %></h1></a>
         <a class="article__author" href="/books?author=<%=article.author %>"><%= article.author %>
 </a>
-        <select class="article__status">
-          <option value="<%= article.status %>">status</option>
-          <option>Déjà lu</option>
-          <option>En cours</option>
-          <option>A lire</option>
+      <!--Rajouter un form autour du Select Sans <form>, le navigateur n’envoie rien au serveur. Donc pas de status.-->
+      <!--Métaphore simple <select> = tu écris une lettre, <form> = l’enveloppe, submit = le facteur.
+      Ca peux marcher ailleurs car on envoi nous même les données avec un fetch mais pas en html + EJS seul <form> sait envoyer des données automatiquement--> 
+      <form action="/library/status" method="POST">
+                            <!--grace à l'input, son name="articleId" l'id du livre est transmis par la suite et permet de modifier le status d'un livre-->
+        <input type="hidden" name="articleId" value="<%= article.id %>">
+        <select class="article__status" name="status">
+          <!--value = la valeur envoyé au serveur le serveur reçois : req.body.status === "en cours" -->
+          <option value="à lire"  <%= article.Library.status === "à lire" ? "selected" : "" %>> >A lire</option>
+          <option value="en cours" <%= article.Library.status === "en cours" ? "selected" : "" %>> >En cours</option>
+          <option value="lu" <%= article.Library.status === "lu" ? "selected" : "" %>> >Déja lu</option>
         </select>
+        <button type="submit">Ajouter</button>
+      </form>
         <div class="article__actions">
         <form action="/library/remove" method="POST">
             <input type="hidden" name="articleId" value="<%= article.id %>">

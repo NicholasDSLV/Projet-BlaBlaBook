@@ -2,7 +2,7 @@ import { join } from 'node:path';
 import 'dotenv/config';
 import express from 'express';
 import session from "express-session";
-
+import sequelize from './src/models/sequelize.client.js';
 import indexRouter from './src/routes/index.router.js';
 import libraryRouter from './src/routes/library.router.js';
 import bookRouter from './src/routes/book.router.js';
@@ -46,6 +46,23 @@ app.use(legalsRouter);
 
 const port = process.env.PORT || 4000;
 const baseUrl = process.env.NODE_ENV === 'production' || 'http://localhost:4000' || 'https://projet-blablabook-xxx.onrender.com';
+
+async function initDatabase() {
+  try {
+    console.log('⏳ Initialisation BDD…');
+
+    await sequelize.authenticate();
+    console.log('✅ Connexion BDD OK');
+
+    await import('./src/migrations/01.create-tables.js');
+    await import('./src/migrations/02.seed-tables.js');
+
+    console.log('🎉 BDD initialisée');
+  } catch (err) {
+    console.error('❌ Erreur init BDD', err);
+  }
+}
+await initDatabase();
 
 if (process.env.NODE_ENV !== 'test') {
   app.listen(port, () => {

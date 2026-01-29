@@ -1,4 +1,4 @@
-import { User, Book } from "../models/index.js";
+import { User, Book, Library } from "../models/index.js";
 
 class LibraryController {
   getAll = async (req, res, next) => {
@@ -10,7 +10,8 @@ class LibraryController {
             model: Book,
             as: "books",
             through: {
-              attributes: [],
+              // Sequelize n'injecte la table pivot que si tu la demandes explicitement, rajouter le status pour avoir les livres avec le status
+              attributes: ["status"],
             },
           },
         ],
@@ -36,7 +37,7 @@ class LibraryController {
             model: Book,
             as: "books",
             through: {
-              attributes: [],
+              attributes: ["status"],
             },
           },
         ],
@@ -46,30 +47,34 @@ class LibraryController {
         return res.redirect("/auth/login");
       }
       // sans Number devant (req.body.articleId) c'est une string donc l'ajouter sinon .some() échoue
-      const bookId = Number(req.body.articleId) // string
+      const bookId = Number(req.body.articleId); // string
       const book = await Book.findByPk(bookId);
       if (!book) {
         return res.redirect("/");
       }
       // Reconnais qu'il y a 2 fois le même livre en bibliothèque
       const alreadyInLibrary = user.books.some(
-        (book) => book.id === bookId  // number === string => false du coup ça bug (rajouter Number devant req.body.articleId)
-      );                              // 3 === "3" --> false, donc alreadyInlibrary reste faux
-      if (alreadyInLibrary){
+        (book) => book.id === bookId, // number === string => false du coup ça bug (rajouter Number devant req.body.articleId)
+      ); // 3 === "3" --> false, donc alreadyInlibrary reste faux
+      if (alreadyInLibrary) {
         req.session.flash = {
-        type: 'error',
-        message: 'Ce livre est déjà dans votre bibliothèque',
+          type: "error",
+          message: "Ce livre est déjà dans votre bibliothèque",
         };
-        return res.redirect('/library')
+        return res.redirect("/library");
       }
-      await user.addBook(bookId);
+      const status = req.body.status || "à lire";
+      (await user.addBook(bookId),
+        {
+          through: { status },
+        });
       await user.reload({
         include: [
           {
             model: Book,
             as: "books",
             through: {
-              attributes: [],
+              attributes: ["status"],
             },
           },
         ],
@@ -82,6 +87,28 @@ class LibraryController {
       // referer est un header HTTP envoyé par le navigateur, il dit : "je viens de cette page-là" et /search c'est le plan B ça veux dire : si le referer existe --> on y retourne sinon --> on redirige vers /
       const redirectTo = req.get("referer") || "/";
       res.redirect(redirectTo);
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  updateStatus = async (req, res, next) => {
+    try {
+      const userId = req.session.user.id;
+      // articleId est le nom donné à l'input du form dans la vue EJS library, (donc l'id du livre, pas très parlant désolé)
+      const { articleId, status } = req.body;
+
+      await Library.update(
+        { status },
+        {
+          where: {
+            user_id: userId,
+            book_id: articleId,
+          },
+        },
+      );
+
+      res.redirect("/library");
     } catch (error) {
       next(error);
     }

@@ -25,15 +25,15 @@ BlaBlaBook mettra également l’accent sur la découverte de nouveaux livres gr
 
 ### Utilisateurs :
 
-* Inscription : L’utilisateur peut créer un compte avec email + mot de passe.
+* Inscription : L’utilisateur peut créer un compte avec pseudo + email + mot de passe.
 
 * Connexion / Déconnexion : Accès sécurisé à son espace personnel via Express-session.
 
-* Profil basique : L’utilisateur peut voir son nom et sa bibliothèque personnelle ainsi que la modifier (ajouter ou supprimer des livres).
+* Profil basique : L’utilisateur peut voir son profil et sa bibliothèque personnelle ainsi que la modifier.
 
 ### Gestion de bibliothèque
 
-* Ajouter un livre : L’utilisateur peut ajouter un livre à sa bibliothèque (lu à lire en cour de lecture).
+* Ajouter un livre : L’utilisateur peut ajouter un livre à sa bibliothèque .
 
 * Supprimer un livre : Retirer un livre de sa bibliothèque personnelle.
 
@@ -41,11 +41,13 @@ BlaBlaBook mettra également l’accent sur la découverte de nouveaux livres gr
 
 ### Livres
 
-* Voir les détails d’un livre : Titre, auteur, description, couverture (image).
+* Voir les détails d’un livre : Titre, auteur, description, isbn, , genre ainsi que la couverture (image).
 
-* Rechercher un livre : Par titre, auteur ou ISBN.
+* Rechercher un livre : Par titre, auteur .
 
-* Liste aléatoire sur la page d’accueil : Affiche quelques livres .
+* Liste aléatoire sur la page d’accueil : Affiche 3 livres .
+
+* Afficher un status "lu" , "a lire" ou "en cour" .
 
 ### Back-end / API
 
@@ -85,11 +87,17 @@ BlaBlaBook mettra également l’accent sur la découverte de nouveaux livres gr
 
 * Notation et/ou avis
 
-* Filtrage avancé (genre, note, date)
+* Filtrage avancé via les select (genre, note, année)
 
 * Partage de bibliothèque
 
 * Forum / chat en direct
+
+* Lien de redirection pour l'achat du livre
+
+* Fonction DarkMode
+
+
 
 ## 2️⃣ Spécifications techniques
 
@@ -123,6 +131,7 @@ Intéressés par la gestion de leur bibliothèque et la découverte de livres
 
 ## 4️⃣ Navigateurs compatibles
 ###  Version au moment du commencement du projet :
+
 * Chrome (Version 143.0.7499.170 (Build officiel) (64 bits))
 * Firefox (Version 147.0 (64 bits))
 * Edge (Version 143.0.3650.139 (Version officielle) (64 bits))
@@ -135,8 +144,11 @@ Intéressés par la gestion de leur bibliothèque et la découverte de livres
 * " /register "         => Inscription
 * " /library  "         => Ma bibliothèque
 * " /books "            => Recherche/Liste des livres
-* " /books/:id  "        => Détail d’un livre
+* " /books/:id  "       => Détail d’un livre
 * " /profile "          => Profil utilisateur
+* " /legals "           => Mentions legales
+* " /contact "          => Formuliare de contact
+* " /404 "              => Erreur
 
 Schema arborescence des routes :
  
@@ -277,8 +289,6 @@ Page login / register :
 ### 2. Logo
 -----
 Le logo Blablabook utilise une écriture élégante.
-
-
 
 ### 3 Couleur / Palette principale
 
