@@ -54,22 +54,36 @@
             </p>
 
             <div class="actions">
-            <form action="/library/add" method="POST">
-            <input type="hidden" name="articleId" value="<%= book.id %>">
-            <% if(locals.user?.isAuthenticated) { %>
-            <button class="add-btn" type="submit">
-                Ajouter à ma bibliothèque
-            </button>
-            <% } %>
-        </form>
 
-              <select class="status-select">
-                <option value="">Status</option>
-                <option>Déjà lu</option>
-                <option>En cours</option>
-                <option>À lire</option>
-              </select>
-            </div>
+  <% if (locals.user?.isAuthenticated) { %>
+
+    <% if (book.isInLibrary) { %>
+      <form action="/library/remove" method="POST">
+        <input type="hidden" name="articleId" value="<%= book.id %>">
+        <button class="delete-btn" type="submit">
+          Retirer de la bibliothèque
+        </button>
+      </form>
+    <% } else { %>
+      <form action="/library/add" method="POST">
+        <input type="hidden" name="articleId" value="<%= book.id %>">
+        <button class="add-btn" type="submit">
+          Ajouter à ma bibliothèque
+        </button>
+      </form>
+    <% } %>
+
+  <% } %>
+
+  <select class="status-select">
+    <option value="">Status</option>
+    <option>Déjà lu</option>
+    <option>En cours</option>
+    <option>À lire</option>
+  </select>
+
+</div>
+
           </div>
         </article>
       </section>
