@@ -6,7 +6,8 @@ class IndexController {
       const books = await Book.findAll(); // récupère tout
       books.sort(() => Math.random() - 0.5); // mélange
       const dailyBooks = books.slice(0, 3); // garde 3
-
+      console.log("books:",books)
+      console.log("books length:", books.length);
       res.render("pages/home", { books: dailyBooks }); // on garde "books" pour pas changer le EJS
     } catch (error) {
       next(error);

@@ -20,7 +20,7 @@ async function seed() {
     // =====================
     // 2. BOOKS (Google API)
     // =====================
-    const queries = [
+const queries = [
       "harry potter",
       "the lord of the rings",
       "game of thrones",

@@ -118,7 +118,6 @@ class BookController {
           book.isInLibrary = await user.hasBook(bookRaw); // relation N-N (through 'library')
         }
       }
-
       res.render("pages/book", { book });
     } catch (error) {
       next(error);
