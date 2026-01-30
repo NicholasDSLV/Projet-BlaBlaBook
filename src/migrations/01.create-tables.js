@@ -18,10 +18,10 @@ async function run() {
     //ensuite retirer la fonction create/seed et re commit/push et redéployer auto
 	//quand je dit à commenter je parle du finally ici !!
 	}
-	// finally {
-	// 	// Ferme la connexion à la BDD
-	// 	await sequelize.close();
-	// }
+	finally {
+		// Ferme la connexion à la BDD
+		await sequelize.close();
+	}
 
 }
 

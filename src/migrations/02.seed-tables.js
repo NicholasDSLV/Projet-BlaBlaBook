@@ -121,10 +121,10 @@ for (const query of queries) {
   } catch (error) {
     console.log("Error seeding BDD", error);
   } 
-  // finally {
-  //   // Ferme la connexion à la BDD
-  //   await sequelize.close();
-  // }
+  finally {
+    // Ferme la connexion à la BDD
+    await sequelize.close();
+  }
 }
 
 await seed();
