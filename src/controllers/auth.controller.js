@@ -161,6 +161,7 @@ class AuthController {
     }
   };
 
+  // Supprimer 1 utilisateur
   deleteAccount = async (req, res, next) => {
     try {
       const userId = req.session.user.id;
@@ -168,6 +169,10 @@ class AuthController {
       // 🔗 Supprimer les relations User ↔ Book (important)
       const user = await User.findByPk(userId);
       if (user) {
+        // user.setBooks([]) veut ditre : remplacer toutes les relations User <-->Book par la liste donnée comme la liste est vide [] : 
+        // toutes les entrées de la table pivot (library) pour cet utilisateur sont supprimées, on vide la bibliothèque d’un utilisateur
+        // Les livres ne sont PAS supprimés
+        // L’utilisateur n’est PAS supprimé
         await user.setBooks([]);
       }
 

@@ -20,62 +20,111 @@ async function seed() {
     // =====================
     // 2. BOOKS (Google API)
     // =====================
-const queries = [
-      "harry potter",
-      "the lord of the rings",
-      "game of thrones",
-      "the witcher",
-    ];
+      const queries = [
+        'harry potter',
+        'le seigneur des anneaux',
+        'game of thrones',
+        'the witcher'
+      ];
 
-    for (const query of queries) {
-      console.log("Query:", query);
-      const response = await fetch(
-        `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&maxResults=10`,
-      );
-      console.log("status:", response.status);
-      const result = await response.json();
-      console.log(" items:", result.items?.length);
 
-      if (result.items) {
-        for (const item of result.items) {
-          await Book.create({
-            isbn: item.volumeInfo.industryIdentifiers
-              ? item.volumeInfo.industryIdentifiers[0].identifier
-              : null,
-            title: item.volumeInfo.title,
-            author: item.volumeInfo.authors
-                            // .join(', ') transforme un tableau en une chaîne de caractères
-                            // le paramètre (', ') est le séparateur entre les éléments exemplte : const authors = ['Tolkien', 'Lewis', 'Rowling'];
-                            // authors.join(', '); devient -- > "Tolkien, Lewis, Rowling"
-              ? item.volumeInfo.authors.join(", ")
-              : "Unknown",
-            category: item.volumeInfo.categories
-              ? item.volumeInfo.categories[0]
-              : "Unknown",
-            summary: item.volumeInfo.description || null,
-            coverUrl:
-              item.volumeInfo.imageLinks?.thumbnail ||
-              item.volumeInfo.imageLinks?.smallThumbnail ||
-              null,
-            publication_date: item.volumeInfo.publishedDate
-                                            // slice(0, 10) prend les 10 premiers caractères
-              ? item.volumeInfo.publishedDate.slice(0, 10)
-              : null,
-          });
-        }
+
+
+    function pickIsbn(volumeInfo) {
+  const ids = volumeInfo.industryIdentifiers || [];
+  const isbn13 = ids.find((i) => i.type === "ISBN_13")?.identifier;
+  const isbn10 = ids.find((i) => i.type === "ISBN_10")?.identifier;
+  return isbn13 || isbn10 || null;
+}
+
+for (const query of queries) {
+  console.log("Query:", query);
+
+  const response = await fetch(
+    `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&maxResults=40&printType=books&orderBy=relevance&langRestrict=fr`
+  );
+
+  console.log("status:", response.status);
+  const result = await response.json();
+  console.log("items:", result.items?.length || 0);
+
+  if (!result.items) continue;
+
+  for (const item of result.items) {
+    const v = item.volumeInfo || {};
+
+    const isbn = pickIsbn(v);
+    const cover =
+      v.imageLinks?.thumbnail || v.imageLinks?.smallThumbnail || null;
+    const summary = v.description || null;
+
+    //  filtres demandé
+
+    if (v.language !== "fr") continue;
+    if (!isbn) continue;
+    if (!cover) continue;
+    if (!summary) continue;
+
+    try {
+      await Book.findOrCreate({
+        where: { isbn },
+        defaults: {
+          isbn,
+          title: v.title,
+          author: v.authors ? v.authors.join(", ") : "Unknown",
+          category: v.categories ? v.categories[0] : "Unknown",
+          summary,
+          coverUrl: cover,
+          publication_date: v.publishedDate ? v.publishedDate.slice(0, 10) : null,
+        },
+      });
+    } catch (err) {
+      console.log("SKIP (DB error):", isbn, err?.message);
+    }
+  }
+}
+
+    // =================
+    // ** Liens entre user et book
+    // =================
+    // Objet User initialisé à null
+    let myUser = null;
+
+    // Objet Book initialisé à null
+    let myBook = null;
+    const library = data.library;
+    if (!library || library.length === 0) {
+      return;
+    }
+    for (let element of library) {
+      // Pour chaque "element" : {user_id, book_id}
+      // Faire une recherche dans la BDD pour récupérer un objet User grace à user_id
+      // Faire une recherche dans la BDD pour récupérer un objet Book grace a book_id
+      // Faire le lien entre l'objet User et l'objet Book
+      // Recherche dans la BDD de l'User à modifier
+      // SELECT
+      myUser = await User.findByPk(element.user_id);
+      if (myUser) {
+        myBook = await Book.findByPk(element.book_id);
+      }
+      if (myBook) {
+        // La User et le Book existent.
+        // Je peux ajouter le Book dans la liste des Books pour le User
+
+        // Méthode magique fournie par Sequelize au moment où on a déclaré User Belongs To Many Book
+        await myUser.addBook(myBook);
+      } else {
+        throw Error("myBook is null");
       }
     }
     console.log(" Seeding complete!");
   } catch (error) {
     console.log("Error seeding BDD", error);
-    // Script --> ouvre --> ferme (seulement en dev)
-    // Serveur --> ouvre --> ne ferme jamais(sauf shutdown) donc à commenter lors du create et seed db pour le déploiement ( à faire 1 seul fois lors du déploiement pour insérer les données une première fois puis commit/push)
-    //ensuite retirer la fonction create/seed et re commit/push et redéployer auto
-    //quand je dit à commenter je parle du finally ici !!
-  } finally {
-    // Ferme la connexion à la BDD
-    await sequelize.close();
-  }
+  } 
+  // finally {
+  //   // Ferme la connexion à la BDD
+  //   await sequelize.close();
+  // }
 }
 
 await seed();

@@ -38,9 +38,6 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
 	// en dev on peut  faire : logging: process.env.NODE_ENV !== 'production'
 	logging: false,
 });
-console.log("🧠 Sequelize DB:", sequelize.config.database);
-console.log("🧠 Sequelize HOST:", sequelize.config.host);
-console.log("🧠 Sequelize USER:", sequelize.config.username);
 try {
 	await sequelize.authenticate();
 	console.log('Connection has been established successfully.');
